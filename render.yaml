@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: al-alanda
+    env: python
+    buildCommand: ./build.sh
+    startCommand: gunicorn project.wsgi:application
+    envVars:
+      - key: DATABASE_URL
+        value: sqlite:///db.sqlite3
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: false
+      - key: PYTHON_VERSION
+        value: 3.11.0
+    autoDeploy: true
