@@ -1,0 +1,60 @@
+/* Banner responsive fixes */
+@media (max-width: 576px) {
+  .banner-overlay {
+    width: 95% !important;
+    padding: 15px !important;
+  }
+}
+
+/* Responsive fixes for products page */
+@media (max-width: 767.98px) {
+  .product-card {
+    margin-bottom: 1rem;
+  }
+  .card-img-top {
+    height: 180px;
+  }
+  .owl-carousel .owl-nav button.owl-prev,
+  .owl-carousel .owl-nav button.owl-next {
+    width: 30px;
+    height: 30px;
+  }
+  .category-header {
+    font-size: 1.5rem;
+  }
+  #filterSidebar {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .container-fluid {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .card-title {
+    font-size: 1rem;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    height: auto;
+    margin-bottom: 5px;
+  }
+  .price {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  .category-header-section {
+    padding: 10px;
+  }
+}
+
+/* Product card improvements */
+.product-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}

@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Order Confirmation" %}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h3 class="mb-0">{% trans "Order Confirmed" %}</h3>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+                        <h4 class="mt-3">{% trans "Thank you for your order!" %}</h4>
+                        <p>{% trans "Your order has been placed successfully." %}</p>
+                    </div>
+                    
+                    <div class="order-details mb-4">
+                        <h5>{% trans "Order Details" %}</h5>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>{% trans "Product" %}</th>
+                                        <th>{% trans "Quantity" %}</th>
+                                        <th>{% trans "Price" %}</th>
+                                        <th>{% trans "Subtotal" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in order.items.all %}
+                                    <tr>
+                                        <td>{{ item.product_name }}</td>
+                                        <td>{{ item.quantity }}</td>
+                                        <td>${{ item.product_price }}</td>
+                                        <td>${{ item.subtotal }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="3" class="text-end"><strong>{% trans "Total:" %}</strong></td>
+                                        <td><strong>${{ order.total_amount }}</strong></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="shipping-info mb-4">
+                        <h5>{% trans "Shipping Information" %}</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>{% trans "Name:" %}</strong> {{ order.first_name }} {{ order.last_name }}</p>
+                                <p><strong>{% trans "Email:" %}</strong> {{ order.email }}</p>
+                                <p><strong>{% trans "Phone:" %}</strong> {{ order.phone }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>{% trans "Address:" %}</strong> {{ order.address }}</p>
+                                <p><strong>{% trans "City:" %}</strong> {{ order.city }}</p>
+                                {% if order.postal_code %}
+                                <p><strong>{% trans "Postal Code:" %}</strong> {{ order.postal_code }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-info mb-4">
+                        <h5>{% trans "Payment Method" %}</h5>
+                        <p>{% trans "Cash on Delivery" %}</p>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <p>{% trans "Our team will contact you shortly to confirm your order and arrange delivery." %}</p>
+                        <a href="{% url 'products:products_page' %}" class="btn btn-primary">{% trans "Continue Shopping" %}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+<div class="container-fluid px-2 px-md-3 px-lg-4 mb-4">
+  <!-- Sidebar Toggle Button (visible on all screens) -->
+  <div class="my-3 px-2">
+    <button id="sidebarToggleBtn" class="btn btn-primary w-100 shadow-sm" type="button" style="transition: all 0.3s ease;">
+      <i class="fas fa-list mx-2"></i><span id="toggleBtnText">{% trans "Hide Categories" %}</span>
+    </button>
+  </div>
+
+<div class="row" id="productsContainer">
+  <!-- Sidebar with categories -->
+  <div class="col-lg-3 col-md-4 mb-4" id="sidebarColumn">
+    <div class="card shadow-sm" id="categorySidebar" style="position: sticky; top: 1rem; z-index: 100; border-radius: 12px; overflow: hidden; max-height: calc(100vh - 120px); display: flex; flex-direction: column;">
+      <div class="card-header text-white" style="background: linear-gradient(to right, var(--primary-color), var(--primary-light));">
+        <h5 class="mb-0">{% trans "Categories" %}</h5>
+      </div>
+      <div class="card-body p-2" style="overflow-y: auto; scrollbar-width: thin;">
+        <div class="d-grid gap-2">
+          {% for cat in all_categories %}
+            <a href="{% url 'products:category_products' category_id=cat.id %}" class="btn {% if cat.id == category.id %}btn-primary{% else %}btn-outline-primary{% endif %} py-2">
+              {% if cat.banner_image %}
+                <img src="{{ cat.banner_image.url }}" alt="" class="category-icon me-2" style="width: 20px; height: 20px; object-fit: cover; border-radius: 3px;">
+              {% endif %}
+              {{ cat.name }}
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Main content -->
+  <div class="col-lg-9 col-md-8 products-column">
+  <!-- Back button -->
+  <div class="mb-3 p-2">
+    <a href="javascript:history.back()" class="btn btn-outline-primary py-2" style="transition: all 0.3s ease;">
+      {% trans "Back" %}
+    </a>
+  </div>
+  <div class="category-header-section mb-4">
+    {% if category.banner_image %}
+      <div class="category-banner mb-3 position-relative">
+        <img src="{{ category.banner_image.url }}" class="img-fluid w-100 rounded" alt="{{ category.name }}" style="max-height: 550px; object-fit: cover;">
+        <div class="position-absolute top-0 start-0 w-100 h-100 rounded" style="background: linear-gradient(135deg, rgba(38, 62, 128, 0.2), rgba(190, 35, 40, 0.1));"></div>
+      </div>
+    {% endif %}
+    <h2 class="category-header">{{ category.name }}</h2>
+  </div>
+  <div class="row">
+    {% for product in products %}
+      <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
+        <div class="card h-100 product-card">
+          {% if product.image %}
+            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+          {% else %}
+            <img src="/media/products/conf-cause.png" class="card-img-top" alt="{{ product.name }}">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title text-center">{{ product.name }}</h5>
+            <p class="price text-center"><span class="d-inline-flex justify-content-center w-100">{{ product.price }} <img src="/media/sar/R2.png" alt="SAR" class="sar-image"></span></p>
+            <div class="mt-auto d-flex flex-column gap-2">
+              <a href="{% url 'products:product_detail' pk=product.id %}" class="btn btn-outline-primary w-100">
+                <i class="fas fa-info-circle"></i> {% trans "Details" %}
+              </a>
+              <form action="{% url 'orders:add_to_cart' product_id=product.id %}" method="post" class="w-100">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success w-100">
+                  <i class="fas fa-shopping-cart"></i> {% trans "Add to Cart" %}
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col-12">
+        <div class="alert" style="background-color: var(--primary-bg); color: var(--primary-dark); border-left: 4px solid var(--primary-color); border-radius: 8px;">
+          {% trans "No products available in this category." %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/category_products.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  $(document).ready(function(){
+    // Add ripple effect to buttons
+    $('.btn').on('mousedown', function(e) {
+      var $this = $(this);
+      var offset = $this.offset();
+      var x = e.pageX - offset.left;
+      var y = e.pageY - offset.top;
+      
+      var $ripple = $('<span class="ripple-effect"></span>');
+      $ripple.css({
+        top: y,
+        left: x
+      });
+      
+      $this.append($ripple);
+      
+      setTimeout(function() {
+        $ripple.remove();
+      }, 700);
+    });
+    
+    // Highlight product card on hover
+    $('.product-card').hover(
+      function() {
+        $(this).find('.card-title').css('color', 'var(--primary-color)');
+      },
+      function() {
+        $(this).find('.card-title').css('color', '');
+      }
+    );
+    // Sidebar toggle functionality
+    function updateToggleButtonText(isVisible) {
+      if (isVisible) {
+        $('#toggleBtnText').text('{% trans "Hide Categories" %}');
+      } else {
+        $('#toggleBtnText').text('{% trans "Show Categories" %}');
+      }
+    }
+    
+    function toggleSidebar(isVisible) {
+      if (isVisible) {
+        // Show sidebar
+        $('#sidebarColumn').removeClass('d-none');
+        $('.products-column').removeClass('col-lg-12 col-md-12').addClass('col-lg-9 col-md-8');
+        updateToggleButtonText(true);
+      } else {
+        // Hide sidebar
+        $('#sidebarColumn').addClass('d-none');
+        $('.products-column').removeClass('col-lg-9 col-md-8').addClass('col-lg-12 col-md-12');
+        updateToggleButtonText(false);
+      }
+    }
+    
+    // Check localStorage for sidebar state
+    var sidebarVisible = localStorage.getItem('sidebarVisible');
+    if (sidebarVisible === 'false') {
+      toggleSidebar(false);
+    }
+    
+    // Update sidebar state on toggle
+    $('#sidebarToggleBtn').on('click', function() {
+      var isCurrentlyVisible = !$('#sidebarColumn').hasClass('d-none');
+      localStorage.setItem('sidebarVisible', !isCurrentlyVisible);
+      toggleSidebar(!isCurrentlyVisible);
+    });
+  });
+</script>
+{% endblock %}

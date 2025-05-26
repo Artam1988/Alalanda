@@ -1,0 +1,1091 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-24 02:43+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: core/models.py:8 templates/contact.html:175
+msgid "General Inquiry"
+msgstr "استفسار عام"
+
+#: core/models.py:9 templates/contact.html:176
+msgid "Customer Support"
+msgstr "دعم العملاء"
+
+#: core/models.py:10 templates/contact.html:177
+msgid "Complaint"
+msgstr "شكوى"
+
+#: core/models.py:11 templates/contact.html:178
+msgid "Feedback"
+msgstr "تعليق"
+
+#: core/models.py:14 core/models.py:46 templates/contact.html:160
+#: templates/contact.html:237
+msgid "Full Name"
+msgstr "الاسم الكامل"
+
+#: core/models.py:15 core/models.py:47 templates/contact.html:164
+#: templates/contact.html:241
+msgid "Email Address"
+msgstr "البريد الإلكتروني"
+
+#: core/models.py:16 core/models.py:48 orders/templates/orders/checkout.html:46
+#: templates/contact.html:168 templates/contact.html:248
+msgid "Phone Number"
+msgstr "رقم الهاتف"
+
+#: core/models.py:17 templates/contact.html:172
+msgid "Subject"
+msgstr "الموضوع"
+
+#: core/models.py:18 templates/contact.html:182
+msgid "Message"
+msgstr "الرسالة"
+
+#: core/models.py:19 core/models.py:53
+msgid "Created At"
+msgstr "تاريخ الإنشاء"
+
+#: core/models.py:22
+msgid "Contact Message"
+msgstr "رسالة التواصل"
+
+#: core/models.py:23
+msgid "Contact Messages"
+msgstr "رسائل التواصل"
+
+#: core/models.py:32 templates/contact.html:255
+msgid "Sales Associate"
+msgstr "مندوب مبيعات"
+
+#: core/models.py:33 templates/contact.html:256
+msgid "Customer Service"
+msgstr "خدمة العملاء"
+
+#: core/models.py:34 templates/contact.html:257
+msgid "Warehouse Staff"
+msgstr "موظف مستودع"
+
+#: core/models.py:35 templates/contact.html:258
+msgid "Management"
+msgstr "إدارة"
+
+#: core/models.py:36 templates/contact.html:259
+msgid "Other"
+msgstr "أخرى"
+
+#: core/models.py:40 templates/contact.html:268
+msgid "0-1 years"
+msgstr "0-1 سنة"
+
+#: core/models.py:41 templates/contact.html:269
+msgid "1-3 years"
+msgstr "1-3 سنوات"
+
+#: core/models.py:42 templates/contact.html:270
+msgid "3-5 years"
+msgstr "3-5 سنوات"
+
+#: core/models.py:43 templates/contact.html:271
+msgid "5+ years"
+msgstr "5 سنوات أو أكثر"
+
+#: core/models.py:49 templates/contact.html:252
+msgid "Position of Interest"
+msgstr "الوظيفة المرغوبة"
+
+#: core/models.py:50 templates/contact.html:265
+msgid "Years of Experience"
+msgstr "سنوات الخبرة"
+
+#: core/models.py:51
+msgid "Resume"
+msgstr "السيرة الذاتية"
+
+#: core/models.py:52 templates/contact.html:281
+msgid "Cover Letter"
+msgstr "الخطاب التعريفي"
+
+#: core/models.py:56 templates/contact.html:221
+msgid "Employment Application"
+msgstr "طلب توظيف"
+
+#: core/models.py:57
+msgid "Employment Applications"
+msgstr "طلبات التوظيف"
+
+#: core/views.py:55
+msgid "Your message has been sent successfully. We will get back to you soon."
+msgstr "تم إرسال رسالتك بنجاح. سنعاود الاتصال بك قريباً."
+
+#: core/views.py:58
+msgid "There was an error sending your message. Please try again."
+msgstr "حدث خطأ أثناء إرسال رسالتك. يرجى المحاولة مرة أخرى."
+
+#: core/views.py:74
+msgid ""
+"Your application has been submitted successfully. We will review it and "
+"contact you if there is a match."
+msgstr "تم تقديم طلبك بنجاح. سنقوم بمراجعته والاتصال بك إذا كان هناك تطابق."
+
+#: core/views.py:77
+msgid "Please upload your resume."
+msgstr "يرجى تحميل سيرتك الذاتية."
+
+#: core/views.py:79
+msgid "There was an error submitting your application. Please try again."
+msgstr "حدث خطأ أثناء تقديم طلبك. يرجى المحاولة مرة أخرى."
+
+#: orders/templates/orders/cart_detail.html:5
+#: orders/templates/orders/cart_detail.html:9
+msgid "Shopping Cart"
+msgstr "سلة التسوق"
+
+#: orders/templates/orders/cart_detail.html:24
+#: orders/templates/orders/order_confirmation.html:28
+msgid "Product"
+msgstr "المنتج"
+
+#: orders/templates/orders/cart_detail.html:25
+#: orders/templates/orders/order_confirmation.html:30
+msgid "Price"
+msgstr "السعر"
+
+#: orders/templates/orders/cart_detail.html:26
+#: orders/templates/orders/order_confirmation.html:29
+msgid "Quantity"
+msgstr "الكمية"
+
+#: orders/templates/orders/cart_detail.html:27
+#: orders/templates/orders/order_confirmation.html:31
+msgid "Subtotal"
+msgstr "المجموع الفرعي"
+
+#: orders/templates/orders/cart_detail.html:28
+msgid "Actions"
+msgstr "الإجراءات"
+
+#: orders/templates/orders/cart_detail.html:49
+msgid "Update"
+msgstr "تحديث"
+
+#: orders/templates/orders/cart_detail.html:56
+msgid "Remove"
+msgstr "إزالة"
+
+#: orders/templates/orders/cart_detail.html:64
+#: orders/templates/orders/order_confirmation.html:46
+msgid "Total:"
+msgstr "المجموع:"
+
+#: orders/templates/orders/cart_detail.html:74
+#: orders/templates/orders/cart_detail.html:85
+#: orders/templates/orders/order_confirmation.html:79 templates/base.html:591
+#: templates/base.html:647
+msgid "Continue Shopping"
+msgstr "مواصلة التسوق"
+
+#: orders/templates/orders/cart_detail.html:76
+msgid "Clear Cart"
+msgstr "إفراغ السلة"
+
+#: orders/templates/orders/cart_detail.html:79
+msgid "Proceed to Checkout"
+msgstr "المتابعة إلى الدفع"
+
+#: orders/templates/orders/cart_detail.html:83
+msgid "Your cart is empty."
+msgstr "سلة التسوق فارغة."
+
+#: orders/templates/orders/cart_detail.html:98
+msgid "Are you sure?"
+msgstr "هل أنت متأكد؟"
+
+#: orders/templates/orders/cart_detail.html:99
+msgid "This action will clear all items from your cart."
+msgstr "سيؤدي هذا الإجراء إلى مسح جميع العناصر من سلة التسوق الخاصة بك."
+
+#: orders/templates/orders/cart_detail.html:104
+msgid "Yes, clear it!"
+msgstr "نعم، امسحها!"
+
+#: orders/templates/orders/cart_detail.html:105
+msgid "Cancel"
+msgstr "إلغي"
+
+#: orders/templates/orders/checkout.html:5
+#: orders/templates/orders/checkout.html:9
+msgid "Checkout"
+msgstr "الدفع"
+
+#: orders/templates/orders/checkout.html:23
+#: orders/templates/orders/order_confirmation.html:55
+msgid "Shipping Information"
+msgstr "معلومات الشحن"
+
+#: orders/templates/orders/checkout.html:31
+msgid "First Name"
+msgstr "الاسم الأول"
+
+#: orders/templates/orders/checkout.html:35
+msgid "Last Name"
+msgstr "الاسم الأخير"
+
+#: orders/templates/orders/checkout.html:41 templates/contact.html:68
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#: orders/templates/orders/checkout.html:51
+msgid "Address"
+msgstr "العنوان"
+
+#: orders/templates/orders/checkout.html:57
+msgid "City"
+msgstr "المدينة"
+
+#: orders/templates/orders/checkout.html:61
+msgid "Postal Code"
+msgstr "الرمز البريدي"
+
+#: orders/templates/orders/checkout.html:70
+msgid "I agree to the terms and conditions"
+msgstr "أوافق على الشروط والأحكام"
+
+#: orders/templates/orders/checkout.html:76
+#: orders/templates/orders/order_confirmation.html:73
+msgid "Payment Method"
+msgstr "طريقة الدفع"
+
+#: orders/templates/orders/checkout.html:80
+#: orders/templates/orders/order_confirmation.html:74
+msgid "Cash on Delivery"
+msgstr "الدفع عند الاستلام"
+
+#: orders/templates/orders/checkout.html:82
+msgid "Pay with cash upon delivery of your order."
+msgstr "ادفع نقدًا عند استلام طلبك."
+
+#: orders/templates/orders/checkout.html:86
+msgid "Place Order"
+msgstr "تأكيد الطلب"
+
+#: orders/templates/orders/checkout.html:95
+msgid "Order Summary"
+msgstr "ملخص الطلب"
+
+#: orders/templates/orders/checkout.html:114
+msgid "Total"
+msgstr "المجموع"
+
+#: orders/templates/orders/checkout.html:148
+msgid "Please fill in all required fields."
+msgstr "يرجى ملء جميع الحقول المطلوبة."
+
+#: orders/templates/orders/order_confirmation.html:5
+msgid "Order Confirmation"
+msgstr "تأكيد الطلب"
+
+#: orders/templates/orders/order_confirmation.html:13
+msgid "Order Confirmed"
+msgstr "تم تأكيد الطلب"
+
+#: orders/templates/orders/order_confirmation.html:18
+msgid "Thank you for your order!"
+msgstr "شكرًا لطلبك!"
+
+#: orders/templates/orders/order_confirmation.html:19
+msgid "Your order has been placed successfully."
+msgstr "تم تقديم طلبك بنجاح."
+
+#: orders/templates/orders/order_confirmation.html:23
+msgid "Order Details"
+msgstr "تفاصيل الطلب"
+
+#: orders/templates/orders/order_confirmation.html:58
+msgid "Name:"
+msgstr "اسم:"
+
+#: orders/templates/orders/order_confirmation.html:59
+msgid "Email:"
+msgstr "بريد إلكتروني:"
+
+#: orders/templates/orders/order_confirmation.html:60
+msgid "Phone:"
+msgstr "هاتف:"
+
+#: orders/templates/orders/order_confirmation.html:63
+msgid "Address:"
+msgstr "عنوان:"
+
+#: orders/templates/orders/order_confirmation.html:64
+msgid "City:"
+msgstr "مدينة:"
+
+#: orders/templates/orders/order_confirmation.html:66
+msgid "Postal Code:"
+msgstr "الرمز البريدي:"
+
+#: orders/templates/orders/order_confirmation.html:78
+msgid ""
+"Our team will contact you shortly to confirm your order and arrange delivery."
+msgstr "سيتواصل فريقنا معك قريبًا لتأكيد طلبك وترتيب التوصيل."
+
+#: orders/views.py:62
+msgid "Success!"
+msgstr "!نجاح"
+
+#: orders/views.py:78 orders/views.py:101
+msgid "You do not have permission to modify this cart."
+msgstr "ليس لديك الإذن لتعديل هذه العربة."
+
+#: orders/views.py:89
+msgid "Invalid quantity."
+msgstr "كمية غير صالحة."
+
+#: orders/views.py:105
+msgid "Item removed from cart."
+msgstr "تمت إزالة العنصر من سلة التسوق."
+
+#: orders/views.py:117
+msgid "Your cart has been cleared."
+msgstr "تم إفراغ سلة التسوق الخاصة بك."
+
+#: orders/views.py:127 orders/views.py:143
+msgid "Your cart is empty. Please add some products before checkout."
+msgstr "سلة التسوق فارغة. يُرجى إضافة بعض المنتجات قبل إتمام عملية الشراء."
+
+#: project/settings.py:119
+msgid "English"
+msgstr "الإنجليزية"
+
+#: project/settings.py:120
+msgid "Arabic"
+msgstr "العربية"
+
+#: templates/about.html:4 templates/base.html:497
+msgid "About Us"
+msgstr "عنا"
+
+#: templates/about.html:8 templates/about.html:13 templates/home.html:77
+#: templates/home.html:86
+msgid "About Al Alanda"
+msgstr "عن العلندا"
+
+#: templates/about.html:17
+msgid "Board of Directors"
+msgstr "مجلس إدارة"
+
+#: templates/about.html:18
+msgid "Meet the leadership team behind Al Alanda's success."
+msgstr "تعرف على فريق القيادة وراء نجاح العلندا."
+
+#: templates/about.html:23
+msgid "Ahmed Al-Sayed"
+msgstr "أحمد السيد"
+
+#: templates/about.html:24
+msgid "Chairman"
+msgstr "رئيس مجلس الإدارة"
+
+#: templates/about.html:25
+msgid ""
+"With over 25 years of experience in the food industry, Ahmed leads our "
+"strategic vision and growth initiatives."
+msgstr ""
+"بخبرة تزيد عن 25 عامًا في صناعة الأغذية، يقود أحمد رؤيتنا الاستراتيجية "
+"ومبادرات النمو."
+
+#: templates/about.html:32
+msgid "Fatima Hassan"
+msgstr "فاطمة حسن"
+
+#: templates/about.html:33
+msgid "CEO"
+msgstr "المدير التنفيذي"
+
+#: templates/about.html:34
+msgid ""
+"Fatima oversees all operations and ensures that we maintain the highest "
+"standards of quality and service."
+msgstr ""
+"تشرف فاطمة على جميع العمليات وتضمن التزامنا بأعلى معايير الجودة والخدمة."
+
+#: templates/about.html:41
+msgid "Omar Khalid"
+msgstr "عمر خالد"
+
+#: templates/about.html:42
+msgid "CFO"
+msgstr "المدير المالي"
+
+#: templates/about.html:43
+msgid ""
+"Omar manages our financial strategy and ensures sustainable growth for our "
+"business."
+msgstr "يدير عمر استراتيجيتنا المالية ويضمن النمو المستدام لأعمالنا."
+
+#: templates/about.html:50
+msgid "Layla Mahmoud"
+msgstr "ليلا محمود"
+
+#: templates/about.html:51
+msgid "COO"
+msgstr "مدير العمليات"
+
+#: templates/about.html:52
+msgid ""
+"Layla leads our day-to-day operations and ensures that we deliver "
+"exceptional customer experiences."
+msgstr "تقود ليلى عملياتنا اليومية وتضمن تقديم تجارب استثنائية للعملاء."
+
+#: templates/about.html:63 templates/about.html:67
+msgid "Our History"
+msgstr "تاريخنا"
+
+#: templates/about.html:73
+msgid ""
+"Al-Alalanda Foodstuff Company specializes in importing the finest types of "
+"food products from all over the world. It was founded by Sheikh Mohammed "
+"Abdulrahman Al-Alalanda, may God have mercy on him, in 1976. Since then, our "
+"values have been built on trust, quality and development to meet all the "
+"needs of the customer, by providing a wide range of the best food products, "
+"including meat, dairy products, canned and pickled vegetables, dry products "
+"and many others. We also ensure the quality of packaging and storage of the "
+"supplying factories, in order to provide the best and meet all the needs of "
+"the various food channels."
+msgstr ""
+"شركة العلندا للمواد الغذائية متخصصة في استيراد أجود أنواع المنتجات الغذائية "
+"من جميع أنحاء العالم. تأسست على يد الشيخ محمد عبد الرحمن العلاندا، رحمه "
+"الله، عام ١٩٧٦. ومنذ ذلك الحين، بُنيت قيمنا على الثقة والجودة والتطوير لتلبية "
+"جميع احتياجات العميل، من خلال توفير تشكيلة واسعة من أفضل المنتجات الغذائية، "
+"بما في ذلك اللحوم، ومنتجات الألبان، والخضروات المعلبة والمخللة، والمنتجات "
+"الجافة، وغيرها الكثير. كما نضمن جودة التعبئة والتغليف والتخزين في مصانع "
+"التوريد، حرصًا على تقديم الأفضل وتلبية جميع احتياجات قنوات التوزيع الغذائية "
+"المختلفة."
+
+#: templates/about.html:80
+msgid "Our Values"
+msgstr "قيمنا"
+
+#: templates/about.html:88
+msgid "Quality"
+msgstr "الجودة"
+
+#: templates/about.html:89
+msgid ""
+"We never compromise on quality. Each product is carefully selected to ensure "
+"it meets our high standards."
+msgstr ""
+"لا نتنازل أبدًا عن الجودة. كل منتج نختاره بعناية لضمان مطابقته لمعاييرنا "
+"العالية."
+
+#: templates/about.html:99
+msgid "Trust"
+msgstr "الثقة"
+
+#: templates/about.html:100
+msgid ""
+"Building trust with our customers is at the heart of everything we do. We "
+"believe in transparency and honesty in all our dealings."
+msgstr ""
+"بناء الثقة مع عملائنا هو جوهر كل ما نقوم به. نؤمن بالشفافية والصدق في جميع "
+"تعاملاتنا."
+
+#: templates/about.html:110 templates/brands.html:105
+msgid "Sustainability"
+msgstr "الاستدامة"
+
+#: templates/about.html:111
+msgid ""
+"We are committed to sustainable practices that minimize our environmental "
+"impact while supporting local communities."
+msgstr ""
+"نحن ملتزمون بالممارسات المستدامة التي تقلل من تأثيرنا البيئي مع دعم "
+"المجتمعات المحلية."
+
+#: templates/about.html:121
+msgid "Visit Our Shop"
+msgstr "قم بزيارة متجرنا"
+
+#: templates/about.html:122
+msgid ""
+"We invite you to explore our wide range of products and experience the Al "
+"Alanda difference."
+msgstr ""
+"ندعوك لاستكشاف مجموعتنا الواسعة من المنتجات وتجربة الفرق الذي تقدمه ألعلندا."
+
+#: templates/about.html:124
+msgid "Browse Our Products"
+msgstr "تصفح منتجاتنا"
+
+#: templates/base.html:9 templates/contact.html:4
+msgid "AL ALANDA"
+msgstr "العلندا"
+
+#: templates/base.html:394 templates/base.html:498
+msgid "Products"
+msgstr "المنتجات"
+
+#: templates/base.html:400 templates/brands.html:4 templates/brands.html:11
+msgid "Our Brands"
+msgstr "علاماتنا التجارية"
+
+#: templates/base.html:406
+msgid "About"
+msgstr "عن الشركة"
+
+#: templates/base.html:411 templates/base.html:500 templates/contact.html:4
+#: templates/contact.html:35
+msgid "Contact Us"
+msgstr "اتصل بنا"
+
+#: templates/base.html:416
+msgid "Cart"
+msgstr "السلة"
+
+#: templates/base.html:485
+msgid "Al Muntazahat, Jeddah 22354 Saudi Arabia"
+msgstr "المنتزهات، جدة 22354 المملكة العربية السعودية"
+
+#: templates/base.html:495
+msgid "INFORMATION"
+msgstr "معلومات"
+
+#: templates/base.html:499
+msgid "Brands"
+msgstr "العلامات التجارية"
+
+#: templates/base.html:506
+msgid "DOWNLOAD"
+msgstr "تحميل"
+
+#: templates/base.html:508
+msgid "Catalogue"
+msgstr "الكتالوج"
+
+#: templates/base.html:514
+msgid "ACCEPT PAYMENT"
+msgstr "طرق الدفع المقبولة"
+
+#: templates/base.html:560
+msgid "Copyright"
+msgstr "حقوق النشر"
+
+#: templates/base.html:560
+msgid "All Rights Reserved Alalanda"
+msgstr "جميع الحقوق محفوظة للعلندا"
+
+#: templates/base.html:593 templates/base.html:649
+msgid "View Cart"
+msgstr "عرض محتويات السلة"
+
+#: templates/base.html:642
+msgid "Added to Cart!"
+msgstr "تمت الإضافة إلى السلة!"
+
+#: templates/brands.html:12
+msgid "Discover our premium brands offering quality products"
+msgstr "اكتشف علاماتنا التجارية المميزة التي تقدم منتجات عالية الجودة"
+
+#: templates/brands.html:30
+msgid "Shahr zad"
+msgstr "شهرزاد"
+
+#: templates/brands.html:31
+msgid "An ideal choice for those looking for quality for the right price"
+msgstr "خيار مثالي لمن يبحثون عن الجودة بالسعر المناسب"
+
+#: templates/brands.html:51
+msgid "Al Alanda"
+msgstr "العلندا"
+
+#: templates/brands.html:52
+msgid ""
+"It is the first choice for anyone looking for high quality and perfect taste"
+msgstr "الخيار الأول لكل من يبحث عن الجودة العالية والطعم المثالي"
+
+#: templates/brands.html:69
+msgid "Our Brand Values"
+msgstr "قيم علاماتنا التجارية"
+
+#: templates/brands.html:70
+msgid "What makes our brands stand out in the market"
+msgstr "ما يميز علاماتنا التجارية في السوق"
+
+#: templates/brands.html:81 templates/home.html:28
+msgid "Premium Quality"
+msgstr "جودة ممتازة"
+
+#: templates/brands.html:82
+msgid ""
+"We select only the finest ingredients to ensure exceptional quality in every "
+"product."
+msgstr ""
+"نحن نختار فقط أجود المكونات لضمان جودة استثنائية في كل منتج."
+
+#: templates/brands.html:93
+msgid "Customer Satisfaction"
+msgstr "رضا العملاء"
+
+#: templates/brands.html:94
+msgid ""
+"Our brands are built on a foundation of trust and customer satisfaction."
+msgstr "علاماتنا التجارية مبنية على أساس من الثقة ورضا العملاء"
+
+#: templates/brands.html:106
+msgid ""
+"We are committed to sustainable practices throughout our production process."
+msgstr "نحن ملتزمون بالممارسات المستدامة في جميع مراحل عملية الإنتاج لدينا."
+
+#: templates/brands.html:118
+msgid "Experience Our Premium Brands Today"
+msgstr "جرب علاماتنا التجارية الممتازة اليوم"
+
+#: templates/brands.html:119
+msgid ""
+"Discover the taste and quality that have made our brands household names."
+msgstr "اكتشف الطعم والجودة التي جعلت علاماتنا التجارية أسماء مألوفة في كل بيت"
+
+#: templates/brands.html:123 templates/home.html:22 templates/home.html:65
+msgid "Shop Now"
+msgstr "تسوق الآن"
+
+#: templates/contact.html:36
+msgid ""
+"We're here to help! Reach out to our team for any inquiries, feedback, or "
+"support."
+msgstr ""
+"نحن هنا لمساعدتك! تواصل مع فريقنا لمزيد من الاستفسارات أو الاقتراحات أو "
+"الدعم."
+
+#: templates/contact.html:51
+msgid "Contact Information"
+msgstr "معلومات التواصل"
+
+#: templates/contact.html:58
+msgid "Phone"
+msgstr "الهاتف"
+
+#: templates/contact.html:78
+msgid "Website"
+msgstr "الموقع الإلكتروني"
+
+#: templates/contact.html:83
+msgid "Social Media"
+msgstr "وسائل التواصل الاجتماعي"
+
+#: templates/contact.html:103
+msgid "Our Branches"
+msgstr "فروعنا"
+
+#: templates/contact.html:110
+msgid "Jeddah"
+msgstr "جدة"
+
+#: templates/contact.html:115
+msgid "Al Ruwais"
+msgstr "الرويس"
+
+#: templates/contact.html:116
+msgid "Prince Sultan St."
+msgstr "شارع الأمير سلطان"
+
+#: templates/contact.html:121
+msgid "Quwayza"
+msgstr "قويزة"
+
+#: templates/contact.html:122
+msgid "King Fahd St."
+msgstr "شارع الملك فهد"
+
+#: templates/contact.html:132 templates/contact.html:307
+msgid "Riyadh"
+msgstr "الرياض"
+
+#: templates/contact.html:135
+msgid "Al Rawabi"
+msgstr "الروابي"
+
+#: templates/contact.html:136
+msgid "King Abdullah Rd."
+msgstr "طريق الملك عبد الله"
+
+#: templates/contact.html:143
+msgid "View on Map"
+msgstr "عرض على الخريطة"
+
+#: templates/contact.html:155
+msgid "Send a Message"
+msgstr "إرسال رسالة"
+
+#: templates/contact.html:174
+msgid "Select a subject"
+msgstr "اختر موضوع"
+
+#: templates/contact.html:186
+msgid "Send Message"
+msgstr "إرسال الرسالة"
+
+#: templates/contact.html:201
+msgid "Join Our Team"
+msgstr "انضم لفريقنا"
+
+#: templates/contact.html:202
+msgid ""
+"Interested in working with us? We're always looking for talented individuals "
+"to join our team."
+msgstr ""
+"هل ترغب في العمل معنا؟ نحن دائمًا نبحث عن أفراد موهوبين للانضمام إلى فريقنا."
+
+#: templates/contact.html:206
+msgid "Apply Now"
+msgstr "تقدم الآن"
+
+#: templates/contact.html:254
+msgid "Select a position"
+msgstr "اختر وظيفة"
+
+#: templates/contact.html:267
+msgid "Select experience"
+msgstr "اختر الخبرة"
+
+#: templates/contact.html:276
+msgid "Upload Resume (PDF)"
+msgstr "تحميل السيرة الذاتية (PDF)"
+
+#: templates/contact.html:287 templates/contact.html:347
+msgid "Close"
+msgstr "إغلاق"
+
+#: templates/contact.html:289
+msgid "Submit Application"
+msgstr "تقديم الطلب"
+
+#: templates/contact.html:301
+msgid "Our Locations"
+msgstr "مواقعنا"
+
+#: templates/contact.html:310
+msgid "Jeddah - Quwayza"
+msgstr "جدة - قويزة"
+
+#: templates/contact.html:313
+msgid "Jeddah - Al Ruwais"
+msgstr "جدة - الرويس"
+
+#: templates/contact.html:319
+msgid "Al Rawabi Branch"
+msgstr "فرع الروابي"
+
+#: templates/contact.html:320
+msgid "King Abdullah Rd., Al Rawabi District"
+msgstr "طريق الملك عبدالله، حي الروابي"
+
+#: templates/contact.html:328
+msgid "Quwayza Branch"
+msgstr "فرع قويزة"
+
+#: templates/contact.html:329
+msgid "King Fahd St., Quwayza District"
+msgstr "شارع الملك فهد، حي قويزة"
+
+#: templates/contact.html:337
+msgid "Al Ruwais Branch"
+msgstr "فرع الرويس"
+
+#: templates/contact.html:338
+msgid "Prince Sultan St., Al Ruwais District"
+msgstr "شارع الأمير سلطان، حي الرويس"
+
+#: templates/home.html:4
+msgid "Home"
+msgstr "الرئيسية"
+
+#: templates/home.html:20
+msgid "Welcome to Al Alanda"
+msgstr "مرحباً بكم في العلندا"
+
+#: templates/home.html:21
+msgid "Your premier destination for quality food products"
+msgstr "وجهتك الأولى للحصول على منتجات غذائية عالية الجودة"
+
+#: templates/home.html:29
+msgid "We select only the finest ingredients for your table"
+msgstr "نحن نختار فقط أجود المكونات لطاولتك"
+
+#: templates/home.html:30
+msgid "Explore Products"
+msgstr "استكشف المنتجات"
+
+#: templates/home.html:36
+msgid "Nationwide Delivery"
+msgstr "توصيل لجميع أنحاء المملكة"
+
+#: templates/home.html:37 templates/home.html:60
+msgid "We deliver anywhere in the Saudi Kingdom"
+msgstr "نوصل لجميع مناطق المملكة"
+
+#: templates/home.html:38
+msgid "Order Now"
+msgstr "اطلب الآن"
+
+#: templates/home.html:78
+msgid "Your trusted partner for premium food products"
+msgstr "شريكك الموثوق للمنتجات الغذائية الممتازة"
+
+#: templates/home.html:79
+msgid ""
+"At Al Alanda, we are passionate about bringing the finest food products to "
+"your table. Our journey began with a simple mission: to provide our "
+"customers with exceptional quality foods that bring joy and satisfaction to "
+"every meal."
+msgstr ""
+"في العلندا، نحن شغوفون بتقديم أفضل المنتجات الغذائية إلى مائدتك. بدأت رحلتنا "
+"بمهمة بسيطة: تزويد عملائنا بأطعمة ذات جودة استثنائية تجلب السعادة والرضا لكل "
+"وجبة."
+
+#: templates/home.html:81
+msgid "Learn More"
+msgstr "اعرف المزيد"
+
+#: templates/home.html:98
+msgid "Our Success Story"
+msgstr "قصة نجاحنا"
+
+#: templates/home.html:109
+msgid "Hotels"
+msgstr "الفنادق"
+
+#: templates/home.html:120
+msgid "Restaurants"
+msgstr "المطاعم"
+
+#: templates/home.html:131
+msgid "Subsistence"
+msgstr "التموين"
+
+#: templates/home.html:142
+msgid "Years of Excellence"
+msgstr "سنوات من التميز"
+
+#: templates/home.html:155
+msgid "Featured Products"
+msgstr "المنتجات المميزة"
+
+#: templates/home.html:156
+msgid "Special Selection"
+msgstr "اختيار خاص"
+
+#: templates/home.html:168
+msgid "Featured"
+msgstr "مميز"
+
+#: templates/home.html:183 templates/products/category_products.html:65
+#: templates/products/products_page.html:147
+msgid "Details"
+msgstr "التفاصيل"
+
+#: templates/home.html:189 templates/products/category_products.html:70
+#: templates/products/product_detail.html:33
+#: templates/products/products_page.html:152
+msgid "Add to Cart"
+msgstr "إضافة إلى السلة"
+
+#: templates/home.html:198
+msgid "No featured products available."
+msgstr "لا توجد منتجات مميزة متوفرة."
+
+#: templates/products/category_products.html:8
+#: templates/products/category_products.html:142
+msgid "Hide Categories"
+msgstr "إخفاء الفئات"
+
+#: templates/products/category_products.html:17
+#: templates/products/products_page.html:92
+msgid "Categories"
+msgstr "الفئات"
+
+#: templates/products/category_products.html:39
+msgid "Back"
+msgstr "العودة"
+
+#: templates/products/category_products.html:80
+#: templates/products/products_page.html:162
+msgid "No products available in this category."
+msgstr "لا توجد منتجات متوفرة في هذه الفئة."
+
+#: templates/products/category_products.html:144
+msgid "Show Categories"
+msgstr "إظهار الفئات"
+
+#: templates/products/product_detail.html:22
+msgid "Description"
+msgstr "الوصف"
+
+#: templates/products/product_detail.html:26
+msgid "Category"
+msgstr "الفئة"
+
+#: templates/products/product_detail.html:38
+msgid "Back to products page"
+msgstr "العودة إلى صفحة المنتجات"
+
+#: templates/products/products_page.html:12
+msgid "Fresh & Premium Food Products"
+msgstr "منتجات غذائية طازجة وممتازة"
+
+#: templates/products/products_page.html:13
+msgid ""
+"At Al Alanda, we bring the finest culinary treasures to your table. From "
+"fresh produce and premium meats to authentic spices - we ensure exceptional "
+"quality for your family meals."
+msgstr ""
+"في العلندا، نقدم لك أفضل الكنوز الطهوية على مائدتك. من المنتجات الطازجة "
+"واللحوم الممتازة إلى التوابل الأصيلة - نضمن جودة استثنائية لوجبات عائلتك."
+
+#: templates/products/products_page.html:24
+msgid "Our Products"
+msgstr "منتجاتنا"
+
+#: templates/products/products_page.html:32
+#: templates/products/products_page.html:309
+msgid "Hide Filters & Categories"
+msgstr "إخفاء المرشحات والفئات"
+
+#: templates/products/products_page.html:41
+msgid "Search & Filter"
+msgstr "البحث والتصفية"
+
+#: templates/products/products_page.html:48
+msgid "Search Products"
+msgstr "البحث عن المنتجات"
+
+#: templates/products/products_page.html:50
+msgid "Product name"
+msgstr "اسم المنتج"
+
+#: templates/products/products_page.html:59
+msgid "Price Range"
+msgstr "نطاق السعر"
+
+#: templates/products/products_page.html:66
+msgid "Minimum Price"
+msgstr "الحد الأدنى للسعر"
+
+#: templates/products/products_page.html:68
+msgid "Min"
+msgstr "الحد الأدنى"
+
+#: templates/products/products_page.html:74
+msgid "Maximum Price"
+msgstr "الحد الأقصى للسعر"
+
+#: templates/products/products_page.html:76
+msgid "Max"
+msgstr "الحد الأقصى"
+
+#: templates/products/products_page.html:85
+msgid "Apply Filters"
+msgstr "تطبيق التصفية"
+
+#: templates/products/products_page.html:86
+msgid "Reset Filters"
+msgstr "إعادة ضبط التصفية"
+
+#: templates/products/products_page.html:174
+msgid "No products found matching your criteria. Try adjusting your filters."
+msgstr "لم يتم العثور على منتجات تطابق معايير البحث. حاول تعديل عوامل التصفية."
+
+#: templates/products/products_page.html:180
+msgid "Product category pagination"
+msgstr "ترقيم صفحات فئات المنتجات"
+
+#: templates/products/products_page.html:184
+msgid "First"
+msgstr "الأولى"
+
+#: templates/products/products_page.html:189
+msgid "Previous"
+msgstr "السابق"
+
+#: templates/products/products_page.html:212
+msgid "Next"
+msgstr "التالي"
+
+#: templates/products/products_page.html:217
+msgid "Last"
+msgstr "الأخيرة"
+
+#: templates/products/products_page.html:232
+msgid "Showing"
+msgstr "عرض"
+
+#: templates/products/products_page.html:232
+msgid "to"
+msgstr "إلى"
+
+#: templates/products/products_page.html:232
+msgid "of"
+msgstr "من"
+
+#: templates/products/products_page.html:232
+msgid "categories"
+msgstr "الفئات"
+
+#: templates/products/products_page.html:311
+msgid "Show Filters & Categories"
+msgstr "إظهار المرشحات والفئات"
+
+#, fuzzy
+#~| msgid "No products available in this category."
+#~ msgid "No featured products available in this language."
+#~ msgstr "لا توجد منتجات متوفرة في هذه الفئة."
+
+#~ msgid "SAR"
+#~ msgstr "ريال سعودي"
+
+#~ msgid "Al Rawdah"
+#~ msgstr "الروضه"
+
+#~ msgid "View All"
+#~ msgstr "عرض الكل"
+
+#~ msgid ""
+#~ "We'll send you an email with your order details and tracking information "
+#~ "once your order ships."
+#~ msgstr ""
+#~ "سنرسل إليك بريدًا إلكترونيًا يتضمن تفاصيل طلبك ومعلومات التتبع بمجرد شحن "
+#~ "طلبك."
+
+#~ msgid ""
+#~ "Explore our diverse food categories featuring frozen seafood, quality "
+#~ "dairy products, nutritious legumes, and much more. Whether you're "
+#~ "preparing daily meals or special occasions, Al Alanda delivers the "
+#~ "freshest ingredients right to your doorstep."
+#~ msgstr ""
+#~ "استكشف فئات الطعام المتنوعة لدينا التي تضم المأكولات البحرية المجمدة "
+#~ "ومنتجات الألبان عالية الجودة والبقوليات المغذية والكثير غيرها. سواء كنت "
+#~ "تعد وجبات يومية أو مناسبات خاصة، توصل العلندا المكونات الأكثر طزاجة "
+#~ "مباشرة إلى باب منزلك."
+
+#~ msgid "Product added to cart successfully."
+#~ msgstr "تم إضافة المنتج إلى السلة بنجاح."
+
+#~ msgid "Are you sure you want to clear your cart?"
+#~ msgstr "هل أنت متأكد أنك تريد إفراغ سلة التسوق؟"

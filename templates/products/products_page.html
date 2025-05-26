@@ -1,0 +1,381 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+
+{% if not request.GET.page and not request.GET.search and not request.GET.min_price and not request.GET.max_price %}
+<!-- Banner Section with Introduction Overlay - Only shown on main products page -->
+<div class="container-fluid px-0 mb-0">
+  <div class="position-relative">
+    <img src="/media/banners/banner.jpg" class="img-fluid w-100" alt="Al Alanda Products" onerror="this.src='/static/img/default-banner.jpg'" style="min-height: 300px; max-height: 650px; object-fit: cover;">
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(135deg, rgba(38, 62, 128, 0.3), rgba(190, 35, 40, 0.2));"></div>
+    <div class="position-absolute top-50 start-50 translate-middle text-center p-3 p-sm-4 banner-overlay" style="background-color: rgba(255, 255, 255, 0.9); border-radius: 15px; width: 90%; max-width: 800px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);">
+      <h2 class="section-title mb-2" style="color: var(--primary-dark); font-size: clamp(1.1rem, 3vw, 2rem); font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.05);">{% trans "Fresh & Premium Food Products" %}</h2>
+      <p class="lead mb-0" style="font-size: clamp(0.8rem, 1.5vw, 1.25rem);">{% trans "At Al Alanda, we bring the finest culinary treasures to your table. From fresh produce and premium meats to authentic spices - we ensure exceptional quality for your family meals." %}</p>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+
+<div class="container-fluid mt-3 px-2 px-md-3 px-lg-4 mb-4">
+  <div class="d-flex justify-content-center">
+    <h1 class="text-center mb-4" style="color: var(--primary-dark);font-size:3rem; font-weight: 700; position: relative; display: inline-block;">
+      <span style="position: relative; z-index: 1;">
+        {% trans "Our Products" %}
+        
+    </h1>
+  </div>
+
+<!-- Sidebar Toggle Button (visible on all screens) -->
+<div class="mb-3 px-2">
+  <button id="sidebarToggleBtn" class="btn btn-primary w-100" type="button">
+    <i class="fas fa-filter me-2"></i><span id="toggleBtnText">{% trans "Hide Filters & Categories" %}</span>
+  </button>
+</div>
+
+<div class="row mx-0 mx-md-2" id="productsContainer">
+  <!-- Sidebar with filters -->
+  <div class="col-lg-3 col-md-4 mb-4 px-2" id="sidebarColumn">
+    <div class="card shadow-sm" id="filterSidebar" style="position: sticky; top: 1rem; z-index: 100; border-radius: 12px; overflow: hidden; max-height: calc(100vh - 120px); display: flex; flex-direction: column; transition: all 0.3s ease;">
+      <div class="card-header d-flex justify-content-between align-items-center" style="background: linear-gradient(to right, var(--primary-color), var(--primary-light)); color: white;">
+        <h5 class="mb-0">{% trans "Search & Filter" %}</h5>
+        <button class="btn-close btn-close-white d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#filterSidebar" aria-expanded="false" aria-controls="filterSidebar"></button>
+      </div>
+      <div class="card-body" style="overflow-y: auto; scrollbar-width: thin;">
+        <form method="get" action="{% url 'products:products_page' %}" id="product-filter-form">
+          <!-- Search box -->
+          <div class="mb-3">
+            <label for="search" class="form-label">{% trans "Search Products" %}</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="search" name="search" value="{{ search_query }}" placeholder="{% trans 'Product name' %}">
+              <button class="btn btn-primary" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Price range filter -->
+          <div class="mb-3">
+            <label class="form-label">{% trans "Price Range" %}</label>
+            <div class="d-flex align-items-center mb-2">
+              <span class="me-2">{{ min_price }} <img src="/media/sar/R2.svg" alt="SAR" style="height: 35px; width: 35px; display: inline-block; vertical-align: middle;"></span>
+              <span class="flex-grow-1"></span>
+              <span class="ms-2">{{ max_price }} <img src="/media/sar/R2.svg" alt="SAR" style="height: 35px; width: 35px; display: inline-block; vertical-align: middle;"></span>
+            </div>
+            <div class="mb-2">
+              <label class="form-label small mb-1">{% trans "Minimum Price" %}</label>
+              <div class="input-group input-group-sm">
+                <span class="input-group-text">{% trans "Min" %}</span>
+                <input type="number" class="form-control" id="min_price" name="min_price" value="{{ min_price_filter }}" min="{{ min_price }}" max="{{ max_price }}">
+                <span class="input-group-text"><img src="/media/sar/R2.svg" alt="SAR" style="height: 35px; width: 35px; display: inline-block; vertical-align: middle;"></span>
+              </div>
+            </div>
+            <div class="mb-2">
+              <label class="form-label small mb-1">{% trans "Maximum Price" %}</label>
+              <div class="input-group input-group-sm">
+                <span class="input-group-text">{% trans "Max" %}</span>
+                <input type="number" class="form-control" id="max_price" name="max_price" value="{{ max_price_filter }}" min="{{ min_price }}" max="{{ max_price }}">
+                <span class="input-group-text"><img src="/media/sar/R2.svg" alt="SAR" style="height: 35px; width: 35px; display: inline-block; vertical-align: middle;"></span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Apply filters button -->
+          <div class="d-grid gap-2 mb-4">
+            <button type="submit" class="btn btn-primary">{% trans "Apply Filters" %}</button>
+            <a href="{% url 'products:products_page' %}" class="btn btn-outline-secondary">{% trans "Reset Filters" %}</a>
+          </div>
+        </form>
+        
+        <!-- Categories section -->
+        <div class="categories-section mt-4">
+          <h5 class="mb-3" style="color: var(--primary-dark); font-weight: 600; border-left: 4px solid var(--accent-color); padding-left: 10px;">{% trans "Categories" %}</h5>
+          <div class="d-grid gap-2 category-buttons-container" style="max-height: none;">
+            {% for category in all_categories %}
+              <a href="{% url 'products:category_products' category_id=category.id %}" class="btn {% if category.id == active_category_id %}btn-primary{% else %}btn-outline-primary{% endif %} py-2">
+                {% if category.icon_class %}
+                  <i class="{{ category.icon_class }} me-2"></i>
+                {% endif %}
+                {{ category.name }}
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Products content -->
+  <div class="col-lg-9 col-md-8 px-2 px-md-3 products-column">
+    {% if categories.object_list %}
+      {% for category in categories.object_list %}
+        <section class="mb-5">
+          <div class="category-header-section mb-4 px-2">
+            <h2 class="category-header">
+              <a style="text-decoration:none;color:#be2328" href="{% url 'products:category_products' category_id=category.id %}">
+                {{ category.name }} <i class="fas fa-arrow-right fs-4"></i>
+              </a>
+            </h2>
+          </div>
+          {% if category.banner_image %}
+          <div class="category-banner mb-3 position-relative">
+            <img src="{{ category.banner_image.url }}" class="img-fluid w-100 rounded" alt="{{ category.name }}" style="max-height: 320px; object-fit: cover;">
+        
+            <div class="position-absolute top-0 start-0 w-100 h-100 rounded" style="background: linear-gradient(135deg, rgba(38, 62, 128, 0.3), rgba(190, 35, 40, 0.2));">       
+            </div>
+          </div>
+        {% endif %}
+        
+    
+    <div class="product-slider">
+      <div class="row">
+        <div class="col-12">
+          <div class="owl-carousel owl-theme product-carousel" data-items="{{ category.filtered_products|length }}">
+            {% for product in category.filtered_products %}
+              <div class="item">
+                <div class="card h-100 product-card">
+                  {% if product.image %}
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                  {% else %}
+                    <img src="/media/products/conf-cause.png" class="card-img-top" alt="{{ product.name }}">
+                  {% endif %}
+                  <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="price">{{ product.price }} <img src="/media/sar/R2.svg" alt="SAR" style="height: 35px; width: 35px; display: inline-block; vertical-align: middle;"></p>
+                    <div class="mt-auto d-flex flex-column gap-2">
+                      <a href="{% url 'products:product_detail' pk=product.id %}" class="btn btn-outline-primary w-100">
+                        <i class="fas fa-info-circle"></i> {% trans "Details" %}
+                      </a>
+                      <form action="{% url 'orders:add_to_cart' product_id=product.id %}" method="post" class="w-100">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success w-100">
+                          <i class="fas fa-shopping-cart"></i> {% trans "Add to Cart" %}
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% empty %}
+              <div class="col-12">
+                <div class="alert" style="background-color: var(--primary-bg); color: var(--primary-dark); border-left: 4px solid var(--primary-color); border-radius: 8px;">
+                  {% trans "No products available in this category." %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+        </section>
+      {% endfor %}
+    {% else %}
+      <div class="alert" style="background-color: var(--primary-bg); color: var(--primary-dark); border-left: 4px solid var(--primary-color); border-radius: 8px;">
+        <i class="fas fa-info-circle me-2"></i> {% trans "No products found matching your criteria. Try adjusting your filters." %}
+      </div>
+    {% endif %}
+
+<!-- Pagination Controls -->
+<div class="pagination-container text-center mt-4 mb-5">
+  <nav aria-label="{% trans "Product category pagination" %}">
+    <ul class="pagination justify-content-center flex-wrap px-2">
+      {% if categories.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page=1{% if search_query %}&search={{ search_query }}{% endif %}{% if min_price_filter %}&min_price={{ min_price_filter }}{% endif %}{% if max_price_filter %}&max_price={{ max_price_filter }}{% endif %}" aria-label="{% trans "First" %}">
+            <span aria-hidden="true">&laquo;&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="?page={{ categories.previous_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}{% if min_price_filter %}&min_price={{ min_price_filter }}{% endif %}{% if max_price_filter %}&max_price={{ max_price_filter }}{% endif %}" aria-label="{% trans "Previous" %}">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">&laquo;&laquo;</span>
+        </li>
+        <li class="page-item disabled">
+          <span class="page-link">&laquo;</span>
+        </li>
+      {% endif %}
+      
+      {% for i in paginator.page_range %}
+        {% if categories.number == i %}
+          <li class="page-item active"><span class="page-link">{{ i }}</span></li>
+        {% elif i > categories.number|add:'-3' and i < categories.number|add:'3' %}
+          <li class="page-item"><a class="page-link" href="?page={{ i }}{% if search_query %}&search={{ search_query }}{% endif %}{% if min_price_filter %}&min_price={{ min_price_filter }}{% endif %}{% if max_price_filter %}&max_price={{ max_price_filter }}{% endif %}">{{ i }}</a></li>
+        {% endif %}
+      {% endfor %}
+      
+      {% if categories.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ categories.next_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}{% if min_price_filter %}&min_price={{ min_price_filter }}{% endif %}{% if max_price_filter %}&max_price={{ max_price_filter }}{% endif %}" aria-label="{% trans "Next" %}">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="?page={{ paginator.num_pages }}{% if search_query %}&search={{ search_query }}{% endif %}{% if min_price_filter %}&min_price={{ min_price_filter }}{% endif %}{% if max_price_filter %}&max_price={{ max_price_filter }}{% endif %}" aria-label="{% trans "Last" %}">
+            <span aria-hidden="true">&raquo;&raquo;</span>
+          </a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">&raquo;</span>
+        </li>
+        <li class="page-item disabled">
+          <span class="page-link">&raquo;&raquo;</span>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+  <div class="pagination-info text-muted small mt-2">
+    {% trans "Showing" %} {{ categories.start_index }} {% trans "to" %} {{ categories.end_index }} {% trans "of" %} {{ paginator.count }} {% trans "categories" %}
+  </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block extra_js %}
+<link rel="stylesheet" href="/static/css/products.css">
+<script>
+  $(document).ready(function(){
+    // Sidebar toggle functionality
+    function updateToggleButtonText(isVisible) {
+      if (isVisible) {
+        $('#toggleBtnText').text('{% trans "Hide Filters & Categories" %}');
+      } else {
+        $('#toggleBtnText').text('{% trans "Show Filters & Categories" %}');
+      }
+    }
+    
+    function toggleSidebar(isVisible) {
+      if (isVisible) {
+        // Show sidebar
+        $('#sidebarColumn').removeClass('d-none');
+        $('.products-column').removeClass('col-lg-12 col-md-12').addClass('col-lg-9 col-md-8');
+        updateToggleButtonText(true);
+      } else {
+        // Hide sidebar
+        $('#sidebarColumn').addClass('d-none');
+        $('.products-column').removeClass('col-lg-9 col-md-8').addClass('col-lg-12 col-md-12');
+        updateToggleButtonText(false);
+      }
+      
+      // Reinitialize carousels after layout change
+      setTimeout(function() {
+        initializeCarousels();
+      }, 300);
+    }
+    
+    // Check localStorage for sidebar state
+    var sidebarVisible = localStorage.getItem('sidebarVisible');
+    if (sidebarVisible === 'false') {
+      toggleSidebar(false);
+    }
+    
+    // Update sidebar state on toggle
+    $('#sidebarToggleBtn').on('click', function() {
+      var isCurrentlyVisible = !$('#sidebarColumn').hasClass('d-none');
+      localStorage.setItem('sidebarVisible', !isCurrentlyVisible);
+      toggleSidebar(!isCurrentlyVisible);
+    });
+
+    // Function to initialize all carousels
+    function initializeCarousels() {
+      // Destroy any existing carousels first
+      $('.product-carousel').each(function() {
+        if ($(this).hasClass('owl-loaded')) {
+          $(this).owlCarousel('destroy');
+        }
+      });
+      
+      // Initialize carousels with proper RTL support
+      $('.product-carousel').each(function() {
+      var itemCount = $(this).find('.item').length;
+      var isRTL = $('html').attr('dir') === 'rtl';
+      var $carousel = $(this);
+      
+      
+      $carousel.owlCarousel({
+        loop: itemCount > 4, // Only enable loop if there are more items than can be displayed at once
+        margin: 20,
+        nav: true,
+        dots: true,
+        rtl: isRTL,  // Set RTL based on page direction
+        autoplay: itemCount > 1, // Only autoplay if there are multiple items
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        smartSpeed: 500,
+        lazyLoad: true,
+        navText: [
+          "<i class='fas fa-chevron-left'></i>",
+          "<i class='fas fa-chevron-right'></i>"
+        ],
+        responsive:{
+          0:{
+            items: Math.min(1, itemCount),
+            nav: false, // Hide nav on mobile, use dots
+            dots: true,
+            margin: 10
+          },
+          480:{
+            items: Math.min(2, itemCount), // Don't show empty slots
+            nav: false,
+            dots: true,
+            margin: 15
+          },
+          768:{
+            items: Math.min(2, itemCount), // Don't show empty slots
+            nav: true,
+            margin: 15
+          },
+          992:{
+            items: Math.min(3, itemCount), // Don't show empty slots
+            margin: 20
+          },
+          1200:{
+            items: Math.min(4, itemCount) // Don't show empty slots
+          }
+        }
+      });
+      
+      // Add touch swipe support
+      $carousel.on('touchend', function() {
+        $carousel.trigger('stop.owl.autoplay');
+        $carousel.trigger('play.owl.autoplay', [5000]);
+      });
+      
+      // Adjust carousel height on mobile
+      if (window.innerWidth < 768) {
+        setTimeout(function() {
+          $carousel.find('.owl-stage').css('padding-bottom', '10px');
+        }, 100);
+      }
+      });
+      
+      // Pause all carousels when one is being interacted with
+      $('.product-carousel').on('mouseover', function() {
+        $('.product-carousel').trigger('stop.owl.autoplay');
+      }).on('mouseleave', function() {
+        $('.product-carousel').trigger('play.owl.autoplay', [5000]);
+      });
+    }
+    
+    // Initialize carousels on page load
+    initializeCarousels();
+    
+    // Re-initialize carousels on window resize
+    let resizeTimer;
+    $(window).on('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        initializeCarousels();
+      }, 250);
+    });
+  });
+</script>
+{% endblock %}

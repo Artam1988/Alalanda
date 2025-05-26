@@ -1,0 +1,13 @@
+/* Styles for the about page */
+.category-header {
+  color: var(--primary-dark);
+}
+
+/* Card styling for team members and values */
+.card-title {
+  color: var(--primary-dark);
+}
+
+.value-icon {
+  color: var(--accent-color);
+}

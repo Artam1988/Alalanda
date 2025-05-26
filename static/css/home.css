@@ -1,0 +1,118 @@
+/* 85% width centered carousel styling */
+.carousel-container {
+    width: 85%;
+    max-width: 1600px;
+    margin: 0 auto 2rem auto;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Mobile responsiveness only */
+@media (max-width: 767px) {
+    /* Adjust carousel for mobile */
+    .carousel-item img {
+        height: 300px !important;
+    }
+    
+    /* Make carousel captions visible on mobile */
+    .carousel-caption {
+        display: block !important;
+        padding: 10px !important;
+        background-color: rgba(0,0,0,0.7) !important;
+        border-radius: 8px !important;
+    }
+    
+    .carousel-caption h2 {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.3rem !important;
+    }
+    
+    .carousel-caption p {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .carousel-caption .btn {
+        font-size: 0.8rem !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+    
+    /* Make product cards more compact on mobile */
+    .card-img-top {
+        height: 150px !important;
+        object-fit: cover !important;
+    }
+    
+    .card-title {
+        font-size: 1rem !important;
+        height: 40px !important;
+        -webkit-line-clamp: 2 !important;
+        line-clamp: 2 !important;
+        overflow: hidden !important;
+        display: -webkit-box !important;
+        -webkit-box-orient: vertical !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .price {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .price img {
+        height: 25px !important;
+        width: 25px !important;
+    }
+    
+    /* Adjust counter section on mobile */
+    .counter {
+        font-size: 1.5rem !important;
+    }
+    
+    /* Featured products styling for mobile */
+    #featured-products-container .card {
+        margin-bottom: 15px !important;
+    }
+    
+    .btn {
+        padding: 0.375rem 0.5rem !important;
+        font-size: 0.875rem !important;
+    }
+}
+
+/* Featured product card styling */
+.featured-product-card {
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.125);
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.featured-product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.featured-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+}
+
+/* Bootstrap grid adjustments */
+#featured-products-container {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+#featured-products-container > [class*="col-"] {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.category-header .badge {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.7rem;
+}

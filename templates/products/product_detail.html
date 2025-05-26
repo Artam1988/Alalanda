@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ product.name }}{% endblock %}
+{% block content %}
+<div class="row mt-3 px-2 px-md-0">
+    <div class="col-md-6 px-2 px-md-3 mb-3">
+        <div class="card border-0 shadow-sm mb-4">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" class="img-fluid rounded" alt="{{ product.name }}">
+            {% else %}
+                <img src="/media/products/conf-cause.png" class="img-fluid rounded" alt="{{ product.name }}">
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-md-6 px-2 px-md-3 mb-3">
+        <h1 class="mb-3 px-2 px-md-0" style="color: #263e80;">{{ product.name }}</h1>
+        <div class="price-tag mb-4 px-2 px-md-0">
+            <span class="price">{{ product.price }} <img src="/media/sar/R2.svg" alt="SAR" style="height: 35px; width: 35px; display: inline-block; vertical-align: middle;"></span>
+        </div>
+        <div class="description mb-4 px-2 px-md-0">
+            <h4 style="color: #263e80;">{% trans "Description" %}</h4>
+            <p>{{ product.description|linebreaks }}</p>
+        </div>
+        <div class="category mb-4 px-2 px-md-0">
+            <h4 style="color: #263e80;">{% trans "Category" %}</h4>
+            <p><a href="{% url 'products:category_products' category_id=product.category.id %}" class="text-decoration-none" style="color: #be2328;">{{ product.category.name }}</a></p>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 px-2 px-md-0">
+            <form action="{% url 'orders:add_to_cart' product_id=product.id %}" method="post" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success btn-lg">
+                    {% trans "Add to Cart" %}<i class="fas fa-shopping-cart" style="font-size:1rem;margin-left:5px;margin-right:5px"></i>
+                </button>
+            </form>
+        </div>
+        <a href="{% url 'products:products_page' %}" class="btn btn-outline-primary mx-2 mx-md-0">
+            <i class="fas fa-arrow-left"></i> {% trans "Back to products page" %}
+        </a>
+    </div>
+</div>
+
+{% endblock %}

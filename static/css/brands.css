@@ -1,0 +1,25 @@
+/* Brands page styling */
+.brand-title {
+  color: var(--primary-color);
+}
+
+.brand-image {
+  max-height: 180px;
+}
+
+.brand-product-image {
+  height: 250px;
+  object-fit: cover;
+}
+
+.brand-values-icon {
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 767px) {
+  .card-footer img {
+    height: 180px !important;
+  }
+}

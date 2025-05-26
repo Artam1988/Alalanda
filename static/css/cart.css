@@ -1,0 +1,47 @@
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.product-image {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.quantity-input {
+    width: 60px;
+    display: inline-block;
+}
+
+/* Cart buttons styling */
+.cart-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Table responsiveness */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Responsive styles */
+@media (max-width: 767px) {
+    .table-responsive {
+        overflow-x: auto;
+    }
+    
+    .cart-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    
+    .checkout-button {
+        align-self: stretch;
+        margin-top: 10px;
+        width: 100%;
+    }
+}

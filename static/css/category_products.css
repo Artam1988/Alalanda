@@ -1,0 +1,202 @@
+/* Responsive fixes for products page */
+@media (max-width: 767.98px) {
+  .product-card {
+    margin-bottom: 1rem;
+  }
+  .card-img-top {
+    height: 180px;
+  }
+  .category-header {
+    font-size: 1.5rem;
+  }
+  #categorySidebar {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .container-fluid {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .card-title {
+    font-size: 1rem;
+    height: auto;
+    margin-bottom: 5px;
+  }
+  .price {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  .category-header-section {
+    padding: 10px;
+  }
+}
+
+/* Product card improvements */
+.product-card {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  border-color: var(--primary-color);
+}
+
+/* Card image hover effect */
+.card-img-top {
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* Button interactions */
+.btn-outline-primary {
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-outline-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.2);
+}
+
+.btn-outline-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(var(--primary-rgb), 0.2);
+}
+
+.btn-accent {
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-accent:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(190, 35, 40, 0.2);
+}
+
+.btn-accent:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(190, 35, 40, 0.2);
+}
+
+/* Category sidebar buttons */
+#categorySidebar .btn {
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+#categorySidebar .btn-outline-primary:hover {
+  background-color: rgba(var(--primary-rgb), 0.1);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+#categorySidebar .btn-outline-primary:active,
+#categorySidebar .btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* Back button hover effect */
+.btn-outline-primary.back-btn:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Category header styling */
+.category-header {
+  color: var(--primary-color);
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.category-header:after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: var(--accent-color);
+}
+
+/* Improve sidebar scrollbar */
+#categorySidebar .card-body::-webkit-scrollbar {
+  width: 5px;
+}
+
+#categorySidebar .card-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+#categorySidebar .card-body::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 10px;
+}
+
+#categorySidebar .card-body::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+/* Category icon */
+.category-icon {
+  transition: all 0.3s ease;
+}
+
+#categorySidebar .btn:hover .category-icon {
+  transform: scale(1.1);
+}
+
+/* Improve category banner */
+.category-banner {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Back button hover effect */
+.btn-outline-primary.py-2 {
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary.py-2:hover {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
+/* Ripple effect for buttons */
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 100px;
+  height: 100px;
+  margin-top: -50px;
+  margin-left: -50px;
+  animation: ripple 0.7s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}

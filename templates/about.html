@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block title %}{% trans "About Us" %} | العلندا{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="category-header mb-5">{% trans "About Al Alanda" %}</h1>
+    
+    <div class="row mb-5 align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <div class="card border-0 shadow-sm">
+                <img src="/media/about/About.jpg" alt="{% trans 'About Al Alanda' %}" class="img-fluid rounded">
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <h2 class="mb-4 category-header">{% trans "Board of Directors" %}</h2>
+            <p class="lead mb-4">{% trans "Meet the leadership team behind Al Alanda's success." %}</p>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title" style="height: auto;">{% trans "Ahmed Al-Sayed" %}</h5>
+                            <p class="text-muted mb-2">{% trans "Chairman" %}</p>
+                            <p class="card-text small">{% trans "With over 25 years of experience in the food industry, Ahmed leads our strategic vision and growth initiatives." %}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title" style="height: auto;">{% trans "Fatima Hassan" %}</h5>
+                            <p class="text-muted mb-2">{% trans "CEO" %}</p>
+                            <p class="card-text small">{% trans "Fatima oversees all operations and ensures that we maintain the highest standards of quality and service." %}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title" style="height: auto;">{% trans "Omar Khalid" %}</h5>
+                            <p class="text-muted mb-2">{% trans "CFO" %}</p>
+                            <p class="card-text small">{% trans "Omar manages our financial strategy and ensures sustainable growth for our business." %}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title" style="height: auto;">{% trans "Layla Mahmoud" %}</h5>
+                            <p class="text-muted mb-2">{% trans "COO" %}</p>
+                            <p class="card-text small">{% trans "Layla leads our day-to-day operations and ensures that we deliver exceptional customer experiences." %}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mb-5 align-items-center flex-lg-row-reverse">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <div class="card border-0 shadow-sm">
+                <img src="/media/about/History.jpg" alt="{% trans 'Our History' %}" class="img-fluid rounded">
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <h2 class="mb-4 category-header">{% trans "Our History" %}</h2>
+            {% comment %} <div class="mb-4 text-end" dir="rtl">
+                <p class="lead">شركة العلندا للمواد الغذائية متخصصون باستيراد أجود أنواع المواد الغذائية من جميع أنحاء العالم. أسسها الشيخ محمد عبدالرحمن العلندا رحمه الله عام ١٩٧٦ م ومنذ ذلك الحين وقيمنا مبنية على الثقة والجودة والتطوير لتلبية كل ما يحتاجه العميل، وذلك بتوفير مجموعة واسعة من أفضل المنتجات الغذائية، منها اللحوم ومنتجات الألبان والخضروات المعلبة والمخللة والمنتجات الجافة وغيرها الكثير، كما نحرص على جودة تغليف المصانع الموردة وتخزينها، حرصاً منا على تقديم الأفضل وتلبية كافة احتياجات القنوات الغذائية المختلفة.</p>
+            </div> {% endcomment %}
+            <div>
+                <p class="lead">{% trans "Al-Alalanda Foodstuff Company specializes in importing the finest types of food products from all over the world. It was founded by Sheikh Mohammed Abdulrahman Al-Alalanda, may God have mercy on him, in 1976. Since then, our values have been built on trust, quality and development to meet all the needs of the customer, by providing a wide range of the best food products, including meat, dairy products, canned and pickled vegetables, dry products and many others. We also ensure the quality of packaging and storage of the supplying factories, in order to provide the best and meet all the needs of the various food channels." %}</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="mb-4 text-center category-header">{% trans "Our Values" %}</h2>
+            <div class="row g-4 mt-3">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <i class="fas fa-leaf fa-3x value-icon"></i>
+                            </div>
+                            <h4 class="card-title" style="height: auto;">{% trans "Quality" %}</h4>
+                            <p class="card-text">{% trans "We never compromise on quality. Each product is carefully selected to ensure it meets our high standards." %}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <i class="fas fa-handshake fa-3x value-icon"></i>
+                            </div>
+                            <h4 class="card-title" style="height: auto;">{% trans "Trust" %}</h4>
+                            <p class="card-text">{% trans "Building trust with our customers is at the heart of everything we do. We believe in transparency and honesty in all our dealings." %}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <i class="fas fa-globe fa-3x value-icon"></i>
+                            </div>
+                            <h4 class="card-title" style="height: auto;">{% trans "Sustainability" %}</h4>
+                            <p class="card-text">{% trans "We are committed to sustainable practices that minimize our environmental impact while supporting local communities." %}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2 class="mb-4 category-header">{% trans "Visit Our Shop" %}</h2>
+            <p class="lead">{% trans "We invite you to explore our wide range of products and experience the Al Alanda difference." %}</p>
+            <a href="{% url 'products:products_page' %}" class="btn btn-primary btn-lg mt-3">
+                <i class="fas fa-shopping-basket mx-2"></i>{% trans "Browse Our Products" %}
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Checkout" %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="mb-4">{% trans "Checkout" %}</h1>
+    
+    {% if messages %}
+    <div class="messages mb-4">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">{% trans "Shipping Information" %}</h5>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'orders:place_order' %}" method="post" id="checkout-form">
+                        {% csrf_token %}
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="first_name" class="form-label">{% trans "First Name" %}*</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="last_name" class="form-label">{% trans "Last Name" %}*</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">{% trans "Email" %}*</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">{% trans "Phone Number" %}*</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="address" class="form-label">{% trans "Address" %}*</label>
+                            <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="city" class="form-label">{% trans "City" %}*</label>
+                                <input type="text" class="form-control" id="city" name="city" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="postal_code" class="form-label">{% trans "Postal Code" %}</label>
+                                <input type="text" class="form-control" id="postal_code" name="postal_code">
+                            </div>
+                        </div>
+                        
+                        <div class="payment-method mb-4">
+                            <h5 class="mb-3">{% trans "Payment Method" %}</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="payment_method" id="cod" value="cod" checked>
+                                <label class="form-check-label" for="cod">
+                                    {% trans "Cash on Delivery" %}
+                                </label>
+                                <p class="text-muted small">{% trans "Pay with cash upon delivery of your order." %}</p>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-success w-100">{% trans "Place Order" %}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">{% trans "Order Summary" %}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="order-summary">
+                        {% for item in cart_items %}
+                        <div class="d-flex justify-content-between mb-2">
+                            <div>
+                                <span>{{ item.quantity }} x {{ item.product }}</span>
+                            </div>
+                            <div>
+                                <span>${{ item.subtotal }}</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        
+                        <hr>
+                        
+                        <div class="d-flex justify-content-between mb-2">
+                            <div>
+                                <strong>{% trans "Total" %}</strong>
+                            </div>
+                            <div>
+                                <strong>${{ cart.total }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('checkout-form');
+        
+        form.addEventListener('submit', function(e) {
+            const requiredFields = form.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(function(field) {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.classList.add('is-invalid');
+                } else {
+                    field.classList.remove('is-invalid');
+                }
+            });
+            
+            if (!isValid) {
+                e.preventDefault();
+                alert('{% trans "Please fill in all required fields." %}');
+            }
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Our Brands" %} | العلندا{% endblock %}
+
+{% block content %}
+<!-- Brands Page Header -->
+<div class="container py-4">
+  <div class="row">
+    <div class="col-12 text-center mb-4">
+      <h1 class="display-4 fw-bold brand-title">{% trans "Our Brands" %}</h1>
+      <p class="lead text-muted">{% trans "Discover our premium brands offering quality products" %}</p>
+    </div>
+  </div>
+</div>
+
+<!-- Brands Section -->
+<div class="container py-4 mb-5">
+  <div class="row">
+    <!-- First Brand: Shahr zad -->
+    <div class="col-lg-6 mb-5">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-body p-4">
+          <div class="row align-items-center">
+            <div class="col-md-5 text-center mb-4 mb-md-0">
+              <!-- Using Al Alanda logo temporarily as requested -->
+              <img src="/media/logo.png" alt="Shahr zad" class="img-fluid brand-image">
+            </div>
+            <div class="col-md-7">
+              <h2 class="card-title mb-3 brand-title">{% trans "Shahr zad" %}</h2>
+              <p class="card-text mb-4">{% trans "An ideal choice for those looking for quality for the right price" %}</p>
+              
+            </div>
+          </div>
+        </div>
+        <div class="card-footer bg-white p-0">
+          <img src="/media/brands/1.jpg" alt="Shahr zad Products" class="img-fluid w-100 brand-product-image">
+        </div>
+      </div>
+    </div>
+    
+    <!-- Second Brand: Al Alanda -->
+    <div class="col-lg-6 mb-5">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-body p-4">
+          <div class="row align-items-center">
+            <div class="col-md-5 text-center mb-4 mb-md-0">
+              <img src="/media/logo.png" alt="Al Alanda" class="img-fluid brand-image">
+            </div>
+            <div class="col-md-7">
+              <h2 class="card-title mb-3 brand-title">{% trans "Al Alanda" %}</h2>
+              <p class="card-text mb-4">{% trans "It is the first choice for anyone looking for high quality and perfect taste" %}</p>
+              
+            </div>
+          </div>
+        </div>
+        <div class="card-footer bg-white p-0">
+          <img src="/media/brands/2.jpg" alt="Al Alanda Products" class="img-fluid w-100 brand-product-image">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Brand Values Section -->
+<div class="container py-5 mb-5 bg-white rounded-3 shadow-sm">
+  <div class="row mb-4">
+    <div class="col-12 text-center">
+      <h2 class="fw-bold brand-title">{% trans "Our Brand Values" %}</h2>
+      <p class="lead text-muted">{% trans "What makes our brands stand out in the market" %}</p>
+    </div>
+  </div>
+  
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card border-0 h-100 text-center p-3">
+        <div class="card-body">
+          <div class="mb-3 fs-1 text-primary">
+            <i class="fas fa-award"></i>
+          </div>
+          <h3 class="card-title h5 mb-3">{% trans "Premium Quality" %}</h3>
+          <p class="card-text text-muted">{% trans "We select only the finest ingredients to ensure exceptional quality in every product." %}</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="card border-0 h-100 text-center p-3">
+        <div class="card-body">
+          <div class="mb-3 fs-1 text-primary">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3 class="card-title h5 mb-3">{% trans "Customer Satisfaction" %}</h3>
+          <p class="card-text text-muted">{% trans "Our brands are built on a foundation of trust and customer satisfaction." %}</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="card border-0 h-100 text-center p-3">
+        <div class="card-body">
+          <div class="mb-3 fs-1 text-primary">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <h3 class="card-title h5 mb-3">{% trans "Sustainability" %}</h3>
+          <p class="card-text text-muted">{% trans "We are committed to sustainable practices throughout our production process." %}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // No additional JavaScript needed for this page
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/brands.css' %}">
+{% endblock %}

@@ -1,0 +1,322 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" {% if LANGUAGE_CODE == 'ar' %}dir="rtl"{% endif %}>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/media/logo.svg">
+
+  <title>{% block title %}{% trans "AL ALANDA" %}{% endblock %}</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Owl Carousel CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  <!-- SweetAlert2 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <link rel="stylesheet" href="/static/css/base.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+  <header>
+    <div class="container-fluid px-0"style="background-color:var(--primary-color);">
+      <div >
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-12 mt-3 text-md-start text-center">
+              <a class="navbar-brand" href="/">
+                <img src="/media/logo.png" alt="العلندا" class="img-fluid" style="max-height:130px;min-width:150px;">
+              </a>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <nav class="navbar navbar-expand-lg navbar-dark  py-0">
+        <div class="container">
+          <button class="navbar-toggler border-0 mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav align-items-center">
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.namespace == 'products' and request.resolver_match.url_name == 'products_page' %}active{% endif %}" href="{% url 'products:products_page' %}">
+                  {{ _("Products") }}
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'brands' %}active{% endif %}" href="{% url 'brands' %}">
+                  {{ _("Our Brands") }}
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">
+                  {{ _("About") }}
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">
+                  {{ _("Contact Us") }}
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.namespace == 'orders' %}active{% endif %}" href="{% url 'orders:cart_detail' %}">
+                  <i class="fas fa-shopping-cart me-1"></i> {{ _("Cart") }}
+                </a>
+              </li>
+              <li class="nav-item dropdown language-switcher">
+                <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {% if LANGUAGE_CODE == 'ar' %}
+                    <i class="fas fa-globe mx-1"></i> العربية
+                  {% elif LANGUAGE_CODE == 'en' %}
+                    <i class="fas fa-globe mx-1"></i> English
+                  {% else %}
+                    <i class="fas fa-globe mx-1"></i> {{ LANGUAGE_CODE }}
+                  {% endif %}
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" style="min-width: 10rem; border-radius: 0.5rem; margin-top: 0.5rem;" aria-labelledby="languageDropdown">
+                  <li>
+                    <form action="{% url 'set_language' %}" method="post" id="en-language-form">
+                      {% csrf_token %}
+                      <input type="hidden" name="language" value="en">
+                      <input type="hidden" name="next" value="{{ request.path }}">
+                      <button type="submit" class="dropdown-item {% if LANGUAGE_CODE == 'en' %}active{% endif %}" style="padding: 0.5rem 1rem;" onclick="document.getElementById('en-language-form').submit();">
+                        <i class="fas fa-check me-2 {% if LANGUAGE_CODE != 'en' %}invisible{% endif %}"></i>
+                        English
+                      </button>
+                    </form>
+                  </li>
+                  <li>
+                    <form action="{% url 'set_language' %}" method="post" id="ar-language-form">
+                      {% csrf_token %}
+                      <input type="hidden" name="language" value="ar">
+                      <input type="hidden" name="next" value="{{ request.path }}">
+                      <button type="submit" class="dropdown-item {% if LANGUAGE_CODE == 'ar' %}active{% endif %}" style="padding: 0.5rem 1rem;" onclick="document.getElementById('ar-language-form').submit();">
+                        <i class="fas fa-check me-2 {% if LANGUAGE_CODE != 'ar' %}invisible{% endif %}"></i>
+                        العربية
+                      </button>
+                    </form>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  
+          {% comment %} <li class="nav-item">
+            <a class="nav-link" href="{% url "brands" %}">{{ _("our brands") }}</a>
+          </li> {% endcomment %}
+          
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="content-wrapper">
+    {% block content %}{% endblock %}
+  </div>
+
+  <footer class="mt-5">
+    <div class="container py-4">
+      <div class="row">
+        <!-- Company Info Column -->
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <img src="/media/logo.png" alt="العلندا" class="img-fluid mb-3" style="max-height: 100px;">
+          <div class="d-flex align-items-center mb-3">
+            <i class="fas fa-map-marker-alt me-2"></i>
+            <p class="mb-0">{% trans "Al Muntazahat, Jeddah 22354 Saudi Arabia" %}</p>
+          </div>
+          <div class="d-flex align-items-center mb-3">
+            <i class="fas fa-phone-alt me-2"></i>
+            <p class="mb-0">9200 00278 | 8Am - 5Pm</p>
+          </div>
+        </div>
+
+        <!-- Information Column -->
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <h5 class="text-uppercase mb-4">{% trans "INFORMATION" %}</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="{% url 'about' %}" class="text-white text-decoration-none">{% trans "About Us" %}</a></li>
+            <li class="mb-2"><a href="{% url 'products:products_page' %}" class="text-white text-decoration-none">{% trans "Products" %}</a></li>
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">{% trans "Brands" %}</a></li>
+            <li class="mb-2"><a href="{% url 'contact' %}" class="text-white text-decoration-none">{% trans "Contact Us" %}</a></li>
+          </ul>
+        </div>
+
+        <!-- Download Column -->
+        <div class="col-lg-2">
+          <h5 class="text-uppercase mb-4">{% trans "DOWNLOAD" %}</h5>
+          <ul class="list-unstyled mb-4">
+            <li class="mb-2"><a href="/media/Alalanda_Cat.pdf" class="text-white text-decoration-none" download>{% trans "Catalogue" %} <i class="fas fa-download ms-1"></i></a></li>
+          </ul>
+        </div>
+        
+        <!-- Payment Column -->
+        <div class="col-lg-2">
+          <h5 class="text-uppercase mb-3">{% trans "ACCEPT PAYMENT" %}</h5>
+          <div class="payment-methods">
+            <div class="row g-2">
+              <div class="col-4">
+                <div class="payment-icon bg-white p-1 rounded text-center" style="max-width: 45px;">
+                  <i class="fab fa-cc-visa fa-lg" style="color: #1A1F71;"></i>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="payment-icon bg-white p-1 rounded text-center" style="max-width: 45px;">
+                  <i class="fab fa-cc-mastercard fa-lg" style="color: #EB001B;"></i>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="payment-icon bg-white p-1 rounded text-center" style="max-width: 45px;">
+                  <i class="fab fa-cc-paypal fa-lg" style="color: #003087;"></i>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="payment-icon bg-white p-1 rounded text-center" style="max-width: 45px;">
+                  <i class="fas fa-credit-card fa-lg" style="color: #8B12AC;"></i>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="payment-icon bg-white p-1 rounded text-center" style="max-width: 45px;">
+                  <i class="fab fa-cc-amex fa-lg" style="color: #006FCF;"></i>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="payment-icon bg-white p-1 rounded text-center" style="max-width: 45px;">
+                  <i class="fas fa-money-bill-wave fa-lg" style="color: #00457C;"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+  <!-- Copyright Bar -->
+  <div class="py-3" style="background-color: var(--primary-color); border-top: 1px solid white;">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-8 text-center text-md-end">
+          <p class="mb-0 text-white fs-5">{% trans "Copyright" %} &copy; {% now "Y" %}. {% trans "All Rights Reserved Alalanda" %}.</p>
+        </div>
+        <div class="col-md-4 text-center text-md-end social-icons">
+          <a href="#" class="text-danger mx-2 bg-white p-2 rounded"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-danger mx-2 bg-white p-2 rounded"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-danger mx-2 bg-white p-2 rounded"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Owl Carousel JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <!-- SweetAlert2 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  <script>
+    // Handle form submissions for adding to cart with SweetAlert
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check for cart alert in session
+      {% if request.session.show_cart_alert %}
+        Swal.fire({
+          title: '{{ request.session.show_cart_alert.title }}',
+          html: '<div class="text-center">' +
+                '<div class="mt-3 mb-2"><strong>{{ request.session.show_cart_alert.product_name }}</strong></div>' +
+                '</div>',
+          icon: 'success',
+          confirmButtonText: '{% trans "Continue Shopping" %}',
+          showCancelButton: true,
+          cancelButtonText: '{% trans "View Cart" %}',
+          cancelButtonColor: '#263e80',
+          confirmButtonColor: '#ad9e13',
+        }).then((result) => {
+          if (!result.isConfirmed) {
+            // If user clicks "View Cart", redirect to cart page
+            window.location.href = '{% url "orders:cart_detail" %}';
+          }
+        });
+      {% endif %}
+      
+      // Add event listeners to all add-to-cart forms
+      const addToCartForms = document.querySelectorAll('form[action^="{% url "orders:add_to_cart" product_id=0 %}"]'.replace('/0/', '/'));
+      
+      addToCartForms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+          // Only handle the event if JavaScript is enabled and we want the SweetAlert
+          // Let the form submit normally otherwise
+          if (navigator.userAgent.indexOf('JavaScript disabled') === -1) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const url = this.getAttribute('action');
+            
+            fetch(url, {
+              method: 'POST',
+              body: formData,
+              headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+              }
+            })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                // Get product info from the closest product card
+                const card = this.closest('.card');
+                let productName = '';
+                let productPrice = '';
+                
+                if (card) {
+                  const titleEl = card.querySelector('.card-title');
+                  const priceEl = card.querySelector('.price');
+                  
+                  if (titleEl) productName = titleEl.textContent.trim();
+                  if (priceEl) productPrice = priceEl.textContent.trim();
+                }
+                
+                // Show SweetAlert
+                Swal.fire({
+                  title: '{% trans "Added to Cart!" %}',
+                  html: '<div class="text-center">' +
+                        (productName ? '<div class="mt-3 mb-2"><strong>' + productName + '</strong></div>' : '') +
+                        '</div>',
+                  icon: 'success',
+                  confirmButtonText: '{% trans "Continue Shopping" %}',
+                  showCancelButton: true,
+                  cancelButtonText: '{% trans "View Cart" %}',
+                  cancelButtonColor: '#3a5ca8',
+                  confirmButtonColor: '#ad9e13',
+                }).then((result) => {
+                  if (!result.isConfirmed) {
+                    // If user clicks "View Cart", redirect to cart page
+                    window.location.href = '{% url "orders:cart_detail" %}';
+                  }
+                });
+              }
+            })
+            .catch(error => {
+              
+              this.submit();
+            });
+          }
+        });
+      });
+    });
+  </script>
+  
+  {% block extra_js %}{% endblock %}
+</body>
+</html>
