@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 {% block content %}
 <div class="container-fluid px-2 px-md-3 px-lg-4 mb-4">
   <!-- Sidebar Toggle Button (visible on all screens) -->
@@ -59,7 +60,7 @@
           {% endif %}
           <div class="card-body">
             <h5 class="card-title text-center">{{ product.name }}</h5>
-            <p class="price text-center"><span class="d-inline-flex justify-content-center w-100">{{ product.price }} <img src="/media/sar/R2.png" alt="SAR" class="sar-image"></span></p>
+            <p class="price text-center"><span class="d-inline-flex justify-content-center w-100">{{ product.price }} <img src="/media/sar/R2.png" alt="SAR" class="sar-image" style="height: 20px;width: 20px;display: inline-block;vertical-align: middle;"></span></p>
             <div class="mt-auto d-flex flex-column gap-2">
               <a href="{% url 'products:product_detail' pk=product.id %}" class="btn btn-outline-primary w-100">
                 <i class="fas fa-info-circle"></i> {% trans "Details" %}
