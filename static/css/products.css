@@ -4,6 +4,17 @@
     width: 95% !important;
     padding: 15px !important;
   }
+  
+  /* Make banner text smaller on small screens */
+  .banner-overlay .section-title {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .banner-overlay .lead {
+    font-size: 0.85rem !important;
+    line-height: 1.3 !important;
+  }
 }
 
 /* Responsive fixes for products page */
