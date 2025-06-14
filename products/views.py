@@ -9,13 +9,6 @@ from parler.utils import get_active_language_choices
 from .models import Category, Product
 
 def products_page(request):
-    # Create a cache key based on the query parameters
-    cache_key = f"products_page:{request.GET.get('search', '')}:{request.GET.get('min_price', '')}:{request.GET.get('max_price', '')}:{request.GET.get('page', '1')}:{get_active_language_choices()[0]}"
-    
-    # Try to get the cached response
-    cached_response = cache.get(cache_key)
-    if cached_response:
-        return cached_response
     # Get price range in a single query
     price_range = Product.objects.aggregate(min_price=Min('price'), max_price=Max('price'))
     min_price = price_range['min_price'] or 0
@@ -101,19 +94,9 @@ def products_page(request):
         'max_price_filter': max_price_filter
     })
     
-    # Cache the response for 15 minutes
-    cache.set(cache_key, response, 60 * 15)
-    
     return response
 
 def product_list(request, category_id):
-    # Create a cache key based on the category ID and language
-    cache_key = f"product_list:{category_id}:{get_active_language_choices()[0]}"
-    
-    # Try to get the cached response
-    cached_response = cache.get(cache_key)
-    if cached_response:
-        return cached_response
     # Get category with translations and prefetch its products in a single query
     category = get_object_or_404(
         Category.objects.prefetch_related(
@@ -136,19 +119,9 @@ def product_list(request, category_id):
         'all_categories': all_categories  # Pass all categories for the sidebar
     })
     
-    # Cache the response for 15 minutes
-    cache.set(cache_key, response, 60 * 15)
-    
     return response
 
 def product_detail(request, pk):
-    # Create a cache key based on the product ID and language
-    cache_key = f"product_detail:{pk}:{get_active_language_choices()[0]}"
-    
-    # Try to get the cached response
-    cached_response = cache.get(cache_key)
-    if cached_response:
-        return cached_response
     # Get product with translations and related category in a single query
     product = get_object_or_404(
         Product.objects.select_related('category')
@@ -157,8 +130,5 @@ def product_detail(request, pk):
     )
     # Render the response
     response = render(request, 'products/product_detail.html', {'product': product})
-    
-    # Cache the response for 15 minutes
-    cache.set(cache_key, response, 60 * 15)
     
     return response

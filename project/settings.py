@@ -165,36 +165,3 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-# Cache settings
-# Use Redis if REDIS_URL is available, otherwise use local memory cache
-REDIS_URL = os.environ.get('REDIS_URL')
-
-if REDIS_URL:
-    CACHES = {
-        'default': {
-            'BACKEND': 'django_redis.cache.RedisCache',
-            'LOCATION': REDIS_URL,
-            'OPTIONS': {
-                'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-                'CONNECTION_POOL_KWARGS': {'max_connections': 100},
-                'COMPRESSOR': 'django_redis.compressors.zlib.ZlibCompressor',
-            }
-        }
-    }
-    
-    # Use Redis for session cache
-    SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
-    SESSION_CACHE_ALIAS = 'default'
-else:
-    # Use local memory cache if Redis is not available
-    CACHES = {
-        'default': {
-            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-            'LOCATION': 'unique-snowflake',
-        }
-    }
-    
-    # Use database for session if Redis is not available
-    SESSION_ENGINE = 'django.contrib.sessions.backends.db'
