@@ -9,7 +9,15 @@
 {% block title %}{% trans "About Us" %} | العلندا{% endblock %}
 
 {% block content %}
-<div class="container py-5">
+<!-- Full-width heading image with overlay text -->
+<div class="w-100 position-relative text-center mb-5" style="padding:0;">
+    <img src="/media/about/heading.png" alt="About Al Alanda Heading" class="img-fluid w-100" style="max-width:100vw;">
+    <div style="position:absolute;top:15%;left:50%;transform:translate(-50%,-50%);color:white;text-shadow:0 2px 8px rgba(0,0,0,0.15);white-space:nowrap;">
+        <h2>الأفضل من كل أرض</h2>
+        <p>The Best of All Lands</p>
+    </div>
+</div>
+<div class="container py-1">
     <div class="row mb-5 align-items-center flex-lg-row-reverse">
         <div class="col-lg-6 mb-4 mb-lg-0">
             <div class="card border-0 shadow-sm">
