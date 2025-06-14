@@ -6,11 +6,11 @@
 <!-- Banner Section with Introduction Overlay - Only shown on main products page -->
 <div class="container-fluid px-0 mb-0">
   <div class="position-relative">
-    <img src="/media/banners/banner.jpg" class="img-fluid w-100" alt="Al Alanda Products" onerror="this.src='/static/img/default-banner.jpg'" style="min-height: 300px; max-height: 650px; object-fit: cover;">
+    <img src="/media/banners/1.png" class="img-fluid w-100" alt="Al Alanda Products" onerror="this.src='/static/img/default-banner.jpg'" style="min-height: 300px; max-height: 650px; object-fit: cover;">
     <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(135deg, rgba(38, 62, 128, 0.3), rgba(190, 35, 40, 0.2));"></div>
-    <div class="position-absolute top-50 start-50 translate-middle text-center p-3 p-sm-4 banner-overlay" style="background-color: rgba(255, 255, 255, 0.9); border-radius: 15px; width: 90%; max-width: 800px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);">
-      <h2 class="section-title mb-2" style="color: var(--primary-dark); font-size: 1.4rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.05);">{% trans "Fresh & Premium Food Products" %}</h2>
-      <p class="lead mb-0" style="font-size: 1rem;">{% trans "At Al Alanda, we bring the finest culinary treasures to your table. From fresh produce and premium meats to authentic spices - we ensure exceptional quality for your family meals." %}</p>
+    <div class="position-absolute top-50 end-0 translate-middle-y text-end p-3 p-sm-4 banner-overlay" style="background: none; border-radius: 0; width: 50%; max-width: 700px; box-shadow: none; right: 0; left: auto;">
+      <h2 class="section-title mb-2" style="color: white; font-size: 1.4rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.05);">{% trans "The best of all lands" %}</h2>
+      <p class="lead mb-0" style="color:white; font-size: 1rem;">{% trans "We offer products of high standards that support customer taste and expectations. We also provide all the items your restaurant needs, regardless of the type of dish you're serving, from meats and canned goods to dry goods and frozen foods, and everything else you need and more. Alanda Company is at your service." %}</p>
     </div>
   </div>
 </div>
@@ -108,70 +108,25 @@
   <!-- Products content -->
   <div class="col-lg-9 col-md-8 px-2 px-md-3 products-column">
     {% if categories.object_list %}
-      {% for category in categories.object_list %}
-        <section class="mb-5">
-          <div class="category-header-section mb-4 px-2">
-            <h2 class="category-header">
-              <a style="text-decoration:none;color:#be2328" href="{% url 'products:category_products' category_id=category.id %}">
-                {{ category.name }} <i class="fas fa-arrow-right fs-4"></i>
-              </a>
-            </h2>
-          </div>
-          {% if category.banner_image %}
-          <div class="category-banner mb-3 position-relative">
-            <img src="{{ category.banner_image.url }}" class="img-fluid w-100 rounded" alt="{{ category.name }}" style="max-height: 320px; object-fit: cover;">
-        
-            <div class="position-absolute top-0 start-0 w-100 h-100 rounded" style="background: linear-gradient(135deg, rgba(38, 62, 128, 0.3), rgba(190, 35, 40, 0.2));">       
-            </div>
-          </div>
-        {% endif %}
-        
-    
-    <div class="product-slider">
-      <div class="row">
-        <div class="col-12">
-          <div class="owl-carousel owl-theme product-carousel" data-items="{{ category.filtered_products|length }}">
-            {% for product in category.filtered_products %}
-              <div class="item">
-                <div class="card h-100 product-card">
-                  {% if product.image %}
-                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-                  {% else %}
-                    <img src="/media/products/conf-cause.png" class="card-img-top" alt="{{ product.name }}">
-                  {% endif %}
-                  <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="price">{{ product.price }} <img src="/media/sar/R2.svg" alt="SAR" style="height: 35px; width: 35px; display: inline-block; vertical-align: middle;"></p>
-                    <div class="mt-auto d-flex flex-column gap-2">
-                      <a href="{% url 'products:product_detail' pk=product.id %}" class="btn btn-outline-primary w-100">
-                        <i class="fas fa-info-circle"></i> {% trans "Details" %}
-                      </a>
-                      <form action="{% url 'orders:add_to_cart' product_id=product.id %}" method="post" class="w-100">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-success w-100">
-                          <i class="fas fa-shopping-cart"></i> {% trans "Add to Cart" %}
-                        </button>
-                      </form>
-                    </div>
-                  </div>
+      <div class="row g-4">
+        {% for category in categories.object_list %}
+          <div class="col-12">
+            <a href="{% url 'products:category_products' category_id=category.id %}" style="text-decoration:none;">
+              <div class="card h-100 shadow-sm category-card position-relative overflow-hidden">
+                <img src="/media/categories/{{ category.name }}.jpg" class="img-fluid w-100 rounded" alt="{{ category.name }}" style="max-height: 320px; object-fit: cover;">
+                <div class="card-img-overlay d-flex align-items-start p-3">
+                  <h2 class="category-header mb-0" style="color:#be2328; background:rgba(255,255,255,0.85); border-radius:8px; padding:0.5rem 1.2rem; font-size:1.5rem; font-weight:700;">
+                    {{ category.name }} <i class="fas fa-arrow-right fs-5"></i>
+                  </h2>
                 </div>
               </div>
-            {% empty %}
-              <div class="col-12">
-                <div class="alert" style="background-color: var(--primary-bg); color: var(--primary-dark); border-left: 4px solid var(--primary-color); border-radius: 8px;">
-                  {% trans "No products available in this category." %}
-                </div>
-              </div>
-            {% endfor %}
+            </a>
           </div>
-        </div>
+        {% endfor %}
       </div>
-    </div>
-        </section>
-      {% endfor %}
     {% else %}
       <div class="alert" style="background-color: var(--primary-bg); color: var(--primary-dark); border-left: 4px solid var(--primary-color); border-radius: 8px;">
-        <i class="fas fa-info-circle me-2"></i> {% trans "No products found matching your criteria. Try adjusting your filters." %}
+        <i class="fas fa-info-circle me-2"></i> {% trans "No categories found." %}
       </div>
     {% endif %}
 

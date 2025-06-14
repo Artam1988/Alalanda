@@ -41,12 +41,9 @@
     </a>
   </div>
   <div class="category-header-section mb-4">
-    {% if category.banner_image %}
-      <div class="category-banner mb-3 position-relative">
-        <img src="{{ category.banner_image.url }}" class="img-fluid w-100 rounded" alt="{{ category.name }}" style="max-height: 550px; object-fit: cover;">
-        <div class="position-absolute top-0 start-0 w-100 h-100 rounded" style="background: linear-gradient(135deg, rgba(38, 62, 128, 0.2), rgba(190, 35, 40, 0.1));"></div>
-      </div>
-    {% endif %}
+    <div class="category-banner mb-3 position-relative">
+      <img src="/media/categories/{{ category.name }}.jpg" class="img-fluid w-100 rounded" alt="{{ category.name }}" style="max-height: 400px; object-fit: cover;">
+    </div>
     <h2 class="category-header">{{ category.name }}</h2>
   </div>
   <div class="row">
