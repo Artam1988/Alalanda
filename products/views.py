@@ -120,15 +120,3 @@ def product_list(request, category_id):
     })
     
     return response
-
-def product_detail(request, pk):
-    # Get product with translations and related category in a single query
-    product = get_object_or_404(
-        Product.objects.select_related('category')
-                      .prefetch_related('translations', 'category__translations'), 
-        id=pk
-    )
-    # Render the response
-    response = render(request, 'products/product_detail.html', {'product': product})
-    
-    return response
