@@ -119,4 +119,29 @@ def product_list(request, category_id):
         'all_categories': all_categories  # Pass all categories for the sidebar
     })
     
+    # Cache the response for 15 minutes
+    cache.set(cache_key, response, 60 * 15)
+    
+    return response
+
+def product_detail(request, pk):
+    # Create a cache key based on the product ID and language
+    cache_key = f"product_detail:{pk}:{get_active_language_choices()[0]}"
+    
+    # Try to get the cached response
+    cached_response = cache.get(cache_key)
+    if cached_response:
+        return cached_response
+    # Get product with translations and related category in a single query
+    product = get_object_or_404(
+        Product.objects.select_related('category')
+                      .prefetch_related('translations', 'category__translations'), 
+        id=pk
+    )
+    # Render the response
+    response = render(request, 'products/product_detail.html', {'product': product})
+    
+    # Cache the response for 15 minutes
+    cache.set(cache_key, response, 60 * 15)
+    
     return response
