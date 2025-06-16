@@ -52,10 +52,7 @@
                     {{ _("Contact Us") }}
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link {% if request.resolver_match.namespace == 'orders' %}active{% endif %}" href="{% url 'orders:cart_detail' %}">
-                    <i class="fas fa-shopping-cart me-1"></i> {{ _("Cart") }}
-                  </a>
+                
                 </li>
                 <li class="nav-item dropdown language-switcher">
                   <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -207,69 +204,7 @@
       {% endif %}
       
       // Add event listeners to all add-to-cart forms
-      const addToCartForms = document.querySelectorAll('form[action^="{% url "orders:add_to_cart" product_id=0 %}"]'.replace('/0/', '/'));
       
-      addToCartForms.forEach(form => {
-        form.addEventListener('submit', function(e) {
-          // Only handle the event if JavaScript is enabled and we want the SweetAlert
-          // Let the form submit normally otherwise
-          if (navigator.userAgent.indexOf('JavaScript disabled') === -1) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const url = this.getAttribute('action');
-            
-            fetch(url, {
-              method: 'POST',
-              body: formData,
-              headers: {
-                'X-Requested-With': 'XMLHttpRequest'
-              }
-            })
-            .then(response => response.json())
-            .then(data => {
-              if (data.success) {
-                // Get product info from the closest product card
-                const card = this.closest('.card');
-                let productName = '';
-                let productPrice = '';
-                
-                if (card) {
-                  const titleEl = card.querySelector('.card-title');
-                  const priceEl = card.querySelector('.price');
-                  
-                  if (titleEl) productName = titleEl.textContent.trim();
-                  if (priceEl) productPrice = priceEl.textContent.trim();
-                }
-                
-                // Show SweetAlert
-                Swal.fire({
-                  title: '{% trans "Added to Cart!" %}',
-                  html: '<div class="text-center">' +
-                        (productName ? '<div class="mt-3 mb-2"><strong>' + productName + '</strong></div>' : '') +
-                        '</div>',
-                  icon: 'success',
-                  confirmButtonText: '{% trans "Continue Shopping" %}',
-                  showCancelButton: true,
-                  cancelButtonText: '{% trans "View Cart" %}',
-                  cancelButtonColor: '#3a5ca8',
-                  confirmButtonColor: '#ad9e13',
-                }).then((result) => {
-                  if (!result.isConfirmed) {
-                    // If user clicks "View Cart", redirect to cart page
-                    window.location.href = '{% url "orders:cart_detail" %}';
-                  }
-                });
-              }
-            })
-            .catch(error => {
-              
-              this.submit();
-            });
-          }
-        });
-      });
-    });
   </script>
   
   {% block extra_js %}{% endblock %}

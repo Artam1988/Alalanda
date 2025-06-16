@@ -9,7 +9,6 @@ urlpatterns = [
     path('', home_page, name='home'),  # Set home page as the default landing page
     path('admin/', admin.site.urls),
     path('products/', include('products.urls', namespace='products')),
-    path('orders/', include('orders.urls', namespace='orders')),
     path('i18n/', include('django.conf.urls.i18n')),  # For language switcher
     path('about/', about_page, name='about'),
     path('contact/', contact_page, name='contact'),

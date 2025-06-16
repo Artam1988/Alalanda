@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'parler',
     'products',
     'core',
-    'orders',
 ]
 
 MIDDLEWARE = [
@@ -75,7 +74,6 @@ TEMPLATES = [
                 'django.template.context_processors.media',   
                 'django.template.context_processors.static',
                 'django.template.context_processors.i18n',
-                'orders.context_processors.cart_alerts',
             ],
             'debug': DEBUG,
         },
