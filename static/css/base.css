@@ -295,7 +295,6 @@ footer {
   background-repeat: unset;
   padding: 50px;
   color: white;
-  margin-top: 50px;
   flex-shrink: 0;
   box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
   position: relative;
