@@ -5,7 +5,7 @@
 
 {% block content %}
 <!-- Hero Banner Section -->
-<div class="mb-1 mt-1">
+<div class="mb-1">
   <div style="width: 100%; overflow: hidden;">
     <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -160,7 +160,7 @@
     <div class="row" id="featured-products-container">
         {% if featured_products %}
             {% for product in featured_products %}
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="col-sm-1 col-md-6 col-lg-4 mb-4">
                     <div class="card h-100 featured-product-card">
                         <!-- Featured badge -->
                         <div class="featured-badge">
@@ -168,14 +168,10 @@
                                 <i class="fas fa-star me-1"></i>{% trans "Featured" %}
                             </span>
                         </div>
-                        <a href="{% url 'products:product_detail' product.id %}">
-                            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
-                        </a>
+                        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title text-center">
-                                <a href="{% url 'products:product_detail' product.id %}" class="text-decoration-none text-dark">
-                                    {{ product.name }}
-                                </a>
+                                <span class="text-dark">{{ product.name }}</span>
                             </h5>
                             <p class="price fw-bold text-center"><span class="d-inline-flex justify-content-center w-100">{{ product.price }} <img src="/media/sar/R2.svg" alt="SAR" style="height: 35px; width: 35px; display: inline-block; vertical-align: middle;"></span></p>
                             <div class="d-flex flex-column gap-2 mt-1">
