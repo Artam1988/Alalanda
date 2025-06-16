@@ -20,12 +20,10 @@
 <div class="container py-1">
     <div class="row mb-5 align-items-center flex-lg-row-reverse">
         <div class="col-lg-6 mb-4 mb-lg-0">
-            <div class="card border-0 shadow-sm">
-                <img src="/media/about/team.png" alt="{% trans 'Our History' %}" class="img-fluid rounded">
-            </div>
+            
         </div>
-        <div class="col-lg-6">
-            <h2 class="mb-4 category-header">{% trans "Our History" %}</h2>
+        <div class="col-lg-12">
+            <h2 class="mb-4 category-header">{% trans "ABOUT US" %}</h2>
             <div>
                 <p class="lead">شركة العلندا للمواد الغذائية المتخصصة باستيراد أجود أنواع المواد الغذائية من جميع أنحاء العالم، أسسها الشيخ محمد بن عبدالرحمن العلندا (رحمه الله) عام 1976. ومنذ ذلك الحين، وقيمنا مبنية على الثقة والجودة والتطوير لتلبية كل ما يحتاجه العميل، وذلك بتوفير مجموعة واسعة من أفضل المنتجات الغذائية، كاللحوم ومنتجات الألبان والخضروات المعلبة والمخللة والمنتجات الجافة وغيرها الكثير. كما نحرص على جودة تغليف المصانع المورده وتخزينها، حرصاً منا على تقديم الأفضل وتلبية كافة احتياجات القنوات الغذائية المختلفة</p>
                 <p class="lead">Al Alalanda Foodstuff Company specializes in importing the finest types of food products from all over the world. It was founded by Sheikh Mohammed bin Abdulrahman Al Alanda (may God have mercy on him) in 1976. Since then, our values ​​have been built on trust, quality and development to meet all the needs of the customer, by providing a wide range of the best food products, including meat, dairy products, canned and pickled vegetables, dry goods and many other items. We also ensure the quality of packaging and storage of the supplying factories, in order to provide the best and meet all the needs of the various food channels.
@@ -33,7 +31,17 @@
             </div>
         </div>
     </div>
-    
+</div>
+<!-- Full-width team image section -->
+<div class="w-100 position-relative text-center mb-5 team-image-section" style="padding:0;height:600px;overflow:hidden;">
+    <img src="/media/about/team.png" style="height:600px;object-fit:cover;width:100vw;max-width:100vw;position:absolute;top:0;left:0;z-index:1;" alt="{% trans 'Our History' %}" class="img-fluid rounded w-100">
+    <!-- Gradient overlay: heavy #1D458C on left and right, fading to transparent in the center -->
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;background:linear-gradient(to right,#1D458C 0%,rgba(29,69,140,0.7) 10%,transparent 40%,transparent 60%,rgba(29,69,140,0.7) 90%,#1D458C 100%);"></div>
+   
+    <img src="/media/about/Shahrazad.png" alt="Shahrazad Logo" style="position: absolute;top:50%;width:250px;height:auto;transform:translateY(-50%);border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.08);padding:8px 12px;z-index:10;left:100px " class="col-sm-12 team-logo team-logo-left">
+    <img src="/media/about/alalanda.png" alt="Alalanda Logo" style="position: absolute;top:50%;width:250px;height:auto;transform:translateY(-50%);border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.08);padding:8px 12px;z-index:10;right:100px " class="col-sm-12 team-logo team-logo-right">
+</div>
+<div class="container py-1">
     <div class="row mb-5 align-items-center">
         <div class="col-lg-6 mb-4 mb-lg-0">
             <div class="card border-0 shadow-sm">
