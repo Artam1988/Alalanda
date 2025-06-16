@@ -179,33 +179,6 @@
   <!-- SweetAlert2 JS -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   
-  <script>
-    // Handle form submissions for adding to cart with SweetAlert
-    document.addEventListener('DOMContentLoaded', function() {
-      // Check for cart alert in session
-      {% if request.session.show_cart_alert %}
-        Swal.fire({
-          title: '{{ request.session.show_cart_alert.title }}',
-          html: '<div class="text-center">' +
-                '<div class="mt-3 mb-2"><strong>{{ request.session.show_cart_alert.product_name }}</strong></div>' +
-                '</div>',
-          icon: 'success',
-          confirmButtonText: '{% trans "Continue Shopping" %}',
-          showCancelButton: true,
-          cancelButtonText: '{% trans "View Cart" %}',
-          cancelButtonColor: '#263e80',
-          confirmButtonColor: '#ad9e13',
-        }).then((result) => {
-          if (!result.isConfirmed) {
-            // If user clicks "View Cart", redirect to cart page
-            window.location.href = '{% url "orders:cart_detail" %}';
-          }
-        });
-      {% endif %}
-      
-      // Add event listeners to all add-to-cart forms
-      
-  </script>
   
   {% block extra_js %}{% endblock %}
 </body>
