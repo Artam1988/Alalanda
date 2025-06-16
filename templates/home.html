@@ -157,45 +157,151 @@
             </h2>
         </div>
     </div>
-    <div class="row" id="featured-products-container">
-        {% if featured_products %}
-            {% for product in featured_products %}
-                <div class="col-sm-1 col-md-6 col-lg-4 mb-4">
-                    <div class="card h-100 featured-product-card">
-                        <!-- Featured badge -->
-                        <div class="featured-badge">
-                            <span class="badge bg-warning text-dark">
-                                <i class="fas fa-star me-1"></i>{% trans "Featured" %}
-                            </span>
+    <div class="row">
+        <div class="col-12">
+            {% if featured_products %}
+            <div id="featuredProductsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% for product in featured_products %}
+                        {% if forloop.counter0|divisibleby:3 %}
+                        <div class="carousel-item {% if forloop.counter0 == 0 %}active{% endif %}">
+                            <div class="d-flex justify-content-center align-items-stretch w-100">
+                        {% endif %}
+                        <div class="featured-carousel-card px-2">
+                            <div class="card h-100 featured-product-card w-100">
+                                <div class="featured-badge">
+                                    <span class="badge bg-warning text-dark">
+                                        <i class="fas fa-star me-1"></i>{% trans "Featured" %}
+                                    </span>
+                                </div>
+                                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title text-center">
+                                        <span class="text-dark">{{ product.name }}</span>
+                                    </h5>
+                                </div>
+                            </div>
                         </div>
-                        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title text-center">
-                                <span class="text-dark">{{ product.name }}</span>
-                            </h5>
-                            
+                        {% if forloop.counter|divisibleby:3 or forloop.last %}
+                            </div>
                         </div>
-                    </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
-            {% empty %}
-                <div class="col-12 text-center py-5">
-                    <p>{% trans "No featured products available." %}</p>
-                </div>
-            {% endfor %}
-        {% endif %}
+                <button class="carousel-control-prev" type="button" data-bs-target="#featuredProductsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#featuredProductsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            {% else %}
+            <div class="col-12 text-center py-5">
+                <p>{% trans "No featured products available." %}</p>
+            </div>
+            {% endif %}
+        </div>
     </div>
 </div>
+
+<!-- Full-width delivery image section -->
+    <div class="w-100 position-relative text-center mt-5" style="padding:0;">
+        <img src="/media/about/2.png" alt="Delivery Map" class="img-fluid rounded w-100" style="width:100vw;max-width:100vw;filter:brightness(0.85);">
+        <!-- Gradient overlay: heavy #1D458C on left and right, fading to transparent in the center -->
+        <div style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;background:linear-gradient(to right,#1D458C 0%,rgba(29,69,140,0.7) 20%,transparent 60%,transparent 100%);"></div>
+        <div style="position:absolute;top:50%;left:60px;transform:translateY(-50%);padding:5px;color:white;text-shadow:0 2px 8px rgba(0,0,0,0.25);white-space:nowrap;z-index:3;text-align:left;min-width:320px;">
+            <h2>نوصل لجميع مناطق المملكة</h2>
+            <hr style="border-top: 6px solid #F4E102; width: 80px;">
+            <p>{% trans "We deliver to all regions of the kingdom" %}</p>
+        </div>
+    </div>
 </div>
 {% endblock %}
 
 {% block extra_js %}
+{{ block.super }}
 <script>
-    $(document).ready(function(){
-        // No JavaScript needed for the Bootstrap grid layout
+$(document).ready(function(){
+    var $row = $('#featured-products-row');
+    var $cards = $row.children();
+    var cardWidth = $cards.first().outerWidth(true);
+    var totalCards = $cards.length;
+    var visibleCards = 3;
+    var currentIndex = 0;
+
+    function updateButtons() {
+        $('.custom-carousel-control-prev').prop('disabled', currentIndex === 0);
+        $('.custom-carousel-control-next').prop('disabled', currentIndex >= totalCards - visibleCards);
+    }
+
+    $('.custom-carousel-control-next').click(function(){
+        if(currentIndex < totalCards - visibleCards) {
+            currentIndex++;
+            $row.animate({scrollLeft: cardWidth * currentIndex}, 400);
+            updateButtons();
+        }
     });
+    $('.custom-carousel-control-prev').click(function(){
+        if(currentIndex > 0) {
+            currentIndex--;
+            $row.animate({scrollLeft: cardWidth * currentIndex}, 400);
+            updateButtons();
+        }
+    });
+    $row.css({overflowX: 'auto', scrollBehavior: 'smooth'});
+    updateButtons();
+});
 </script>
 {% endblock %}
-
 {% block extra_css %}
-<link rel="stylesheet" href="/static/css/home.css">
+{{ block.super }}
+<style>
+#featured-products-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+.custom-carousel-control-prev,
+.custom-carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background: rgba(255,255,255,0.8);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.custom-carousel-control-prev {
+    left: -20px;
+}
+.custom-carousel-control-next {
+    right: -20px;
+}
+.custom-carousel-control-prev[disabled],
+.custom-carousel-control-next[disabled] {
+    opacity: 0.3;
+    pointer-events: none;
+}
+#featuredProductsCarousel .carousel-item {
+    min-height: 1px;
+}
+.featured-carousel-card {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+    box-sizing: border-box;
+    display: flex;
+}
+#featuredProductsCarousel .card {
+    width: 100%;
+    margin: 0 auto;
+}
+</style>
 {% endblock %}
