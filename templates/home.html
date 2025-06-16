@@ -132,7 +132,7 @@
 </div>
 
 <!-- Featured Products Section -->
-<div class="px-5 mx-auto mb-5" style="max-width: 1400px;">
+<div class="px-2 my-1 px-md-5 mx-auto mb-5" style="max-width: 1400px;">
     <div class="row">
         <div class="col-12">
             <h2 class="category-header mb-4">
@@ -147,18 +147,22 @@
             <div id="featuredProductsCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     {% for product in featured_products %}
-                        {% if forloop.counter0|divisibleby:3 %}
+                            {% if forloop.counter0|divisibleby:3 and not forloop.first %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if forloop.counter0|divisibleby:3 or forloop.first %}
                         <div class="carousel-item {% if forloop.counter0 == 0 %}active{% endif %}">
                             <div class="d-flex justify-content-center align-items-stretch w-100">
                         {% endif %}
-                        <div class="featured-carousel-card px-2">
+                        <div class="featured-carousel-card px-1 px-md-2 col-12 col-md-4">
                             <div class="card h-100 featured-product-card w-100">
                                 <div class="featured-badge">
                                     <span class="badge bg-warning text-dark">
                                         <i class="fas fa-star me-1"></i>{% trans "Featured" %}
                                     </span>
                                 </div>
-                                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
+                                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title text-center">
                                         <span class="text-dark">{{ product.name }}</span>
@@ -166,7 +170,7 @@
                                 </div>
                             </div>
                         </div>
-                        {% if forloop.counter|divisibleby:3 or forloop.last %}
+                        {% if forloop.last %}
                             </div>
                         </div>
                         {% endif %}
@@ -247,6 +251,38 @@ $(document).ready(function(){
     overflow-x: auto;
     scroll-behavior: smooth;
 }
+@media (max-width: 767.98px) {
+    .featured-carousel-card {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        padding-left: 0.25rem !important;
+        padding-right: 0.25rem !important;
+    }
+    #featuredProductsCarousel .carousel-item > .d-flex {
+        flex-wrap: nowrap !important;
+    }
+    #featuredProductsCarousel .card-img-top {
+        height: 160px !important;
+    }
+}
+@media (min-width: 768px) {
+    .featured-carousel-card {
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    #featuredProductsCarousel .card-img-top {
+        height: 200px !important;
+    }
+}
+#featuredProductsCarousel .carousel-item {
+    min-height: 1px;
+}
+#featuredProductsCarousel .card {
+    width: 100%;
+    margin: 0 auto;
+}
 .custom-carousel-control-prev,
 .custom-carousel-control-next {
     position: absolute;
@@ -273,19 +309,6 @@ $(document).ready(function(){
 .custom-carousel-control-next[disabled] {
     opacity: 0.3;
     pointer-events: none;
-}
-#featuredProductsCarousel .carousel-item {
-    min-height: 1px;
-}
-.featured-carousel-card {
-    flex: 0 0 33.3333%;
-    max-width: 33.3333%;
-    box-sizing: border-box;
-    display: flex;
-}
-#featuredProductsCarousel .card {
-    width: 100%;
-    margin: 0 auto;
 }
 </style>
 {% endblock %}
