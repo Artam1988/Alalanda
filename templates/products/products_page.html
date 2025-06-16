@@ -53,38 +53,6 @@
               </button>
             </div>
           </div>
-          
-          <!-- Price range filter -->
-          <div class="mb-3">
-            <label class="form-label">{% trans "Price Range" %}</label>
-            <div class="d-flex align-items-center mb-2">
-              <span class="me-2">{{ min_price }} <img src="/media/sar/R2.svg" alt="SAR" style="height: 35px; width: 35px; display: inline-block; vertical-align: middle;"></span>
-              <span class="flex-grow-1"></span>
-              <span class="ms-2">{{ max_price }} <img src="/media/sar/R2.svg" alt="SAR" style="height: 35px; width: 35px; display: inline-block; vertical-align: middle;"></span>
-            </div>
-            <div class="mb-2">
-              <label class="form-label small mb-1">{% trans "Minimum Price" %}</label>
-              <div class="input-group input-group-sm">
-                <span class="input-group-text">{% trans "Min" %}</span>
-                <input type="number" class="form-control" id="min_price" name="min_price" value="{{ min_price_filter }}" min="{{ min_price }}" max="{{ max_price }}">
-                <span class="input-group-text"><img src="/media/sar/R2.svg" alt="SAR" style="height: 35px; width: 35px; display: inline-block; vertical-align: middle;"></span>
-              </div>
-            </div>
-            <div class="mb-2">
-              <label class="form-label small mb-1">{% trans "Maximum Price" %}</label>
-              <div class="input-group input-group-sm">
-                <span class="input-group-text">{% trans "Max" %}</span>
-                <input type="number" class="form-control" id="max_price" name="max_price" value="{{ max_price_filter }}" min="{{ min_price }}" max="{{ max_price }}">
-                <span class="input-group-text"><img src="/media/sar/R2.svg" alt="SAR" style="height: 35px; width: 35px; display: inline-block; vertical-align: middle;"></span>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Apply filters button -->
-          <div class="d-grid gap-2 mb-4">
-            <button type="submit" class="btn btn-primary">{% trans "Apply Filters" %}</button>
-            <a href="{% url 'products:products_page' %}" class="btn btn-outline-secondary">{% trans "Reset Filters" %}</a>
-          </div>
         </form>
         
         <!-- Categories section -->
