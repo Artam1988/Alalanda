@@ -133,66 +133,49 @@
 
 <!-- Featured Products Section -->
 <div class="px-2 my-1 px-md-5 mx-auto mb-5" style="max-width: 1400px;">
-    <div class="row">
-        <div class="col-12">
-            <h2 class="category-header mb-4">
-                <i class="fas fa-star text-warning me-2"></i>{% trans "Featured Products" %}
-                <span class="badge bg-warning text-dark ms-2">{% trans "Special Selection" %}</span>
-            </h2>
-        </div>
+  <div class="row">
+    <div class="col-12">
+      <h2 class="category-header mb-4">
+        <i class="fas fa-star text-warning me-2"></i>{% trans "Featured Products" %}
+        <span class="badge bg-warning text-dark ms-2">{% trans "Special Selection" %}</span>
+      </h2>
     </div>
-    <div class="row">
-        <div class="col-12">
-            {% if featured_products %}
-            <div id="featuredProductsCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    {% for product in featured_products %}
-                            {% if forloop.counter0|divisibleby:3 and not forloop.first %}
-                            </div>
-                        </div>
-                        {% endif %}
-                        {% if forloop.counter0|divisibleby:3 or forloop.first %}
-                        <div class="carousel-item {% if forloop.counter0 == 0 %}active{% endif %}">
-                            <div class="d-flex justify-content-center align-items-stretch w-100">
-                        {% endif %}
-                        <div class="featured-carousel-card px-1 px-md-2 col-12 col-md-4">
-                            <div class="card h-100 featured-product-card w-100">
-                                <div class="featured-badge">
-                                    <span class="badge bg-warning text-dark">
-                                        <i class="fas fa-star me-1"></i>{% trans "Featured" %}
-                                    </span>
-                                </div>
-                                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-                                <div class="card-body d-flex flex-column">
-                                    <h5 class="card-title text-center">
-                                        <span class="text-dark">{{ product.name }}</span>
-                                    </h5>
-                                </div>
-                            </div>
-                        </div>
-                        {% if forloop.last %}
-                            </div>
-                        </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#featuredProductsCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#featuredProductsCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+  </div>
+
+  {% if featured_products %}
+    <!-- Swiper Container -->
+    <div class="swiper featured-products-swiper">
+      <div class="swiper-wrapper">
+        {% for product in featured_products %}
+        <div class="swiper-slide">
+          <div class="card h-100 featured-product-card w-100">
+            <div class="featured-badge">
+              <span class="badge bg-warning text-dark">
+                <i class="fas fa-star me-1"></i>{% trans "Featured" %}
+              </span>
             </div>
-            {% else %}
-            <div class="col-12 text-center py-5">
-                <p>{% trans "No featured products available." %}</p>
+            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title text-center">
+                <span class="text-dark">{{ product.name }}</span>
+              </h5>
             </div>
-            {% endif %}
+          </div>
         </div>
+        {% endfor %}
+      </div>
+
+      <!-- Navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
     </div>
+  {% else %}
+    <div class="col-12 text-center py-5">
+      <p>{% trans "No featured products available." %}</p>
+    </div>
+  {% endif %}
 </div>
+
 
 <!-- Full-width delivery image section -->
     <div class="w-100 position-relative text-center mt-5" style="padding:0;">
@@ -241,6 +224,28 @@ $(document).ready(function(){
     $row.css({overflowX: 'auto', scrollBehavior: 'smooth'});
     updateButtons();
 });
+
+const swiper = new Swiper('.featured-products-swiper', {
+    slidesPerView: 3,
+    slidesPerGroup: 1,
+    spaceBetween: 20,
+    loop: false,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      992: {
+        slidesPerView: 3,
+      }
+    }
+  });
 </script>
 {% endblock %}
 {% block extra_css %}
