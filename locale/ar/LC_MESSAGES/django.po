@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-18 11:08+0000\n"
+"POT-Creation-Date: 2025-06-18 21:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -172,7 +172,7 @@ msgstr ""
 msgid "Our History"
 msgstr "تاريخنا"
 
-#: templates/about.html:76 templates/home.html:61 templates/home.html:70
+#: templates/about.html:76 templates/home.html:54
 msgid "About Al Alanda"
 msgstr "عن العلندا"
 
@@ -335,7 +335,7 @@ msgstr "قيم علاماتنا التجارية"
 msgid "What makes our brands stand out in the market"
 msgstr "ما يميز علاماتنا التجارية في السوق"
 
-#: templates/brands.html:88 templates/home.html:28
+#: templates/brands.html:88
 msgid "Premium Quality"
 msgstr "جودة ممتازة"
 
@@ -486,94 +486,59 @@ msgstr "شارع الأمير سلطان، حي الرويس"
 msgid "Home"
 msgstr "الرئيسية"
 
-#: templates/home.html:20
-msgid "Welcome to Al Alanda"
-msgstr "مرحباً بكم في العلندا"
+#: templates/home.html:55
+msgid "A food supply company."
+msgstr " شركة ﻟﺘﻮرﻳﺪ اﻟﻤﻮاد اﻟﻐﺬاﺋﻴﺔ"
 
-#: templates/home.html:21
-msgid "Your premier destination for quality food products"
-msgstr "وجهتك الأولى للحصول على منتجات غذائية عالية الجودة"
-
-#: templates/home.html:22
-msgid "Shop Now"
-msgstr "تسوق الآن"
-
-#: templates/home.html:29
-msgid "We select only the finest ingredients for your table"
-msgstr "نحن نختار فقط أجود المكونات لطاولتك"
-
-#: templates/home.html:30
-msgid "Explore Products"
-msgstr "استكشف المنتجات"
-
-#: templates/home.html:36
-msgid "Nationwide Delivery"
-msgstr "توصيل لجميع أنحاء المملكة"
-
-#: templates/home.html:37
-msgid "We deliver anywhere in the Saudi Kingdom"
-msgstr "نوصل لجميع مناطق المملكة"
-
-#: templates/home.html:38
-msgid "Order Now"
-msgstr "اطلب الآن"
-
-#: templates/home.html:62
-msgid "Your trusted partner for premium food products"
-msgstr "شريكك الموثوق للمنتجات الغذائية الممتازة"
-
-#: templates/home.html:63
+#: templates/home.html:56
 msgid ""
-"At Al Alanda, we are passionate about bringing the finest food products to "
-"your table. Our journey began with a simple mission: to provide our "
-"customers with exceptional quality foods that bring joy and satisfaction to "
-"every meal."
-msgstr ""
-"في العلندا، نحن شغوفون بتقديم أفضل المنتجات الغذائية إلى مائدتك. بدأت رحلتنا "
-"بمهمة بسيطة: تزويد عملائنا بأطعمة ذات جودة استثنائية تجلب السعادة والرضا لكل "
-"وجبة."
+" We are keen to provide the customer with what he needs with high quality "
+"and different weights."
+msgstr "ﻧﺤﺮص ﻋﻠﻰ ﺗﻮﻓﻴﺮ ﻣﺎ ﻳﺤﺘﺎﺟﻪ اﻟﻌﻤﻴﻞ ﺑﺠﻮدة ﻋﺎﻟﻴﺔ و أوزان ﻣﺨﺘﻠﻔﺔ"
 
-#: templates/home.html:65
+#: templates/home.html:58
 msgid "Learn More"
 msgstr "اعرف المزيد"
 
-#: templates/home.html:82
-msgid "Our Success Story"
-msgstr "قصة نجاحنا"
+#: templates/home.html:70
+#, fuzzy
+#| msgid "Another Customers"
+msgid "Our Customers"
+msgstr "عملاء اخرون"
 
-#: templates/home.html:93
+#: templates/home.html:81
 msgid "Hotels"
 msgstr "الفنادق"
 
-#: templates/home.html:104
+#: templates/home.html:92
 msgid "Restaurants"
 msgstr "المطاعم"
 
-#: templates/home.html:115
+#: templates/home.html:103
 msgid "Subsistence"
 msgstr "التموين"
 
-#: templates/home.html:126
+#: templates/home.html:114
 msgid "Another Customers"
 msgstr "عملاء اخرون"
 
-#: templates/home.html:139
+#: templates/home.html:127
 msgid "Featured Products"
 msgstr "المنتجات المميزة"
 
-#: templates/home.html:140
+#: templates/home.html:128
 msgid "Special Selection"
 msgstr "اختيار خاص"
 
-#: templates/home.html:154
+#: templates/home.html:142
 msgid "Featured"
 msgstr "مميز"
 
-#: templates/home.html:174
+#: templates/home.html:164
 msgid "No featured products available."
 msgstr "لا توجد منتجات مميزة متوفرة."
 
-#: templates/home.html:188
+#: templates/home.html:178
 #, fuzzy
 #| msgid "We deliver anywhere in the Saudi Kingdom"
 msgid "We deliver to all regions of the kingdom"
@@ -729,6 +694,46 @@ msgstr "إخفاء البحث والفئات"
 #| msgid "Show Filters & Categories"
 msgid "Show Search & Categories"
 msgstr "إظهار البحث والفئات"
+
+#~ msgid "Welcome to Al Alanda"
+#~ msgstr "مرحباً بكم في العلندا"
+
+#~ msgid "Your premier destination for quality food products"
+#~ msgstr "وجهتك الأولى للحصول على منتجات غذائية عالية الجودة"
+
+#~ msgid "Shop Now"
+#~ msgstr "تسوق الآن"
+
+#~ msgid "We select only the finest ingredients for your table"
+#~ msgstr "نحن نختار فقط أجود المكونات لطاولتك"
+
+#~ msgid "Explore Products"
+#~ msgstr "استكشف المنتجات"
+
+#~ msgid "Nationwide Delivery"
+#~ msgstr "توصيل لجميع أنحاء المملكة"
+
+#~ msgid "We deliver anywhere in the Saudi Kingdom"
+#~ msgstr "نوصل لجميع مناطق المملكة"
+
+#~ msgid "Order Now"
+#~ msgstr "اطلب الآن"
+
+#~ msgid "Your trusted partner for premium food products"
+#~ msgstr "شريكك الموثوق للمنتجات الغذائية الممتازة"
+
+#~ msgid ""
+#~ "At Al Alanda, we are passionate about bringing the finest food products "
+#~ "to your table. Our journey began with a simple mission: to provide our "
+#~ "customers with exceptional quality foods that bring joy and satisfaction "
+#~ "to every meal."
+#~ msgstr ""
+#~ "في العلندا، نحن شغوفون بتقديم أفضل المنتجات الغذائية إلى مائدتك. بدأت "
+#~ "رحلتنا بمهمة بسيطة: تزويد عملائنا بأطعمة ذات جودة استثنائية تجلب السعادة "
+#~ "والرضا لكل وجبة."
+
+#~ msgid "Our Success Story"
+#~ msgstr "قصة نجاحنا"
 
 #~ msgid "Shopping Cart"
 #~ msgstr "سلة التسوق"
