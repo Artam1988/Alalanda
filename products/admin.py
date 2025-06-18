@@ -21,7 +21,7 @@ class CategoryAdmin(TranslatableAdmin):
 class ProductAdmin(TranslatableAdmin):
     list_display = ('id', 'name', 'category','is_featured')
     search_fields = ('translations__name', 'category__translations__name') 
-    list_filter = ('category',)
+    list_filter = ('category', 'is_featured')
     ordering = ('id',)
     list_per_page = 10
     list_display_links = ('id', 'name')
