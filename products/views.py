@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils.translation import gettext_lazy as _
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.db.models import Q, Min, Max, Prefetch, Count
+from django.db.models import Q, Prefetch, Count
 from django.views.decorators.cache import cache_page
 from django.utils.cache import get_cache_key, learn_cache_key, patch_response_headers
 from django.core.cache import cache
@@ -9,29 +9,11 @@ from parler.utils import get_active_language_choices
 from .models import Category, Product
 
 def products_page(request):
-    # Get price range in a single query
-    price_range = Product.objects.aggregate(min_price=Min('price'), max_price=Max('price'))
-    min_price = price_range['min_price'] or 0
-    max_price = price_range['max_price'] or 1000
-    
     # Get search parameters
     search_query = request.GET.get('search', '')
-    min_price_filter = request.GET.get('min_price', min_price)
-    max_price_filter = request.GET.get('max_price', max_price)
     
-    # Try to convert price filters to float, use defaults if conversion fails
-    try:
-        min_price_filter = float(min_price_filter)
-    except (ValueError, TypeError):
-        min_price_filter = min_price
-        
-    try:
-        max_price_filter = float(max_price_filter)
-    except (ValueError, TypeError):
-        max_price_filter = max_price
-    
-    # Build the product filter query
-    product_filters = Q(price__gte=min_price_filter, price__lte=max_price_filter)
+    # Build the product filter query (no price filter)
+    product_filters = Q()
     
     # Add search filter if provided
     if search_query:
@@ -78,20 +60,12 @@ def products_page(request):
         # If page is out of range, deliver last page of results
         categories = paginator.page(paginator.num_pages)
     
-    # Format prices to remove trailing zeros
-    min_price_formatted = '{:.2f}'.format(min_price).rstrip('0').rstrip('.') if min_price % 1 == 0 else '{:.2f}'.format(min_price)
-    max_price_formatted = '{:.2f}'.format(max_price).rstrip('0').rstrip('.') if max_price % 1 == 0 else '{:.2f}'.format(max_price)
-    
     # Render the response
     response = render(request, 'products/products_page.html', {
         'categories': categories,
         'all_categories': all_categories,  # Pass all categories for the sidebar
         'paginator': paginator,
         'search_query': search_query,
-        'min_price': min_price_formatted,
-        'max_price': max_price_formatted,
-        'min_price_filter': min_price_filter,
-        'max_price_filter': max_price_filter
     })
     
     return response

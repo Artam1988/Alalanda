@@ -13,13 +13,13 @@ class CategoryAdmin(TranslatableAdmin):
     list_display_links = ('id', 'name')
     fieldsets = (
         (None, {
-            'fields': ('name',)
+            'fields': ('name', 'banner_image')
         }),
     )
 
 @admin.register(Product)
 class ProductAdmin(TranslatableAdmin):
-    list_display = ('id', 'name', 'category', 'price','is_featured')
+    list_display = ('id', 'name', 'category','is_featured')
     search_fields = ('translations__name', 'category__translations__name') 
     list_filter = ('category',)
     ordering = ('id',)
@@ -27,10 +27,7 @@ class ProductAdmin(TranslatableAdmin):
     list_display_links = ('id', 'name')
     fieldsets = (
         (None, {
-            'fields': ('name', 'category', 'image', 'price', 'is_featured')
+            'fields': ('name', 'category', 'image', 'is_featured')
         }),
-        ('Advanced options', {
-            'classes': ('collapse',),
-            'fields': ('description',)
-        }),
+        
     )
