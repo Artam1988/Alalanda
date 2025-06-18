@@ -81,7 +81,11 @@
           <div class="col-12">
             <a href="{% url 'products:category_products' category_id=category.id %}" style="text-decoration:none;">
               <div class="card h-100 shadow-sm category-card position-relative overflow-hidden">
-                <img src="/media/categories/{{ category.name }}.jpg" class="img-fluid w-100 rounded" alt="{{ category.name }}" style="max-height: 320px; object-fit: cover;">
+               {% if category.banner_image %}
+        <img src="{{ category.banner_image.url }}" class="img-fluid w-100 rounded" alt="{{ category.name }}" style="max-height: 400px; object-fit: cover;">
+      {% else %}
+        <img src="/media/categories/default.jpg" class="img-fluid w-100 rounded" alt="{{ category.name }}" style="max-height: 400px; object-fit: cover;">
+      {% endif %}
                 <div class="card-img-overlay d-flex align-items-start p-3">
                   <h2 class="category-header mb-0" style="color:#be2328; background:rgba(255,255,255,0.85); border-radius:8px; padding:0.5rem 1.2rem; font-size:1.5rem; font-weight:700;">
                     {{ category.name }} <i class="fas fa-arrow-right fs-5"></i>

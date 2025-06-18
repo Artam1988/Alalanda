@@ -42,7 +42,11 @@
   </div>
   <div class="category-header-section mb-4">
     <div class="category-banner mb-3 position-relative">
-      <img src="/media/categories/{{ category.name }}.jpg" class="img-fluid w-100 rounded" alt="{{ category.name }}" style="max-height: 400px; object-fit: cover;">
+      {% if category.banner_image %}
+        <img src="{{ category.banner_image.url }}" class="img-fluid w-100 rounded" alt="{{ category.name }}" style="max-height: 400px; object-fit: cover;">
+      {% else %}
+        <img src="/media/categories/default.jpg" class="img-fluid w-100 rounded" alt="{{ category.name }}" style="max-height: 400px; object-fit: cover;">
+      {% endif %}
     </div>
     <h2 class="category-header">{{ category.name }}</h2>
   </div>
