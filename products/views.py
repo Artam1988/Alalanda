@@ -81,6 +81,10 @@ def products_page(request):
         return response
 
 def product_list(request, category_id):
+    # Get search query
+    search_query = request.GET.get('search', '')
+    page = request.GET.get('page', 1)
+
     # Get category with translations and prefetch its products in a single query
     category = get_object_or_404(
         Category.objects.prefetch_related(
@@ -92,16 +96,31 @@ def product_list(request, category_id):
         ), 
         id=category_id
     )
-    
+
+    # Filter products by search query if provided
+    products_qs = category.products.all()
+    if search_query:
+        products_qs = products_qs.filter(translations__name__icontains=search_query)
+
+    # Paginate products (12 per page)
+    paginator = Paginator(products_qs, 12)
+    try:
+        products_page_obj = paginator.page(page)
+    except PageNotAnInteger:
+        products_page_obj = paginator.page(1)
+    except EmptyPage:
+        products_page_obj = paginator.page(paginator.num_pages)
+
     # Get all categories for the sidebar with counts to optimize sidebar rendering
     all_categories = Category.objects.prefetch_related('translations').annotate(product_count=Count('products'))
-    
+
     # Render the response
     response = render(request, 'products/category_products.html', {
         'category': category,
-        'products': category.products.all(),  # Use the prefetched products
-        'all_categories': all_categories  # Pass all categories for the sidebar
+        'products': products_page_obj,  # Use the paginated products
+        'all_categories': all_categories,  # Pass all categories for the sidebar
+        'search_query': search_query,
+        'paginator': paginator,
     })
-    
     return response
 
