@@ -4,44 +4,15 @@
 {% block title %}{% trans "Home" %} | العلندا{% endblock %}
 
 {% block content %}
-<!-- Hero Banner Section -->
-<div class="mb-1">
-  <div style="width: 100%; overflow: hidden;">
-    <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+<!-- Hero Banner Section: Single Image with Text Overlay -->
+<div class="mb-1 position-relative w-100" style="overflow: hidden;">
+    <img src="/media/home/main.jpg" class="d-block w-100 img-fluid" alt="Al Alanda Food" style="height: 45vw; min-height: 300px; max-height: 700px; object-fit: cover;">
+    <div style="position: absolute; top: 5vw; right: 5vw; z-index: 2; display: flex; justify-content: flex-end; width: auto; pointer-events: none;">
+        <div class="main-hero-text-overlay" style="border-radius: 10px; padding: 2vw 4vw; display: inline-block; pointer-events: auto;">
+            <h2 class="about-heading-title text-white mb-1 main-hero-title">الأفضل من كل أرض</h2>
+            <p class="about-heading-subtitle text-white mb-0 main-hero-subtitle">The Best of All Lands</p>
         </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="/media/home/main.jpg" class="d-block w-100" alt="Al Alanda Food" style="height: 700px; object-fit: cover;">
-                <div style="position: absolute; top: 40px; right: 40px; z-index: 2; display: flex; justify-content: flex-end; width: auto; pointer-events: none;">
-                    <div style="border-radius: 10px; padding: 20px 40px; display: inline-block; pointer-events: auto;">
-                        <h2 class="about-heading-title text-white mb-1" style="font-size:2.5rem;">الأفضل من كل أرض</h2>
-                        <p class="about-heading-subtitle text-white mb-0" style="font-size:1.25rem;">The Best of All Lands</p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/media/home/1.jpg" class="d-block w-100" alt="Quality Products" style="height: 700px; object-fit: cover;">
-                
-            </div>
-            <div class="carousel-item">
-                <img src="/media/home/2.png" class="d-block w-100" alt="Nationwide Delivery" style="height: 700px; object-fit: cover;">
-                
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
-  </div>
 </div>
 
 
@@ -120,7 +91,7 @@
 </div>
 
 <!-- Featured Products Section -->
-<div class="px-2 my-1 px-md-5 mx-auto mb-5" style="max-width: 1400px;">
+<div class="px-2 my-1 px-md-5 mx-auto mb-5" style="max-width: 100vw;">
   <div class="row">
     <div class="col-12">
       <h2 class="category-header mb-4">
@@ -168,15 +139,13 @@
 
 
 <!-- Full-width delivery image section -->
-    <div class="w-100 position-relative text-center mt-5" style="padding:0;">
-        <img src="/media/home/mirrored.jpg" alt="Delivery Map" class="img-fluid rounded w-100" style="height:600px;width:100vw;max-width:100vw;filter:brightness(0.85);">
-        <!-- Gradient overlay: heavy #1D458C on left and right, fading to transparent in the center -->
-        <div style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;background:linear-gradient(to left,#1D458C 0%,rgba(29,69,140,0.7) 20%,transparent 60%,transparent 100%);"></div>
-        <div style="position:absolute;top:50%;right:60px;transform:translateY(-50%);padding:5px;color:white;text-shadow:0 2px 8px rgba(0,0,0,0.25);white-space:nowrap;z-index:3;text-align:right;min-width:320px;">
-            <h1 style="font-size:4rem">نوصل لجميع مناطق المملكة</h1>
-            <hr style="border-top: 6px solid #F4E102; width: 30%; margin-left:auto;">
-            <h2>{% trans "We deliver to all regions of the kingdom" %}</h2>
-        </div>
+<div class="w-100 position-relative text-center mt-5" style="padding:0;">
+    <img src="/media/home/mirrored.jpg" alt="Delivery Map" class="img-fluid rounded w-100" style="height: 40vw; min-height: 250px; max-height: 600px; width:100vw; max-width:100vw; filter:brightness(0.85); object-fit:cover;">
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;background:linear-gradient(to left,#1D458C 0%,rgba(29,69,140,0.7) 20%,transparent 60%,transparent 100%);"></div>
+    <div style="position:absolute;top:50%;right:5vw;transform:translateY(-50%);padding:5px;color:white;text-shadow:0 2px 8px rgba(0,0,0,0.25);white-space:nowrap;z-index:3;text-align:right;min-width:220px;">
+        <h1 style="font-size:3.5vw; min-font-size:2rem;">نوصل لجميع مناطق المملكة</h1>
+        <div class="custom-border my-4" style="width: 30%; height: 6px; background-color: yellow; margin-top: 2px; margin-left: auto;"></div>
+        <h2 style="font-size:2vw; min-font-size:1rem;">{% trans "We deliver to all regions of the kingdom" %}</h2>
     </div>
 </div>
 {% endblock %}
@@ -308,6 +277,23 @@ const swiper = new Swiper('.featured-products-swiper', {
 .custom-carousel-control-next[disabled] {
     opacity: 0.3;
     pointer-events: none;
+}
+.main-hero-title {
+    font-size: 2.5rem;
+}
+.main-hero-subtitle {
+    font-size: 1.25rem;
+}
+@media (max-width: 767.98px) {
+    .main-hero-title {
+        font-size: 1.5rem;
+    }
+    .main-hero-subtitle {
+        font-size: 1rem;
+    }
+    .main-hero-text-overlay {
+        padding: 12px 18px !important;
+    }
 }
 </style>
 {% endblock %}
