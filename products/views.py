@@ -11,64 +11,74 @@ from .models import Category, Product
 def products_page(request):
     # Get search parameters
     search_query = request.GET.get('search', '')
-    
+    page = request.GET.get('page', 1)
+
     # Build the product filter query (no price filter)
     product_filters = Q()
-    
+
     # Add search filter if provided
     if search_query:
         product_filters &= (
-            Q(translations__name__icontains=search_query) | 
-            Q(translations__description__icontains=search_query)
+            Q(translations__name__icontains=search_query)
         )
-    
+
     # Get current active language
     active_languages = get_active_language_choices()
-    
-    # First, get categories that have matching products (using a subquery)
-    categories_with_products = Category.objects.filter(
-        products__in=Product.objects.filter(product_filters)
-    ).distinct()
-    
+
     # Get all categories for the sidebar
     all_categories = Category.objects.prefetch_related('translations')
-    
-    # Then prefetch the filtered products for each category
-    filtered_categories = list(categories_with_products.prefetch_related(
-        # Prefetch translations for categories
-        'translations',
-        # Prefetch only the filtered products
-        Prefetch(
-            'products',
-            queryset=Product.objects.filter(product_filters)
-                                  .prefetch_related('translations')
-                                  .distinct(),
-            to_attr='filtered_products'
-        )
-    ))
-    
-    # Set up pagination - show 3 categories per page
-    paginator = Paginator(filtered_categories, 3)
-    page = request.GET.get('page', 1)
-    
-    try:
-        categories = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page
-        categories = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range, deliver last page of results
-        categories = paginator.page(paginator.num_pages)
-    
-    # Render the response
-    response = render(request, 'products/products_page.html', {
-        'categories': categories,
-        'all_categories': all_categories,  # Pass all categories for the sidebar
-        'paginator': paginator,
-        'search_query': search_query,
-    })
-    
-    return response
+
+    if search_query:
+        # If searching, show products, not categories
+        products = Product.objects.filter(product_filters).prefetch_related('translations', 'category').distinct()
+        paginator = Paginator(products, 12)  # Show 12 products per page
+        try:
+            products_page_obj = paginator.page(page)
+        except PageNotAnInteger:
+            products_page_obj = paginator.page(1)
+        except EmptyPage:
+            products_page_obj = paginator.page(paginator.num_pages)
+        response = render(request, 'products/products_page.html', {
+            'products': products_page_obj,
+            'all_categories': all_categories,
+            'paginator': paginator,
+            'search_query': search_query,
+            'categories': None,  # No categories in search mode
+        })
+        return response
+    else:
+        # First, get categories that have matching products (using a subquery)
+        categories_with_products = Category.objects.filter(
+            products__in=Product.objects.filter(product_filters)
+        ).distinct()
+
+        # Then prefetch the filtered products for each category
+        filtered_categories = list(categories_with_products.prefetch_related(
+            'translations',
+            Prefetch(
+                'products',
+                queryset=Product.objects.filter(product_filters)
+                                      .prefetch_related('translations')
+                                      .distinct(),
+                to_attr='filtered_products'
+            )
+        ))
+
+        # Set up pagination - show 3 categories per page
+        paginator = Paginator(filtered_categories, 3)
+        try:
+            categories = paginator.page(page)
+        except PageNotAnInteger:
+            categories = paginator.page(1)
+        except EmptyPage:
+            categories = paginator.page(paginator.num_pages)
+        response = render(request, 'products/products_page.html', {
+            'categories': categories,
+            'all_categories': all_categories,
+            'paginator': paginator,
+            'search_query': search_query,
+        })
+        return response
 
 def product_list(request, category_id):
     # Get category with translations and prefetch its products in a single query

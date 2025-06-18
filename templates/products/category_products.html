@@ -50,6 +50,15 @@
     </div>
     <h2 class="category-header">{{ category.name }}</h2>
   </div>
+  <!-- Search box for products in this category -->
+  <form method="get" action="" class="mb-4">
+    <div class="input-group">
+      <input type="text" class="form-control" name="search" value="{{ search_query }}" placeholder="{% trans 'Search products in this category' %}">
+      <button class="btn btn-primary" type="submit">
+        <i class="fas fa-search"></i> {% trans 'Search' %}
+      </button>
+    </div>
+  </form>
   <div class="row">
     {% for product in products %}
       <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
@@ -73,6 +82,61 @@
         </div>
       </div>
     {% endfor %}
+  </div>
+  <!-- Pagination Controls for products -->
+  <div class="pagination-container text-center mt-4 mb-5">
+    <nav aria-label="{% trans 'Product pagination' %}">
+      <ul class="pagination justify-content-center flex-wrap px-2">
+        {% if products.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?search={{ search_query }}&page=1" aria-label="{% trans 'First' %}">
+              <span aria-hidden="true">&laquo;&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="?search={{ search_query }}&page={{ products.previous_page_number }}" aria-label="{% trans 'Previous' %}">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">&laquo;&laquo;</span>
+          </li>
+          <li class="page-item disabled">
+            <span class="page-link">&laquo;</span>
+          </li>
+        {% endif %}
+        {% for i in products.paginator.page_range %}
+          {% if products.number == i %}
+            <li class="page-item active"><span class="page-link">{{ i }}</span></li>
+          {% elif i > products.number|add:'-3' and i < products.number|add:'3' %}
+            <li class="page-item"><a class="page-link" href="?search={{ search_query }}&page={{ i }}">{{ i }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% if products.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?search={{ search_query }}&page={{ products.next_page_number }}" aria-label="{% trans 'Next' %}">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="?search={{ search_query }}&page={{ products.paginator.num_pages }}" aria-label="{% trans 'Last' %}">
+              <span aria-hidden="true">&raquo;&raquo;</span>
+            </a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">&raquo;</span>
+          </li>
+          <li class="page-item disabled">
+            <span class="page-link">&raquo;&raquo;</span>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+    <div class="pagination-info text-muted small mt-2">
+      {% trans 'Showing' %} {{ products.start_index }} {% trans 'to' %} {{ products.end_index }} {% trans 'of' %} {{ products.paginator.count }} {% trans 'products' %}
+    </div>
   </div>
   </div>
 </div>

@@ -75,7 +75,83 @@
   
   <!-- Products content -->
   <div class="col-lg-9 col-md-8 px-2 px-md-3 products-column">
-    {% if categories.object_list %}
+    {% if search_query and products %}
+      <div class="row g-4">
+        {% for product in products %}
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100 shadow-sm product-card position-relative overflow-hidden">
+              {% if product.image %}
+                <img src="{{ product.image.url }}" class="img-fluid w-100 rounded" alt="{{ product.name }}" style="max-height: 300px; object-fit: cover;">
+              {% else %}
+                <img src="/media/products/default.jpg" class="img-fluid w-100 rounded" alt="{{ product.name }}" style="max-height: 300px; object-fit: cover;">
+              {% endif %}
+              <div class="card-body">
+                <h5 class="card-title" style="font-weight:700; color:var(--primary-dark);">{{ product.name }}</h5>
+                {% if product.category %}
+                  <p class="card-text text-muted small mb-1">{{ product.category.name }}</p>
+                {% endif %}
+                <!-- Add more product info here if needed -->
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <!-- Pagination Controls for products -->
+      <div class="pagination-container text-center mt-4 mb-5">
+        <nav aria-label="{% trans "Product pagination" %}">
+          <ul class="pagination justify-content-center flex-wrap px-2">
+            {% if products.has_previous %}
+              <li class="page-item">
+                <a class="page-link" href="?search={{ search_query }}&page=1" aria-label="{% trans "First" %}">
+                  <span aria-hidden="true">&laquo;&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="?search={{ search_query }}&page={{ products.previous_page_number }}" aria-label="{% trans "Previous" %}">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+            {% else %}
+              <li class="page-item disabled">
+                <span class="page-link">&laquo;&laquo;</span>
+              </li>
+              <li class="page-item disabled">
+                <span class="page-link">&laquo;</span>
+              </li>
+            {% endif %}
+            {% for i in products.paginator.page_range %}
+              {% if products.number == i %}
+                <li class="page-item active"><span class="page-link">{{ i }}</span></li>
+              {% elif i > products.number|add:'-3' and i < products.number|add:'3' %}
+                <li class="page-item"><a class="page-link" href="?search={{ search_query }}&page={{ i }}">{{ i }}</a></li>
+              {% endif %}
+            {% endfor %}
+            {% if products.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="?search={{ search_query }}&page={{ products.next_page_number }}" aria-label="{% trans "Next" %}">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="?search={{ search_query }}&page={{ products.paginator.num_pages }}" aria-label="{% trans "Last" %}">
+                  <span aria-hidden="true">&raquo;&raquo;</span>
+                </a>
+              </li>
+            {% else %}
+              <li class="page-item disabled">
+                <span class="page-link">&raquo;</span>
+              </li>
+              <li class="page-item disabled">
+                <span class="page-link">&raquo;&raquo;</span>
+              </li>
+            {% endif %}
+          </ul>
+        </nav>
+        <div class="pagination-info text-muted small mt-2">
+          {% trans "Showing" %} {{ products.start_index }} {% trans "to" %} {{ products.end_index }} {% trans "of" %} {{ products.paginator.count }} {% trans "products" %}
+        </div>
+      </div>
+    {% elif categories and categories.object_list %}
       <div class="row g-4">
         {% for category in categories.object_list %}
           <div class="col-12">
@@ -98,7 +174,7 @@
       </div>
     {% else %}
       <div class="alert" style="background-color: var(--primary-bg); color: var(--primary-dark); border-left: 4px solid var(--primary-color); border-radius: 8px;">
-        <i class="fas fa-info-circle me-2"></i> {% trans "No categories found." %}
+        <i class="fas fa-info-circle me-2"></i> {% trans "No products or categories found." %}
       </div>
     {% endif %}
 
@@ -173,9 +249,9 @@
     // Sidebar toggle functionality
     function updateToggleButtonText(isVisible) {
       if (isVisible) {
-        $('#toggleBtnText').text('{% trans "Hide Filters & Categories" %}');
+        $('#toggleBtnText').text('{% trans "Hide Search & Categories" %}');
       } else {
-        $('#toggleBtnText').text('{% trans "Show Filters & Categories" %}');
+        $('#toggleBtnText').text('{% trans "Show Search & Categories" %}');
       }
     }
     
