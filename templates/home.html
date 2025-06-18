@@ -15,28 +15,21 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="/media/home/main.jpg" class="d-block w-100" alt="Al Alanda Food" style="height: 600px; object-fit: cover;">
-                <div class="carousel-caption" style="background-color: rgba(0,0,0,0.5); border-radius: 10px; padding: 20px;">
-                    <h2>{% trans "Welcome to Al Alanda" %}</h2>
-                    <p>{% trans "Your premier destination for quality food products" %}</p>
-                    <a href="{% url 'products:products_page' %}" class="btn btn-primary">{% trans "Shop Now" %}</a>
+                <img src="/media/home/main.jpg" class="d-block w-100" alt="Al Alanda Food" style="height: 700px; object-fit: cover;">
+                <div style="position: absolute; top: 40px; right: 40px; z-index: 2; display: flex; justify-content: flex-end; width: auto; pointer-events: none;">
+                    <div style="border-radius: 10px; padding: 20px 40px; display: inline-block; pointer-events: auto;">
+                        <h2 class="about-heading-title text-white mb-1" style="font-size:2.5rem;">الأفضل من كل أرض</h2>
+                        <p class="about-heading-subtitle text-white mb-0" style="font-size:1.25rem;">The Best of All Lands</p>
+                    </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="/media/home/1.jpg" class="d-block w-100" alt="Quality Products" style="height: 600px; object-fit: cover;">
-                <div class="carousel-caption" style="background-color: rgba(0,0,0,0.5); border-radius: 10px; padding: 20px;">
-                    <h2>{% trans "Premium Quality" %}</h2>
-                    <p>{% trans "We select only the finest ingredients for your table" %}</p>
-                    <a href="{% url 'products:products_page' %}" class="btn btn-primary">{% trans "Explore Products" %}</a>
-                </div>
+                <img src="/media/home/1.jpg" class="d-block w-100" alt="Quality Products" style="height: 700px; object-fit: cover;">
+                
             </div>
             <div class="carousel-item">
-                <img src="/media/home/2.png" class="d-block w-100" alt="Nationwide Delivery" style="height: 600px; object-fit: cover;">
-                <div class="carousel-caption" style="background-color: rgba(0,0,0,0.5); border-radius: 10px; padding: 20px;">
-                    <h2>{% trans "Nationwide Delivery" %}</h2>
-                    <p>{% trans "We deliver anywhere in the Saudi Kingdom" %}</p>
-                    <a href="{% url 'products:products_page' %}" class="btn btn-primary">{% trans "Order Now" %}</a>
-                </div>
+                <img src="/media/home/2.png" class="d-block w-100" alt="Nationwide Delivery" style="height: 700px; object-fit: cover;">
+                
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
@@ -59,15 +52,10 @@
     <div class="row align-items-center">
         <div class="col-lg-6 mb-4 mb-lg-0">
             <h2 class="category-header mb-4">{% trans "About Al Alanda" %}</h2>
-            <p class="lead">{% trans "Your trusted partner for premium food products" %}</p>
-            <p>{% trans "At Al Alanda, we are passionate about bringing the finest food products to your table. Our journey began with a simple mission: to provide our customers with exceptional quality foods that bring joy and satisfaction to every meal." %}</p>
+            <p class="lead">{% trans "A food supply company." %}</p>
+            <p>{% trans " We are keen to provide the customer with what he needs with high quality and different weights." %}</p>
             <div class="mt-4">
                 <a href="{% url 'about' %}" class="btn btn-outline-primary">{% trans "Learn More" %} <i class="fas fa-arrow-right ms-2"></i></a>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="card border-0 shadow-sm">
-                <img src="/media/home/about.png" alt="{% trans 'About Al Alanda' %}" class="img-fluid rounded" style="max-height:350px">
             </div>
         </div>
     </div>
@@ -76,54 +64,54 @@
 
 
 <!-- Counter Section -->
-<div class="px-5 mx-auto mb-5" style="max-width: 1400px;">
+<div class="px-5 mx-auto mb-5" style="max-width: 1400px; background-color: #263e80; border-radius: 10px; padding: 30px;">
     <div class="row text-center">
         <div class="col-12 mb-4">
-            <h2 class="category-header text-center">{% trans "Our Success Story" %}</h2>
+            <h2 class="category-header text-center text-white">{% trans "Our Customers" %}</h2>
         </div>
     </div>
     <div class="row text-center">
-        <div class="col-md-3 mb-4 mb-md-0">
-            <div class="card border-0 shadow-sm h-100 py-4">
+        <div class="col-md-3 mb-4 mb-md-0" >
+            <div class="card border-0 shadow-sm h-100 py-4" style="background-color: #263e80;">
                 <div class="card-body">
                     <div class="display-4 mb-2" style="color: var(--primary-color);">
-                        <i class="fas fa-hotel" style="color:#be2328"></i>
+                        <i class="fas fa-hotel text-white"></i>
                     </div>
-                    <h3 class="counter" style="color: var(--accent-color);">168+</h3>
-                    <p class="text-muted">{% trans "Hotels" %}</p>
+                    <h3 class="counter fw-bold" style="color:#F4E102">168+</h3>
+                    <p class="text-white">{% trans "Hotels" %}</p>
                 </div>
             </div>
         </div>
         <div class="col-md-3 mb-4 mb-md-0">
-            <div class="card border-0 shadow-sm h-100 py-4">
+            <div class="card border-0 shadow-sm h-100 py-4" style="background-color: #263e80;">
                 <div class="card-body">
                     <div class="display-4 mb-2" style="color: var(--primary-color);">
-                        <i class="fas fa-utensils" style="color:#be2328"></i>
+                        <i class="fas fa-utensils text-white"></i>
                     </div>
-                    <h3 class="counter" style="color: var(--accent-color);">265+</h3>
-                    <p class="text-muted">{% trans "Restaurants" %}</p>
+                    <h3 class="counter fw-bold" style="color:#F4E102;">265+</h3>
+                    <p class="text-white">{% trans "Restaurants" %}</p>
                 </div>
             </div>
         </div>
         <div class="col-md-3 mb-4 mb-md-0">
-            <div class="card border-0 shadow-sm h-100 py-4">
+            <div class="card border-0 shadow-sm h-100 py-4" style="background-color: #263e80;">
                 <div class="card-body">
                     <div class="display-4 mb-2" style="color: var(--primary-color);">
-                        <i class="fas fa-store" style="color:#be2328"></i>
+                        <i class="fas fa-store text-white"></i>
                     </div>
-                    <h3 class="counter" style="color: var(--accent-color);">220+</h3>
-                    <p class="text-muted">{% trans "Subsistence" %}</p>
+                    <h3 class="counter fw-bold" style="color:#F4E102;">220+</h3>
+                    <p class="text-white">{% trans "Subsistence" %}</p>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card border-0 shadow-sm h-100 py-4">
+            <div class="card border-0 shadow-sm h-100 py-4" style="background-color: #263e80;">
                 <div class="card-body">
                     <div class="display-4 mb-2" style="color: var(--primary-color);">
-                        <i class="fas fa-person" style="color:#be2328"></i>
+                        <i class="fas fa-person text-white"></i>
                     </div>
-                    <h3 class="counter" style="color: var(--accent-color);">128+</h3>
-                    <p class="text-muted">{% trans "Another Customers" %}</p>
+                    <h3 class="counter fw-bold" style="color:#F4E102;">128+</h3>
+                    <p class="text-white">{% trans "Another Customers" %}</p>
                 </div>
             </div>
         </div>
@@ -168,6 +156,8 @@
       <!-- Navigation buttons -->
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
+      <!-- Pagination -->
+      <div class="swiper-pagination"></div>
     </div>
   {% else %}
     <div class="col-12 text-center py-5">
@@ -179,13 +169,13 @@
 
 <!-- Full-width delivery image section -->
     <div class="w-100 position-relative text-center mt-5" style="padding:0;">
-        <img src="/media/about/2.png" alt="Delivery Map" class="img-fluid rounded w-100" style="width:100vw;max-width:100vw;filter:brightness(0.85);">
+        <img src="/media/home/mirrored.jpg" alt="Delivery Map" class="img-fluid rounded w-100" style="height:600px;width:100vw;max-width:100vw;filter:brightness(0.85);">
         <!-- Gradient overlay: heavy #1D458C on left and right, fading to transparent in the center -->
-        <div style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;background:linear-gradient(to right,#1D458C 0%,rgba(29,69,140,0.7) 20%,transparent 60%,transparent 100%);"></div>
-        <div style="position:absolute;top:50%;left:60px;transform:translateY(-50%);padding:5px;color:white;text-shadow:0 2px 8px rgba(0,0,0,0.25);white-space:nowrap;z-index:3;text-align:left;min-width:320px;">
-            <h2>نوصل لجميع مناطق المملكة</h2>
-            <hr style="border-top: 6px solid #F4E102; width: 80px;">
-            <p>{% trans "We deliver to all regions of the kingdom" %}</p>
+        <div style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;background:linear-gradient(to left,#1D458C 0%,rgba(29,69,140,0.7) 20%,transparent 60%,transparent 100%);"></div>
+        <div style="position:absolute;top:50%;right:60px;transform:translateY(-50%);padding:5px;color:white;text-shadow:0 2px 8px rgba(0,0,0,0.25);white-space:nowrap;z-index:3;text-align:right;min-width:320px;">
+            <h1 style="font-size:4rem">نوصل لجميع مناطق المملكة</h1>
+            <hr style="border-top: 6px solid #F4E102; width: 30%; margin-left:auto;">
+            <h2>{% trans "We deliver to all regions of the kingdom" %}</h2>
         </div>
     </div>
 </div>
@@ -229,10 +219,14 @@ const swiper = new Swiper('.featured-products-swiper', {
     slidesPerView: 3,
     slidesPerGroup: 1,
     spaceBetween: 20,
-    loop: false,
+    loop: true, // Enable looping
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
     },
     breakpoints: {
       0: {
