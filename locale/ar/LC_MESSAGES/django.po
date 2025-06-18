@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-17 21:49+0000\n"
+"POT-Creation-Date: 2025-06-18 11:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -152,11 +152,11 @@ msgstr "يرجى تحميل سيرتك الذاتية."
 msgid "There was an error submitting your application. Please try again."
 msgstr "حدث خطأ أثناء تقديم طلبك. يرجى المحاولة مرة أخرى."
 
-#: project/settings.py:132
+#: project/settings.py:139
 msgid "English"
 msgstr "الإنجليزية"
 
-#: project/settings.py:133
+#: project/settings.py:140
 msgid "Arabic"
 msgstr "العربية"
 
@@ -580,7 +580,7 @@ msgid "We deliver to all regions of the kingdom"
 msgstr "نوصل لجميع مناطق المملكة"
 
 #: templates/products/category_products.html:9
-#: templates/products/category_products.html:116
+#: templates/products/category_products.html:184
 msgid "Hide Categories"
 msgstr "إخفاء الفئات"
 
@@ -593,11 +593,77 @@ msgstr "الفئات"
 msgid "Back"
 msgstr "العودة"
 
-#: templates/products/category_products.html:68
+#: templates/products/category_products.html:56
+#, fuzzy
+#| msgid "No products available in this category."
+msgid "Search products in this category"
+msgstr "لا توجد منتجات متوفرة في هذه الفئة."
+
+#: templates/products/category_products.html:58
+msgid "Search"
+msgstr "البحث"
+
+#: templates/products/category_products.html:81
 msgid "No products available in this category."
 msgstr "لا توجد منتجات متوفرة في هذه الفئة."
 
+#: templates/products/category_products.html:88
+#: templates/products/products_page.html:101
+#, fuzzy
+#| msgid "Product category pagination"
+msgid "Product pagination"
+msgstr "ترقيم صفحات فئات المنتجات"
+
+#: templates/products/category_products.html:92
+#: templates/products/products_page.html:105
+#: templates/products/products_page.html:187
+msgid "First"
+msgstr "الأولى"
+
+#: templates/products/category_products.html:97
+#: templates/products/products_page.html:110
+#: templates/products/products_page.html:192
+msgid "Previous"
+msgstr "السابق"
+
 #: templates/products/category_products.html:118
+#: templates/products/products_page.html:131
+#: templates/products/products_page.html:215
+msgid "Next"
+msgstr "التالي"
+
+#: templates/products/category_products.html:123
+#: templates/products/products_page.html:136
+#: templates/products/products_page.html:220
+msgid "Last"
+msgstr "الأخيرة"
+
+#: templates/products/category_products.html:138
+#: templates/products/products_page.html:151
+#: templates/products/products_page.html:235
+msgid "Showing"
+msgstr "عرض"
+
+#: templates/products/category_products.html:138
+#: templates/products/products_page.html:151
+#: templates/products/products_page.html:235
+msgid "to"
+msgstr "إلى"
+
+#: templates/products/category_products.html:138
+#: templates/products/products_page.html:151
+#: templates/products/products_page.html:235
+msgid "of"
+msgstr "من"
+
+#: templates/products/category_products.html:138
+#: templates/products/products_page.html:151
+#, fuzzy
+#| msgid "Products"
+msgid "products"
+msgstr "المنتجات"
+
+#: templates/products/category_products.html:186
 msgid "Show Categories"
 msgstr "إظهار الفئات"
 
@@ -623,7 +689,6 @@ msgid "Our Products"
 msgstr "منتجاتنا"
 
 #: templates/products/products_page.html:32
-#: templates/products/products_page.html:172
 msgid "Hide Filters & Categories"
 msgstr "إخفاء المرشحات والفئات"
 
@@ -639,51 +704,31 @@ msgstr "البحث عن المنتجات"
 msgid "Product name"
 msgstr "اسم المنتج"
 
-#: templates/products/products_page.html:97
+#: templates/products/products_page.html:177
 #, fuzzy
 #| msgid "categories"
-msgid "No categories found."
+msgid "No products or categories found."
 msgstr "الفئات"
 
-#: templates/products/products_page.html:103
+#: templates/products/products_page.html:183
 msgid "Product category pagination"
 msgstr "ترقيم صفحات فئات المنتجات"
 
-#: templates/products/products_page.html:107
-msgid "First"
-msgstr "الأولى"
-
-#: templates/products/products_page.html:112
-msgid "Previous"
-msgstr "السابق"
-
-#: templates/products/products_page.html:135
-msgid "Next"
-msgstr "التالي"
-
-#: templates/products/products_page.html:140
-msgid "Last"
-msgstr "الأخيرة"
-
-#: templates/products/products_page.html:155
-msgid "Showing"
-msgstr "عرض"
-
-#: templates/products/products_page.html:155
-msgid "to"
-msgstr "إلى"
-
-#: templates/products/products_page.html:155
-msgid "of"
-msgstr "من"
-
-#: templates/products/products_page.html:155
+#: templates/products/products_page.html:235
 msgid "categories"
 msgstr "الفئات"
 
-#: templates/products/products_page.html:174
-msgid "Show Filters & Categories"
-msgstr "إظهار المرشحات والفئات"
+#: templates/products/products_page.html:252
+#, fuzzy
+#| msgid "Hide Filters & Categories"
+msgid "Hide Search & Categories"
+msgstr "إخفاء البحث والفئات"
+
+#: templates/products/products_page.html:254
+#, fuzzy
+#| msgid "Show Filters & Categories"
+msgid "Show Search & Categories"
+msgstr "إظهار البحث والفئات"
 
 #~ msgid "Shopping Cart"
 #~ msgstr "سلة التسوق"
