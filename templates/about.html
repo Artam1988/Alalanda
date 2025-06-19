@@ -66,106 +66,88 @@
     <!-- Gradient overlay: heavy #1D458C on left and right, fading to transparent in the center -->
     <div style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;background:linear-gradient(to right,#1D458C 0%,rgba(29,69,140,0.7) 10%,transparent 40%,transparent 60%,rgba(29,69,140,0.7) 90%,#1D458C 100%);"></div>
    
-    <img src="/media/about/Shahrazad.png" alt="Shahrazad Logo" style="position: absolute;top:50%;width:250px;height:auto;transform:translateY(-50%);border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.08);padding:8px 12px;z-index:10;left:100px " class="col-sm-12 team-logo team-logo-left">
-    <img src="/media/about/alalanda.png" alt="Alalanda Logo" style="position: absolute;top:50%;width:250px;height:auto;transform:translateY(-50%);border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.08);padding:8px 12px;z-index:10;right:100px " class="col-sm-12 team-logo team-logo-right">
+    <img src="/media/about/Shahrazad.png" alt="Shahrazad Logo" style="position: absolute;top:50%;width:350px;height:auto;transform:translateY(-50%);border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.08);padding:8px 12px;z-index:10;left:100px " class="col-sm-12 team-logo team-logo-left">
+    <img src="/media/about/alalanda.png" alt="Alalanda Logo" style="position: absolute;top:50%;width:350px;height:auto;transform:translateY(-50%);border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.08);padding:8px 12px;z-index:10;right:100px " class="col-sm-12 team-logo team-logo-right">
 </div>
-<div class="container py-1">
-    <div class="row mb-5 align-items-center">
-        <div class="col-lg-6 mb-4 mb-lg-0">
-            <div class="card border-0 shadow-sm">
-                <img src="/media/about/About.jpg" alt="{% trans 'About Al Alanda' %}" class="img-fluid rounded">
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <h2 class="mb-4 category-header">{% trans "Board of Directors" %}</h2>
-            <p class="lead mb-4">{% trans "Meet the leadership team behind Al Alanda's success." %}</p>
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title" style="height: auto;">{% trans "Abdulrahman Mohammed Al-Alanda" %}</h5>
-                            <p class="text-muted mb-2">{% trans "Chairman of the Board of Directors" %}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title" style="height: auto;">{% trans "Muhannad Mohammed Al-Alanda" %}</h5>
-                            <p class="text-muted mb-2">{% trans "Board Member and Executive Director" %}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title" style="height: auto;">{% trans "Anwar Mohammed Al-Alanda" %}</h5>
-                            <p class="text-muted mb-2">{% trans "Board Member and Chief Financial Officer" %}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title" style="height: auto;">{% trans "Sumaya Mohammed Al-Alanda" %}</h5>
-                            <p class="text-muted mb-2">{% trans "Board Member" %}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title" style="height: auto;">{% trans "Mona Abdullah Al-Suwailem" %}</h5>
-                            <p class="text-muted mb-2">{% trans "Board Member" %}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board of Directors</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 
-    
-    <div class="row mb-5">
-        <div class="col-12">
-            <h2 class="mb-4 text-center category-header">{% trans "Our Values" %}</h2>
-            <div class="row g-4 mt-3">
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body text-center">
-                            <div class="mb-3">
-                                <i class="fas fa-leaf fa-3x value-icon"></i>
-                            </div>
-                            <h4 class="card-title" style="height: auto;">{% trans "Quality" %}</h4>
-                            <p class="card-text">{% trans "We never compromise on quality. Each product is carefully selected to ensure it meets our high standards." %}</p>
+</head>
+<body>
+    <div class="container py-5">
+        
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="mb-4" style="color: #2c3e50; font-weight: 700; position: relative; padding-bottom: 0.5rem;">{% trans "Board of Directors"%}</h2>
+                <p class="lead mb-4">{% trans "Meet the leadership team behind Al Alanda's success." %}</p>
+            </div>
+            <div class="row mb-1 justify-content-center">
+            
+        </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100" style="text-align: center; padding: 1.5rem; border: none; background: transparent; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                    <div class="card-body">
+                        <div style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #e9ecef, #dee2e6); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: #6c757d; margin: 0 auto 1rem auto; border: 4px solid #e9ecef; transition: border-color 0.3s ease;" onmouseover="this.style.borderColor='#007bff'" onmouseout="this.style.borderColor='#e9ecef'">
+                            👤
                         </div>
+                        <h5 style="font-size: 1.1rem; font-weight: 600; color: #2c3e50; margin-bottom: 0.5rem; line-height: 1.3;">{% trans "Abdulrahman Mohammed Al-Alanda"%}</h5>
+                        <p style="font-size: 0.9rem; color: #6c757d; margin-bottom: 0; line-height: 1.4;">{% trans "Chairman of the Board of Directors"%}</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body text-center">
-                            <div class="mb-3">
-                                <i class="fas fa-handshake fa-3x value-icon"></i>
-                            </div>
-                            <h4 class="card-title" style="height: auto;">{% trans "Trust" %}</h4>
-                            <p class="card-text">{% trans "Building trust with our customers is at the heart of everything we do. We believe in transparency and honesty in all our dealings." %}</p>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100" style="text-align: center; padding: 1.5rem; border: none; background: transparent; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                    <div class="card-body">
+                        <div style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #e9ecef, #dee2e6); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: #6c757d; margin: 0 auto 1rem auto; border: 4px solid #e9ecef; transition: border-color 0.3s ease;" onmouseover="this.style.borderColor='#007bff'" onmouseout="this.style.borderColor='#e9ecef'">
+                            👤
                         </div>
+                        <h5 style="font-size: 1.1rem; font-weight: 600; color: #2c3e50; margin-bottom: 0.5rem; line-height: 1.3;">{% trans "Anwar Mohammed Al-Alanda"%}</h5>
+                        <p style="font-size: 0.9rem; color: #6c757d; margin-bottom: 0; line-height: 1.4;">{% trans "Board Member and Chief Financial Officer"%}</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body text-center">
-                            <div class="mb-3">
-                                <i class="fas fa-globe fa-3x value-icon"></i>
-                            </div>
-                            <h4 class="card-title" style="height: auto;">{% trans "Sustainability" %}</h4>
-                            <p class="card-text">{% trans "We are committed to sustainable practices that minimize our environmental impact while supporting local communities." %}</p>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100" style="text-align: center; padding: 1.5rem; border: none; background: transparent; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                    <div class="card-body">
+                        <div style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #e9ecef, #dee2e6); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: #6c757d; margin: 0 auto 1rem auto; border: 4px solid #e9ecef; transition: border-color 0.3s ease;" onmouseover="this.style.borderColor='#007bff'" onmouseout="this.style.borderColor='#e9ecef'">
+                            👤
                         </div>
+                        <h5 style="font-size: 1.1rem; font-weight: 600; color: #2c3e50; margin-bottom: 0.5rem; line-height: 1.3;">{% trans "Muhannad Mohammed Al-Alanda"%}</h5>
+                        <p style="font-size: 0.9rem; color: #6c757d; margin-bottom: 0; line-height: 1.4;">{% trans "Board Member and Executive Director"%}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100" style="text-align: center; padding: 1.5rem; border: none; background: transparent; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                    <div class="card-body">
+                        <div style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #e9ecef, #dee2e6); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: #6c757d; margin: 0 auto 1rem auto; border: 4px solid #e9ecef; transition: border-color 0.3s ease;" onmouseover="this.style.borderColor='#007bff'" onmouseout="this.style.borderColor='#e9ecef'">
+                            👤
+                        </div>
+                        <h5 style="font-size: 1.1rem; font-weight: 600; color: #2c3e50; margin-bottom: 0.5rem; line-height: 1.3;">{% trans "Sumaya Mohammed Al-Alanda"%}</h5>
+                        <p style="font-size: 0.9rem; color: #6c757d; margin-bottom: 0; line-height: 1.4;">{% trans "Board Member"%}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100" style="text-align: center; padding: 1.5rem; border: none; background: transparent; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                    <div class="card-body">
+                        <div style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #e9ecef, #dee2e6); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: #6c757d; margin: 0 auto 1rem auto; border: 4px solid #e9ecef; transition: border-color 0.3s ease;" onmouseover="this.style.borderColor='#007bff'" onmouseout="this.style.borderColor='#e9ecef'">
+                            👤
+                        </div>
+                        <h5 style="font-size: 1.1rem; font-weight: 600; color: #2c3e50; margin-bottom: 0.5rem; line-height: 1.3;">{% trans "Mona Abdullah Al-Suwailem"%}</h5>
+                        <p style="font-size: 0.9rem; color: #6c757d; margin-bottom: 0; line-height: 1.4;">{% trans "Board Member"%}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-</div>
+</body>
+</html>
 {% endblock %}
