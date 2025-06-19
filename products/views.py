@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils.translation import gettext_lazy as _
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q, Prefetch, Count
 from django.views.decorators.cache import cache_page
 from django.utils.cache import get_cache_key, learn_cache_key, patch_response_headers
@@ -11,7 +10,6 @@ from .models import Category, Product
 def products_page(request):
     # Get search parameters
     search_query = request.GET.get('search', '')
-    page = request.GET.get('page', 1)
 
     # Build the product filter query (no price filter)
     product_filters = Q()
@@ -31,17 +29,9 @@ def products_page(request):
     if search_query:
         # If searching, show products, not categories
         products = Product.objects.filter(product_filters).prefetch_related('translations', 'category').distinct()
-        paginator = Paginator(products, 12)  # Show 12 products per page
-        try:
-            products_page_obj = paginator.page(page)
-        except PageNotAnInteger:
-            products_page_obj = paginator.page(1)
-        except EmptyPage:
-            products_page_obj = paginator.page(paginator.num_pages)
         response = render(request, 'products/products_page.html', {
-            'products': products_page_obj,
+            'products': products,
             'all_categories': all_categories,
-            'paginator': paginator,
             'search_query': search_query,
             'categories': None,  # No categories in search mode
         })
@@ -64,18 +54,9 @@ def products_page(request):
             )
         ))
 
-        # Set up pagination - show 3 categories per page
-        paginator = Paginator(filtered_categories, 3)
-        try:
-            categories = paginator.page(page)
-        except PageNotAnInteger:
-            categories = paginator.page(1)
-        except EmptyPage:
-            categories = paginator.page(paginator.num_pages)
         response = render(request, 'products/products_page.html', {
-            'categories': categories,
+            'categories': filtered_categories,
             'all_categories': all_categories,
-            'paginator': paginator,
             'search_query': search_query,
         })
         return response
@@ -83,7 +64,6 @@ def products_page(request):
 def product_list(request, category_id):
     # Get search query
     search_query = request.GET.get('search', '')
-    page = request.GET.get('page', 1)
 
     # Get category with translations and prefetch its products in a single query
     category = get_object_or_404(
@@ -102,25 +82,15 @@ def product_list(request, category_id):
     if search_query:
         products_qs = products_qs.filter(translations__name__icontains=search_query)
 
-    # Paginate products (12 per page)
-    paginator = Paginator(products_qs, 12)
-    try:
-        products_page_obj = paginator.page(page)
-    except PageNotAnInteger:
-        products_page_obj = paginator.page(1)
-    except EmptyPage:
-        products_page_obj = paginator.page(paginator.num_pages)
-
     # Get all categories for the sidebar with counts to optimize sidebar rendering
     all_categories = Category.objects.prefetch_related('translations').annotate(product_count=Count('products'))
 
-    # Render the response
+    # Render the response without pagination
     response = render(request, 'products/category_products.html', {
         'category': category,
-        'products': products_page_obj,  # Use the paginated products
+        'products': products_qs,  # All products, not paginated
         'all_categories': all_categories,  # Pass all categories for the sidebar
         'search_query': search_query,
-        'paginator': paginator,
     })
     return response
 

@@ -25,59 +25,12 @@
     <h1 class="text-center mb-4" style="color: var(--primary-dark);font-size:2rem; font-weight: 700; position: relative; display: inline-block;">
       <span style="position: relative; z-index: 1;">
         {% trans "Our Products" %}
-        
     </h1>
   </div>
 
-<!-- Sidebar Toggle Button (visible on all screens) -->
-<div class="mb-3 px-2">
-  <button id="sidebarToggleBtn" class="btn btn-primary w-100" type="button">
-    <i class="fas fa-filter me-2"></i><span id="toggleBtnText">{% trans "Hide Filters & Categories" %}</span>
-  </button>
-</div>
-
 <div class="row mx-0 mx-md-2" id="productsContainer">
-  <!-- Sidebar with filters -->
-  <div class="col-lg-3 col-md-4 mb-4 px-2" id="sidebarColumn">
-    <div class="card shadow-sm" id="filterSidebar" style="position: sticky; top: 1rem; z-index: 100; border-radius: 12px; overflow: hidden; max-height: calc(100vh - 120px); display: flex; flex-direction: column; transition: all 0.3s ease;">
-      <div class="card-header d-flex justify-content-between align-items-center" style="background: linear-gradient(to right, var(--primary-color), var(--primary-light)); color: white;">
-        <h5 class="mb-0">{% trans "Search & Filter" %}</h5>
-        <button class="btn-close btn-close-white d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#filterSidebar" aria-expanded="false" aria-controls="filterSidebar"></button>
-      </div>
-      <div class="card-body" style="overflow-y: auto; scrollbar-width: thin;">
-        <form method="get" action="{% url 'products:products_page' %}" id="product-filter-form">
-          <!-- Search box -->
-          <div class="mb-3">
-            <label for="search" class="form-label">{% trans "Search Products" %}</label>
-            <div class="input-group">
-              <input type="text" class="form-control" id="search" name="search" value="{{ search_query }}" placeholder="{% trans 'Product name' %}">
-              <button class="btn btn-primary" type="submit">
-                <i class="fas fa-search"></i>
-              </button>
-            </div>
-          </div>
-        </form>
-        
-        <!-- Categories section -->
-        <div class="categories-section mt-4">
-          <h5 class="mb-3" style="color: var(--primary-dark); font-weight: 600; border-left: 4px solid var(--accent-color); padding-left: 10px;">{% trans "Categories" %}</h5>
-          <div class="d-grid gap-2 category-buttons-container" style="max-height: none;">
-            {% for category in all_categories %}
-              <a href="{% url 'products:category_products' category_id=category.id %}" class="btn {% if category.id == active_category_id %}btn-primary{% else %}btn-outline-primary{% endif %} py-2">
-                {% if category.icon_class %}
-                  <i class="{{ category.icon_class }} me-2"></i>
-                {% endif %}
-                {{ category.name }}
-              </a>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Products content -->
-  <div class="col-lg-9 col-md-8 px-2 px-md-3 products-column">
+  <!-- Products content only, full width -->
+  <div class="col-12 px-2 px-md-3 products-column">
     {% if search_query and products %}
       <div class="row g-4">
         {% for product in products %}
@@ -154,17 +107,17 @@
           {% trans "Showing" %} {{ products.start_index }} {% trans "to" %} {{ products.end_index }} {% trans "of" %} {{ products.paginator.count }} {% trans "products" %}
         </div>
       </div>
-    {% elif categories and categories.object_list %}
+    {% elif categories %}
       <div class="row g-4">
-        {% for category in categories.object_list %}
-          <div class="col-12">
+        {% for category in categories %}
+          <div class="col-12 col-md-6">
             <a href="{% url 'products:category_products' category_id=category.id %}" style="text-decoration:none;">
               <div class="card h-100 shadow-sm category-card position-relative overflow-hidden">
-               {% if category.banner_image %}
-        <img src="{{ category.banner_image.url }}" class="img-fluid w-100 rounded" alt="{{ category.name }}" style="max-height: 400px; object-fit: cover;">
-      {% else %}
-        <img src="/media/categories/default.jpg" class="img-fluid w-100 rounded" alt="{{ category.name }}" style="max-height: 400px; object-fit: cover;">
-      {% endif %}
+                {% if category.banner_image %}
+                  <img src="{{ category.banner_image.url }}" class="img-fluid w-100 rounded category-banner-img" alt="{{ category.name }}">
+                {% else %}
+                  <img src="/media/categories/default.jpg" class="img-fluid w-100 rounded category-banner-img" alt="{{ category.name }}">
+                {% endif %}
                 <div class="card-img-overlay d-flex align-items-start p-3">
                   <h2 class="category-header mb-0" style="color:#be2328; background:rgba(255,255,255,0.85); border-radius:8px; padding:0.5rem 1.2rem; font-size:1.5rem; font-weight:700;">
                     {{ category.name }} <i class="fas fa-arrow-right fs-5"></i>
@@ -181,63 +134,6 @@
       </div>
     {% endif %}
 
-<!-- Pagination Controls -->
-<div class="pagination-container text-center mt-4 mb-5">
-  <nav aria-label="{% trans "Product category pagination" %}">
-    <ul class="pagination justify-content-center flex-wrap px-2">
-      {% if categories.has_previous %}
-        <li class="page-item">
-          <a class="page-link" href="?page=1{% if search_query %}&search={{ search_query }}{% endif %}{% if min_price_filter %}&min_price={{ min_price_filter }}{% endif %}{% if max_price_filter %}&max_price={{ max_price_filter }}{% endif %}" aria-label="{% trans "First" %}">
-            <span aria-hidden="true">&laquo;&laquo;</span>
-          </a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="?page={{ categories.previous_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}{% if min_price_filter %}&min_price={{ min_price_filter }}{% endif %}{% if max_price_filter %}&max_price={{ max_price_filter }}{% endif %}" aria-label="{% trans "Previous" %}">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-      {% else %}
-        <li class="page-item disabled">
-          <span class="page-link">&laquo;&laquo;</span>
-        </li>
-        <li class="page-item disabled">
-          <span class="page-link">&laquo;</span>
-        </li>
-      {% endif %}
-      
-      {% for i in paginator.page_range %}
-        {% if categories.number == i %}
-          <li class="page-item active"><span class="page-link">{{ i }}</span></li>
-        {% elif i > categories.number|add:'-3' and i < categories.number|add:'3' %}
-          <li class="page-item"><a class="page-link" href="?page={{ i }}{% if search_query %}&search={{ search_query }}{% endif %}{% if min_price_filter %}&min_price={{ min_price_filter }}{% endif %}{% if max_price_filter %}&max_price={{ max_price_filter }}{% endif %}">{{ i }}</a></li>
-        {% endif %}
-      {% endfor %}
-      
-      {% if categories.has_next %}
-        <li class="page-item">
-          <a class="page-link" href="?page={{ categories.next_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}{% if min_price_filter %}&min_price={{ min_price_filter }}{% endif %}{% if max_price_filter %}&max_price={{ max_price_filter }}{% endif %}" aria-label="{% trans "Next" %}">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="?page={{ paginator.num_pages }}{% if search_query %}&search={{ search_query }}{% endif %}{% if min_price_filter %}&min_price={{ min_price_filter }}{% endif %}{% if max_price_filter %}&max_price={{ max_price_filter }}{% endif %}" aria-label="{% trans "Last" %}">
-            <span aria-hidden="true">&raquo;&raquo;</span>
-          </a>
-        </li>
-      {% else %}
-        <li class="page-item disabled">
-          <span class="page-link">&raquo;</span>
-        </li>
-        <li class="page-item disabled">
-          <span class="page-link">&raquo;&raquo;</span>
-        </li>
-      {% endif %}
-    </ul>
-  </nav>
-  <div class="pagination-info text-muted small mt-2">
-    {% trans "Showing" %} {{ categories.start_index }} {% trans "to" %} {{ categories.end_index }} {% trans "of" %} {{ paginator.count }} {% trans "categories" %}
-  </div>
-    </div>
   </div>
 </div>
 
@@ -247,49 +143,18 @@
 
 {% block extra_js %}
 <link rel="stylesheet" href="/static/css/products.css">
+<style>
+  .category-banner-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+    background: #f8f9fa;
+  }
+</style>
 <script>
   $(document).ready(function(){
-    // Sidebar toggle functionality
-    function updateToggleButtonText(isVisible) {
-      if (isVisible) {
-        $('#toggleBtnText').text('{% trans "Hide Search & Categories" %}');
-      } else {
-        $('#toggleBtnText').text('{% trans "Show Search & Categories" %}');
-      }
-    }
-    
-    function toggleSidebar(isVisible) {
-      if (isVisible) {
-        // Show sidebar
-        $('#sidebarColumn').removeClass('d-none');
-        $('.products-column').removeClass('col-lg-12 col-md-12').addClass('col-lg-9 col-md-8');
-        updateToggleButtonText(true);
-      } else {
-        // Hide sidebar
-        $('#sidebarColumn').addClass('d-none');
-        $('.products-column').removeClass('col-lg-9 col-md-8').addClass('col-lg-12 col-md-12');
-        updateToggleButtonText(false);
-      }
-      
-      // Reinitialize carousels after layout change
-      setTimeout(function() {
-        initializeCarousels();
-      }, 300);
-    }
-    
-    // Check localStorage for sidebar state
-    var sidebarVisible = localStorage.getItem('sidebarVisible');
-    if (sidebarVisible === 'false') {
-      toggleSidebar(false);
-    }
-    
-    // Update sidebar state on toggle
-    $('#sidebarToggleBtn').on('click', function() {
-      var isCurrentlyVisible = !$('#sidebarColumn').hasClass('d-none');
-      localStorage.setItem('sidebarVisible', !isCurrentlyVisible);
-      toggleSidebar(!isCurrentlyVisible);
-    });
-
     // Function to initialize all carousels
     function initializeCarousels() {
       // Destroy any existing carousels first
