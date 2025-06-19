@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-18 21:17+0000\n"
+"POT-Creation-Date: 2025-06-19 17:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -166,101 +166,55 @@ msgstr "عنا"
 
 #: templates/about.html:54
 msgid "ABOUT US"
-msgstr ""
+msgstr "عنا"
 
 #: templates/about.html:65
 msgid "Our History"
 msgstr "تاريخنا"
 
-#: templates/about.html:76 templates/home.html:54
-msgid "About Al Alanda"
-msgstr "عن العلندا"
-
-#: templates/about.html:80
+#: templates/about.html:86
 msgid "Board of Directors"
 msgstr "مجلس إدارة"
 
-#: templates/about.html:81
+#: templates/about.html:87
 msgid "Meet the leadership team behind Al Alanda's success."
 msgstr "تعرف على فريق القيادة وراء نجاح العلندا."
 
-#: templates/about.html:86
+#: templates/about.html:104
 msgid "Abdulrahman Mohammed Al-Alanda"
 msgstr "عبدالرحمن محمد العلندا"
 
-#: templates/about.html:87
-#, fuzzy
-#| msgid "Board of Directors"
+#: templates/about.html:105
 msgid "Chairman of the Board of Directors"
 msgstr "رئيس مجلس الادارة"
 
-#: templates/about.html:94
-msgid "Muhannad Mohammed Al-Alanda"
-msgstr "مهند محمد العلندا"
-
-#: templates/about.html:95
-msgid "Board Member and Executive Director"
-msgstr "عضو مجلس الإدارة المدير التنفيذي"
-
-#: templates/about.html:102
+#: templates/about.html:115
 msgid "Anwar Mohammed Al-Alanda"
 msgstr "انوار محمد العلندا"
 
-#: templates/about.html:103
+#: templates/about.html:116
 msgid "Board Member and Chief Financial Officer"
 msgstr "عضو مجلس الإدارة المدير المالي"
 
-#: templates/about.html:110
+#: templates/about.html:126
+msgid "Muhannad Mohammed Al-Alanda"
+msgstr "مهند محمد العلندا"
+
+#: templates/about.html:127
+msgid "Board Member and Executive Director"
+msgstr "عضو مجلس الإدارة المدير التنفيذي"
+
+#: templates/about.html:137
 msgid "Sumaya Mohammed Al-Alanda"
 msgstr "سميه محمد العلندا"
 
-#: templates/about.html:111 templates/about.html:119
+#: templates/about.html:138 templates/about.html:149
 msgid "Board Member"
 msgstr "عضو مجلس الإدارة"
 
-#: templates/about.html:118
+#: templates/about.html:148
 msgid "Mona Abdullah Al-Suwailem"
 msgstr "منى عبدالله السويلم"
-
-#: templates/about.html:131
-msgid "Our Values"
-msgstr "قيمنا"
-
-#: templates/about.html:139
-msgid "Quality"
-msgstr "الجودة"
-
-#: templates/about.html:140
-msgid ""
-"We never compromise on quality. Each product is carefully selected to ensure "
-"it meets our high standards."
-msgstr ""
-"لا نتنازل أبدًا عن الجودة. كل منتج نختاره بعناية لضمان مطابقته لمعاييرنا "
-"العالية."
-
-#: templates/about.html:150
-msgid "Trust"
-msgstr "الثقة"
-
-#: templates/about.html:151
-msgid ""
-"Building trust with our customers is at the heart of everything we do. We "
-"believe in transparency and honesty in all our dealings."
-msgstr ""
-"بناء الثقة مع عملائنا هو جوهر كل ما نقوم به. نؤمن بالشفافية والصدق في جميع "
-"تعاملاتنا."
-
-#: templates/about.html:161 templates/brands.html:112
-msgid "Sustainability"
-msgstr "الاستدامة"
-
-#: templates/about.html:162
-msgid ""
-"We are committed to sustainable practices that minimize our environmental "
-"impact while supporting local communities."
-msgstr ""
-"نحن ملتزمون بالممارسات المستدامة التي تقلل من تأثيرنا البيئي مع دعم "
-"المجتمعات المحلية."
 
 #: templates/base.html:9 templates/contact.html:5
 msgid "AL ALANDA"
@@ -270,7 +224,7 @@ msgstr "العلندا"
 msgid "Products"
 msgstr "المنتجات"
 
-#: templates/base.html:47 templates/brands.html:5 templates/brands.html:22
+#: templates/base.html:47 templates/brands.html:5
 msgid "Our Brands"
 msgstr "علاماتنا التجارية"
 
@@ -309,55 +263,19 @@ msgstr "حقوق النشر"
 msgid "All Rights Reserved Alalanda.com"
 msgstr "جميع الحقوق محفوظة للعلندا"
 
-#: templates/brands.html:23
-msgid "Discover our premium brands offering quality products"
-msgstr "اكتشف علاماتنا التجارية المميزة التي تقدم منتجات عالية الجودة"
-
-#: templates/brands.html:39
+#: templates/brands.html:36
 msgid ""
 "Shaharazad products are an ideal choice for those looking for quality at an "
 "affordable price."
 msgstr ""
 "منتجات شهرزاد تعد الخيار المثالي لمن  يبحث عن الجودة مقابل السعر المناسب"
 
-#: templates/brands.html:59
+#: templates/brands.html:54
 msgid ""
 "Al Alanda products the first choice for anyone looking for high quality and "
 "perfect taste."
 msgstr ""
 "منتجات العلندا تعد الخيار الأول لكل من يبحث عن الجودة المرتفعة والطعم المثالي"
-
-#: templates/brands.html:76
-msgid "Our Brand Values"
-msgstr "قيم علاماتنا التجارية"
-
-#: templates/brands.html:77
-msgid "What makes our brands stand out in the market"
-msgstr "ما يميز علاماتنا التجارية في السوق"
-
-#: templates/brands.html:88
-msgid "Premium Quality"
-msgstr "جودة ممتازة"
-
-#: templates/brands.html:89
-msgid ""
-"We select only the finest ingredients to ensure exceptional quality in every "
-"product."
-msgstr "نحن نختار فقط أجود المكونات لضمان جودة استثنائية في كل منتج."
-
-#: templates/brands.html:100
-msgid "Customer Satisfaction"
-msgstr "رضا العملاء"
-
-#: templates/brands.html:101
-msgid ""
-"Our brands are built on a foundation of trust and customer satisfaction."
-msgstr "علاماتنا التجارية مبنية على أساس من الثقة ورضا العملاء"
-
-#: templates/brands.html:113
-msgid ""
-"We are committed to sustainable practices throughout our production process."
-msgstr "نحن ملتزمون بالممارسات المستدامة في جميع مراحل عملية الإنتاج لدينا."
 
 #: templates/contact.html:34
 msgid ""
@@ -486,59 +404,63 @@ msgstr "شارع الأمير سلطان، حي الرويس"
 msgid "Home"
 msgstr "الرئيسية"
 
-#: templates/home.html:55
+#: templates/home.html:25
+msgid "About Al Alanda"
+msgstr "عن العلندا"
+
+#: templates/home.html:26
 msgid "A food supply company."
 msgstr " شركة ﻟﺘﻮرﻳﺪ اﻟﻤﻮاد اﻟﻐﺬاﺋﻴﺔ"
 
-#: templates/home.html:56
+#: templates/home.html:27
 msgid ""
 " We are keen to provide the customer with what he needs with high quality "
 "and different weights."
 msgstr "ﻧﺤﺮص ﻋﻠﻰ ﺗﻮﻓﻴﺮ ﻣﺎ ﻳﺤﺘﺎﺟﻪ اﻟﻌﻤﻴﻞ ﺑﺠﻮدة ﻋﺎﻟﻴﺔ و أوزان ﻣﺨﺘﻠﻔﺔ"
 
-#: templates/home.html:58
+#: templates/home.html:29
 msgid "Learn More"
 msgstr "اعرف المزيد"
 
-#: templates/home.html:70
+#: templates/home.html:41
 #, fuzzy
 #| msgid "Another Customers"
 msgid "Our Customers"
 msgstr "عملاء اخرون"
 
-#: templates/home.html:81
+#: templates/home.html:52
 msgid "Hotels"
 msgstr "الفنادق"
 
-#: templates/home.html:92
+#: templates/home.html:63
 msgid "Restaurants"
 msgstr "المطاعم"
 
-#: templates/home.html:103
+#: templates/home.html:74
 msgid "Subsistence"
 msgstr "التموين"
 
-#: templates/home.html:114
+#: templates/home.html:85
 msgid "Another Customers"
 msgstr "عملاء اخرون"
 
-#: templates/home.html:127
+#: templates/home.html:98
 msgid "Featured Products"
 msgstr "المنتجات المميزة"
 
-#: templates/home.html:128
+#: templates/home.html:99
 msgid "Special Selection"
 msgstr "اختيار خاص"
 
-#: templates/home.html:142
+#: templates/home.html:113
 msgid "Featured"
 msgstr "مميز"
 
-#: templates/home.html:164
+#: templates/home.html:135
 msgid "No featured products available."
 msgstr "لا توجد منتجات مميزة متوفرة."
 
-#: templates/home.html:178
+#: templates/home.html:148
 #, fuzzy
 #| msgid "We deliver anywhere in the Saudi Kingdom"
 msgid "We deliver to all regions of the kingdom"
@@ -550,7 +472,7 @@ msgid "Hide Categories"
 msgstr "إخفاء الفئات"
 
 #: templates/products/category_products.html:18
-#: templates/products/products_page.html:60
+#: templates/products/products_page.html:63
 msgid "Categories"
 msgstr "الفئات"
 
@@ -573,56 +495,56 @@ msgid "No products available in this category."
 msgstr "لا توجد منتجات متوفرة في هذه الفئة."
 
 #: templates/products/category_products.html:88
-#: templates/products/products_page.html:101
+#: templates/products/products_page.html:104
 #, fuzzy
 #| msgid "Product category pagination"
 msgid "Product pagination"
 msgstr "ترقيم صفحات فئات المنتجات"
 
 #: templates/products/category_products.html:92
-#: templates/products/products_page.html:105
-#: templates/products/products_page.html:187
+#: templates/products/products_page.html:108
+#: templates/products/products_page.html:190
 msgid "First"
 msgstr "الأولى"
 
 #: templates/products/category_products.html:97
-#: templates/products/products_page.html:110
-#: templates/products/products_page.html:192
+#: templates/products/products_page.html:113
+#: templates/products/products_page.html:195
 msgid "Previous"
 msgstr "السابق"
 
 #: templates/products/category_products.html:118
-#: templates/products/products_page.html:131
-#: templates/products/products_page.html:215
+#: templates/products/products_page.html:134
+#: templates/products/products_page.html:218
 msgid "Next"
 msgstr "التالي"
 
 #: templates/products/category_products.html:123
-#: templates/products/products_page.html:136
-#: templates/products/products_page.html:220
+#: templates/products/products_page.html:139
+#: templates/products/products_page.html:223
 msgid "Last"
 msgstr "الأخيرة"
 
 #: templates/products/category_products.html:138
-#: templates/products/products_page.html:151
-#: templates/products/products_page.html:235
+#: templates/products/products_page.html:154
+#: templates/products/products_page.html:238
 msgid "Showing"
 msgstr "عرض"
 
 #: templates/products/category_products.html:138
-#: templates/products/products_page.html:151
-#: templates/products/products_page.html:235
+#: templates/products/products_page.html:154
+#: templates/products/products_page.html:238
 msgid "to"
 msgstr "إلى"
 
 #: templates/products/category_products.html:138
-#: templates/products/products_page.html:151
-#: templates/products/products_page.html:235
+#: templates/products/products_page.html:154
+#: templates/products/products_page.html:238
 msgid "of"
 msgstr "من"
 
 #: templates/products/category_products.html:138
-#: templates/products/products_page.html:151
+#: templates/products/products_page.html:154
 #, fuzzy
 #| msgid "Products"
 msgid "products"
@@ -633,67 +555,142 @@ msgid "Show Categories"
 msgstr "إظهار الفئات"
 
 #: templates/products/products_page.html:12
-msgid "The best of all lands"
-msgstr "الأفضل من كل أرض"
+msgid "جميع المنتجات"
+msgstr ""
 
 #: templates/products/products_page.html:13
+#, fuzzy
+#| msgid "Products"
+msgid "All Products"
+msgstr "المنتجات"
+
+#: templates/products/products_page.html:14
 msgid ""
 "We offer products of high standards that support customer taste and "
-"expectations. We also provide all the items your restaurant needs, "
-"regardless of the type of dish you're serving, from meats and canned goods "
-"to dry goods and frozen foods, and everything else you need and more. Alanda "
-"Company is at your service."
-msgstr ""
-"نحن نقدم منتجات بمعايير عالية تدعم ذوق وتوقعات العملاء. كما نوفر جميع "
-"الأصناف التي يحتاجها مطعمك، بغض النظر عن نوع الطبق الذي تقدمه، من اللحوم "
-"والمعلبات إلى المواد الجافة والأطعمة المجمدة وكل ما تحتاجه وأكثر. شركة "
-"العلندا في خدمتك."
+"expectations."
+msgstr "نقدم منتجات بمعايير مرتفعة تدعم ذوق العميل و توقعاته."
 
-#: templates/products/products_page.html:24
+#: templates/products/products_page.html:15
+msgid ""
+"We also provide all the items your restaurant needs, regardless of the type "
+"of dish you're serving, from meats and canned goods to dry goods and frozen "
+"foods, and everything else you need and more."
+msgstr ""
+"كما نوفر جميع الأصناف التي يحتاجها مطعمك أيا كان نوع طبقك من لحوم و معلبات و "
+"منتجات جافة و مفرزنات و كل ما تريد و أكثر"
+
+#: templates/products/products_page.html:16
+msgid "Alanda Company is at your service."
+msgstr "شركة العلندا بخدمتكم."
+
+#: templates/products/products_page.html:27
 msgid "Our Products"
 msgstr "منتجاتنا"
 
-#: templates/products/products_page.html:32
+#: templates/products/products_page.html:35
 msgid "Hide Filters & Categories"
 msgstr "إخفاء المرشحات والفئات"
 
-#: templates/products/products_page.html:41
+#: templates/products/products_page.html:44
 msgid "Search & Filter"
 msgstr "البحث والتصفية"
 
-#: templates/products/products_page.html:48
+#: templates/products/products_page.html:51
 msgid "Search Products"
 msgstr "البحث عن المنتجات"
 
-#: templates/products/products_page.html:50
+#: templates/products/products_page.html:53
 msgid "Product name"
 msgstr "اسم المنتج"
 
-#: templates/products/products_page.html:177
+#: templates/products/products_page.html:180
 #, fuzzy
 #| msgid "categories"
 msgid "No products or categories found."
 msgstr "الفئات"
 
-#: templates/products/products_page.html:183
+#: templates/products/products_page.html:186
 msgid "Product category pagination"
 msgstr "ترقيم صفحات فئات المنتجات"
 
-#: templates/products/products_page.html:235
+#: templates/products/products_page.html:238
 msgid "categories"
 msgstr "الفئات"
 
-#: templates/products/products_page.html:252
+#: templates/products/products_page.html:255
 #, fuzzy
 #| msgid "Hide Filters & Categories"
 msgid "Hide Search & Categories"
 msgstr "إخفاء البحث والفئات"
 
-#: templates/products/products_page.html:254
-#, fuzzy
-#| msgid "Show Filters & Categories"
+#: templates/products/products_page.html:257
 msgid "Show Search & Categories"
 msgstr "إظهار البحث والفئات"
+
+#~ msgid "Our Values"
+#~ msgstr "قيمنا"
+
+#~ msgid "Quality"
+#~ msgstr "الجودة"
+
+#~ msgid ""
+#~ "We never compromise on quality. Each product is carefully selected to "
+#~ "ensure it meets our high standards."
+#~ msgstr ""
+#~ "لا نتنازل أبدًا عن الجودة. كل منتج نختاره بعناية لضمان مطابقته لمعاييرنا "
+#~ "العالية."
+
+#~ msgid "Trust"
+#~ msgstr "الثقة"
+
+#~ msgid ""
+#~ "Building trust with our customers is at the heart of everything we do. We "
+#~ "believe in transparency and honesty in all our dealings."
+#~ msgstr ""
+#~ "بناء الثقة مع عملائنا هو جوهر كل ما نقوم به. نؤمن بالشفافية والصدق في "
+#~ "جميع تعاملاتنا."
+
+#~ msgid "Sustainability"
+#~ msgstr "الاستدامة"
+
+#~ msgid ""
+#~ "We are committed to sustainable practices that minimize our environmental "
+#~ "impact while supporting local communities."
+#~ msgstr ""
+#~ "نحن ملتزمون بالممارسات المستدامة التي تقلل من تأثيرنا البيئي مع دعم "
+#~ "المجتمعات المحلية."
+
+#~ msgid "The best of all lands"
+#~ msgstr "الأفضل من كل أرض"
+
+#~ msgid "Discover our premium brands offering quality products"
+#~ msgstr "اكتشف علاماتنا التجارية المميزة التي تقدم منتجات عالية الجودة"
+
+#~ msgid "Our Brand Values"
+#~ msgstr "قيم علاماتنا التجارية"
+
+#~ msgid "What makes our brands stand out in the market"
+#~ msgstr "ما يميز علاماتنا التجارية في السوق"
+
+#~ msgid "Premium Quality"
+#~ msgstr "جودة ممتازة"
+
+#~ msgid ""
+#~ "We select only the finest ingredients to ensure exceptional quality in "
+#~ "every product."
+#~ msgstr "نحن نختار فقط أجود المكونات لضمان جودة استثنائية في كل منتج."
+
+#~ msgid "Customer Satisfaction"
+#~ msgstr "رضا العملاء"
+
+#~ msgid ""
+#~ "Our brands are built on a foundation of trust and customer satisfaction."
+#~ msgstr "علاماتنا التجارية مبنية على أساس من الثقة ورضا العملاء"
+
+#~ msgid ""
+#~ "We are committed to sustainable practices throughout our production "
+#~ "process."
+#~ msgstr "نحن ملتزمون بالممارسات المستدامة في جميع مراحل عملية الإنتاج لدينا."
 
 #~ msgid "Welcome to Al Alanda"
 #~ msgstr "مرحباً بكم في العلندا"
