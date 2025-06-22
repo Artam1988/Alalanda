@@ -23,8 +23,11 @@ def products_page(request):
     # Get current active language
     active_languages = get_active_language_choices()
 
-    # Get all categories for the sidebar
-    all_categories = Category.objects.prefetch_related('translations')
+    # Get all categories for the sidebar, with Pickles And Olives and Jam on top
+    top_names = ["Pickles And Olives", "Jam"]
+    top_categories = list(Category.objects.prefetch_related('translations').filter(translations__name__in=top_names).distinct())
+    other_categories = Category.objects.prefetch_related('translations').exclude(translations__name__in=top_names)
+    all_categories = top_categories + list(other_categories)
 
     if search_query:
         # If searching, show products, not categories
@@ -43,7 +46,7 @@ def products_page(request):
         ).distinct()
 
         # Then prefetch the filtered products for each category
-        filtered_categories = list(categories_with_products.prefetch_related(
+        filtered_top = list(categories_with_products.filter(translations__name__in=top_names).prefetch_related(
             'translations',
             Prefetch(
                 'products',
@@ -53,6 +56,17 @@ def products_page(request):
                 to_attr='filtered_products'
             )
         ))
+        filtered_others = list(categories_with_products.exclude(translations__name__in=top_names).prefetch_related(
+            'translations',
+            Prefetch(
+                'products',
+                queryset=Product.objects.filter(product_filters)
+                                      .prefetch_related('translations')
+                                      .distinct(),
+                to_attr='filtered_products'
+            )
+        ))
+        filtered_categories = filtered_top + filtered_others
 
         response = render(request, 'products/products_page.html', {
             'categories': filtered_categories,
