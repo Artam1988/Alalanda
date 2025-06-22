@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-19 17:57+0000\n"
+"POT-Creation-Date: 2025-06-22 09:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,42 +19,42 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: core/models.py:8 templates/contact.html:124
+#: core/models.py:8 templates/contact.html:145
 msgid "General Inquiry"
 msgstr "استفسار عام"
 
-#: core/models.py:9 templates/contact.html:125
+#: core/models.py:9 templates/contact.html:146
 msgid "Customer Support"
 msgstr "دعم العملاء"
 
-#: core/models.py:10 templates/contact.html:126
+#: core/models.py:10 templates/contact.html:147
 msgid "Complaint"
 msgstr "شكوى"
 
-#: core/models.py:11 templates/contact.html:127
+#: core/models.py:11 templates/contact.html:148
 msgid "Feedback"
 msgstr "تعليق"
 
-#: core/models.py:14 core/models.py:46 templates/contact.html:109
-#: templates/contact.html:186
+#: core/models.py:14 core/models.py:46 templates/contact.html:130
+#: templates/contact.html:207
 msgid "Full Name"
 msgstr "الاسم الكامل"
 
-#: core/models.py:15 core/models.py:47 templates/contact.html:113
-#: templates/contact.html:190
+#: core/models.py:15 core/models.py:47 templates/contact.html:134
+#: templates/contact.html:211
 msgid "Email Address"
 msgstr "البريد الإلكتروني"
 
-#: core/models.py:16 core/models.py:48 templates/contact.html:117
-#: templates/contact.html:197
+#: core/models.py:16 core/models.py:48 templates/contact.html:138
+#: templates/contact.html:218
 msgid "Phone Number"
 msgstr "رقم الهاتف"
 
-#: core/models.py:17 templates/contact.html:121
+#: core/models.py:17 templates/contact.html:142
 msgid "Subject"
 msgstr "الموضوع"
 
-#: core/models.py:18 templates/contact.html:131
+#: core/models.py:18 templates/contact.html:152
 msgid "Message"
 msgstr "الرسالة"
 
@@ -106,7 +106,7 @@ msgstr "3-5 سنوات"
 msgid "5+ years"
 msgstr "5 سنوات أو أكثر"
 
-#: core/models.py:49 templates/contact.html:201
+#: core/models.py:49 templates/contact.html:222
 msgid "Position of Interest"
 msgstr "الوظيفة المرغوبة"
 
@@ -122,7 +122,7 @@ msgstr "السيرة الذاتية"
 msgid "Cover Letter"
 msgstr "الخطاب التعريفي"
 
-#: core/models.py:56 templates/contact.html:170
+#: core/models.py:56 templates/contact.html:191
 msgid "Employment Application"
 msgstr "طلب توظيف"
 
@@ -180,39 +180,39 @@ msgstr "مجلس إدارة"
 msgid "Meet the leadership team behind Al Alanda's success."
 msgstr "تعرف على فريق القيادة وراء نجاح العلندا."
 
-#: templates/about.html:104
+#: templates/about.html:100
 msgid "Abdulrahman Mohammed Al-Alanda"
 msgstr "عبدالرحمن محمد العلندا"
 
-#: templates/about.html:105
+#: templates/about.html:101
 msgid "Chairman of the Board of Directors"
 msgstr "رئيس مجلس الادارة"
 
-#: templates/about.html:115
+#: templates/about.html:111
 msgid "Anwar Mohammed Al-Alanda"
 msgstr "انوار محمد العلندا"
 
-#: templates/about.html:116
+#: templates/about.html:112
 msgid "Board Member and Chief Financial Officer"
 msgstr "عضو مجلس الإدارة المدير المالي"
 
-#: templates/about.html:126
+#: templates/about.html:122
 msgid "Muhannad Mohammed Al-Alanda"
 msgstr "مهند محمد العلندا"
 
-#: templates/about.html:127
+#: templates/about.html:123
 msgid "Board Member and Executive Director"
 msgstr "عضو مجلس الإدارة المدير التنفيذي"
 
-#: templates/about.html:137
+#: templates/about.html:133
 msgid "Sumaya Mohammed Al-Alanda"
 msgstr "سميه محمد العلندا"
 
-#: templates/about.html:138 templates/about.html:149
+#: templates/about.html:134 templates/about.html:145
 msgid "Board Member"
 msgstr "عضو مجلس الإدارة"
 
-#: templates/about.html:148
+#: templates/about.html:144
 msgid "Mona Abdullah Al-Suwailem"
 msgstr "منى عبدالله السويلم"
 
@@ -235,7 +235,7 @@ msgstr "عن الشركة"
 #: templates/base.html:57 templates/base.html:135 templates/contact.html:5
 #: templates/contact.html:33
 msgid "Contact Us"
-msgstr "اتصل بنا"
+msgstr "للتواصل"
 
 #: templates/base.html:117
 msgid "Al Muntazahat, Jeddah 22354 Saudi Arabia"
@@ -286,117 +286,122 @@ msgstr ""
 "الدعم."
 
 #: templates/contact.html:52
+#| msgid "Contact Us"
+msgid "Contact Numbers"
+msgstr "أرقام الاتصال"
+
+#: templates/contact.html:73
 msgid "Our Branches"
 msgstr "فروعنا"
 
-#: templates/contact.html:59
+#: templates/contact.html:80
 msgid "Jeddah"
 msgstr "جدة"
 
-#: templates/contact.html:64
+#: templates/contact.html:85
 msgid "Al Ruwais"
 msgstr "الرويس"
 
-#: templates/contact.html:65
+#: templates/contact.html:86
 msgid "Prince Sultan St."
 msgstr "شارع الأمير سلطان"
 
-#: templates/contact.html:70
+#: templates/contact.html:91
 msgid "Quwayza"
 msgstr "قويزة"
 
-#: templates/contact.html:71
+#: templates/contact.html:92
 msgid "King Fahd St."
 msgstr "شارع الملك فهد"
 
-#: templates/contact.html:81 templates/contact.html:234
+#: templates/contact.html:102 templates/contact.html:255
 msgid "Riyadh"
 msgstr "الرياض"
 
-#: templates/contact.html:84
+#: templates/contact.html:105
 msgid "Al Rawabi"
 msgstr "الروابي"
 
-#: templates/contact.html:85
+#: templates/contact.html:106
 msgid "King Abdullah Rd."
 msgstr "طريق الملك عبد الله"
 
-#: templates/contact.html:92
+#: templates/contact.html:113
 msgid "View on Map"
 msgstr "عرض على الخريطة"
 
-#: templates/contact.html:104
+#: templates/contact.html:125
 msgid "Send a Message"
 msgstr "إرسال رسالة"
 
-#: templates/contact.html:123
+#: templates/contact.html:144
 msgid "Select a subject"
 msgstr "اختر موضوع"
 
-#: templates/contact.html:135
+#: templates/contact.html:156
 msgid "Send Message"
 msgstr "إرسال الرسالة"
 
-#: templates/contact.html:150
+#: templates/contact.html:171
 msgid "Join Our Team"
 msgstr "انضم لفريقنا"
 
-#: templates/contact.html:151
+#: templates/contact.html:172
 msgid ""
 "Interested in working with us? We're always looking for talented individuals "
 "to join our team."
 msgstr ""
 "هل ترغب في العمل معنا؟ نحن دائمًا نبحث عن أفراد موهوبين للانضمام إلى فريقنا."
 
-#: templates/contact.html:155
+#: templates/contact.html:176
 msgid "Apply Now"
 msgstr "تقدم الآن"
 
-#: templates/contact.html:207
+#: templates/contact.html:228
 msgid "Upload Resume (PDF)"
 msgstr "تحميل السيرة الذاتية (PDF)"
 
-#: templates/contact.html:214 templates/contact.html:274
+#: templates/contact.html:235 templates/contact.html:295
 msgid "Close"
 msgstr "إغلاق"
 
-#: templates/contact.html:216
+#: templates/contact.html:237
 msgid "Submit Application"
 msgstr "تقديم الطلب"
 
-#: templates/contact.html:228
+#: templates/contact.html:249
 msgid "Our Locations"
 msgstr "مواقعنا"
 
-#: templates/contact.html:237
+#: templates/contact.html:258
 msgid "Jeddah - Quwayza"
 msgstr "جدة - قويزة"
 
-#: templates/contact.html:240
+#: templates/contact.html:261
 msgid "Jeddah - Al Ruwais"
 msgstr "جدة - الرويس"
 
-#: templates/contact.html:246
+#: templates/contact.html:267
 msgid "Al Rawabi Branch"
 msgstr "فرع الروابي"
 
-#: templates/contact.html:247
+#: templates/contact.html:268
 msgid "King Abdullah Rd., Al Rawabi District"
 msgstr "طريق الملك عبدالله، حي الروابي"
 
-#: templates/contact.html:255
+#: templates/contact.html:276
 msgid "Quwayza Branch"
 msgstr "فرع قويزة"
 
-#: templates/contact.html:256
+#: templates/contact.html:277
 msgid "King Fahd St., Quwayza District"
 msgstr "شارع الملك فهد، حي قويزة"
 
-#: templates/contact.html:264
+#: templates/contact.html:285
 msgid "Al Ruwais Branch"
 msgstr "فرع الرويس"
 
-#: templates/contact.html:265
+#: templates/contact.html:286
 msgid "Prince Sultan St., Al Ruwais District"
 msgstr "شارع الأمير سلطان، حي الرويس"
 
@@ -423,10 +428,8 @@ msgid "Learn More"
 msgstr "اعرف المزيد"
 
 #: templates/home.html:41
-#, fuzzy
-#| msgid "Another Customers"
 msgid "Our Customers"
-msgstr "عملاء اخرون"
+msgstr "عملائنا"
 
 #: templates/home.html:52
 msgid "Hotels"
@@ -472,7 +475,6 @@ msgid "Hide Categories"
 msgstr "إخفاء الفئات"
 
 #: templates/products/category_products.html:18
-#: templates/products/products_page.html:63
 msgid "Categories"
 msgstr "الفئات"
 
@@ -495,56 +497,49 @@ msgid "No products available in this category."
 msgstr "لا توجد منتجات متوفرة في هذه الفئة."
 
 #: templates/products/category_products.html:88
-#: templates/products/products_page.html:104
+#: templates/products/products_page.html:55
 #, fuzzy
 #| msgid "Product category pagination"
 msgid "Product pagination"
 msgstr "ترقيم صفحات فئات المنتجات"
 
 #: templates/products/category_products.html:92
-#: templates/products/products_page.html:108
-#: templates/products/products_page.html:190
+#: templates/products/products_page.html:59
 msgid "First"
 msgstr "الأولى"
 
 #: templates/products/category_products.html:97
-#: templates/products/products_page.html:113
-#: templates/products/products_page.html:195
+#: templates/products/products_page.html:64
 msgid "Previous"
 msgstr "السابق"
 
 #: templates/products/category_products.html:118
-#: templates/products/products_page.html:134
-#: templates/products/products_page.html:218
+#: templates/products/products_page.html:85
 msgid "Next"
 msgstr "التالي"
 
 #: templates/products/category_products.html:123
-#: templates/products/products_page.html:139
-#: templates/products/products_page.html:223
+#: templates/products/products_page.html:90
 msgid "Last"
 msgstr "الأخيرة"
 
 #: templates/products/category_products.html:138
-#: templates/products/products_page.html:154
-#: templates/products/products_page.html:238
+#: templates/products/products_page.html:105
 msgid "Showing"
 msgstr "عرض"
 
 #: templates/products/category_products.html:138
-#: templates/products/products_page.html:154
-#: templates/products/products_page.html:238
+#: templates/products/products_page.html:105
 msgid "to"
 msgstr "إلى"
 
 #: templates/products/category_products.html:138
-#: templates/products/products_page.html:154
-#: templates/products/products_page.html:238
+#: templates/products/products_page.html:105
 msgid "of"
 msgstr "من"
 
 #: templates/products/category_products.html:138
-#: templates/products/products_page.html:154
+#: templates/products/products_page.html:105
 #, fuzzy
 #| msgid "Products"
 msgid "products"
@@ -555,77 +550,67 @@ msgid "Show Categories"
 msgstr "إظهار الفئات"
 
 #: templates/products/products_page.html:12
-msgid "جميع المنتجات"
-msgstr ""
+msgid "All Products"
+msgstr "جميع المنتجات"
 
 #: templates/products/products_page.html:13
-#, fuzzy
-#| msgid "Products"
-msgid "All Products"
-msgstr "المنتجات"
-
-#: templates/products/products_page.html:14
 msgid ""
 "We offer products of high standards that support customer taste and "
-"expectations."
-msgstr "نقدم منتجات بمعايير مرتفعة تدعم ذوق العميل و توقعاته."
-
-#: templates/products/products_page.html:15
-msgid ""
-"We also provide all the items your restaurant needs, regardless of the type "
-"of dish you're serving, from meats and canned goods to dry goods and frozen "
-"foods, and everything else you need and more."
+"expectations. We also provide all the items your restaurant needs, "
+"regardless of the type of dish you're serving, from meats and canned goods "
+"to dry goods and frozen foods, and everything else you need and more."
 msgstr ""
-"كما نوفر جميع الأصناف التي يحتاجها مطعمك أيا كان نوع طبقك من لحوم و معلبات و "
-"منتجات جافة و مفرزنات و كل ما تريد و أكثر"
+"نحن نقدم منتجات بمعايير عالية تدعم ذوق وتوقعات العملاء. كما نوفر جميع "
+"الأصناف التي يحتاجها مطعمك مهما كان نوع الطبق الذي تقدمه، من اللحوم "
+"والمعلبات إلى المنتجات الجافة والمجمدة، وكل ما تحتاجه وأكثر."
 
-#: templates/products/products_page.html:16
+#: templates/products/products_page.html:14
 msgid "Alanda Company is at your service."
 msgstr "شركة العلندا بخدمتكم."
 
-#: templates/products/products_page.html:27
+#: templates/products/products_page.html:25
 msgid "Our Products"
 msgstr "منتجاتنا"
 
-#: templates/products/products_page.html:35
-msgid "Hide Filters & Categories"
-msgstr "إخفاء المرشحات والفئات"
-
-#: templates/products/products_page.html:44
-msgid "Search & Filter"
-msgstr "البحث والتصفية"
-
-#: templates/products/products_page.html:51
-msgid "Search Products"
-msgstr "البحث عن المنتجات"
-
-#: templates/products/products_page.html:53
-msgid "Product name"
-msgstr "اسم المنتج"
-
-#: templates/products/products_page.html:180
+#: templates/products/products_page.html:131
 #, fuzzy
 #| msgid "categories"
 msgid "No products or categories found."
 msgstr "الفئات"
 
-#: templates/products/products_page.html:186
-msgid "Product category pagination"
-msgstr "ترقيم صفحات فئات المنتجات"
+#~ msgid "جميع المنتجات"
+#~ msgstr "All Products"
 
-#: templates/products/products_page.html:238
-msgid "categories"
-msgstr "الفئات"
+#~ msgid ""
+#~ "We offer products of high standards that support customer taste and "
+#~ "expectations."
+#~ msgstr "نقدم منتجات بمعايير مرتفعة تدعم ذوق العميل و توقعاته."
 
-#: templates/products/products_page.html:255
+#~ msgid "Hide Filters & Categories"
+#~ msgstr "إخفاء المرشحات والفئات"
+
+#~ msgid "Search & Filter"
+#~ msgstr "البحث والتصفية"
+
+#~ msgid "Search Products"
+#~ msgstr "البحث عن المنتجات"
+
+#~ msgid "Product name"
+#~ msgstr "اسم المنتج"
+
+#~ msgid "Product category pagination"
+#~ msgstr "ترقيم صفحات فئات المنتجات"
+
+#~ msgid "categories"
+#~ msgstr "الفئات"
+
 #, fuzzy
-#| msgid "Hide Filters & Categories"
-msgid "Hide Search & Categories"
-msgstr "إخفاء البحث والفئات"
+#~| msgid "Hide Filters & Categories"
+#~ msgid "Hide Search & Categories"
+#~ msgstr "إخفاء البحث والفئات"
 
-#: templates/products/products_page.html:257
-msgid "Show Search & Categories"
-msgstr "إظهار البحث والفئات"
+#~ msgid "Show Search & Categories"
+#~ msgstr "إظهار البحث والفئات"
 
 #~ msgid "Our Values"
 #~ msgstr "قيمنا"
