@@ -112,7 +112,7 @@
             <a href="{% url 'products:category_products' category_id=category.id %}" style="text-decoration:none;">
               <div class="card h-100 shadow-sm category-card position-relative overflow-hidden">
                 {% if category.banner_image %}
-                  <img src="{{ category.banner_image.url }}" class="img-fluid w-100 rounded category-banner-img" alt="{{ category.name }}">
+                  <img src="{{ category.banner_image.url }}" style="height:450px" class="img-fluid w-100 rounded category-banner-img" alt="{{ category.name }}">
                 {% else %}
                   <img src="/media/categories/default.jpg" class="img-fluid w-100 rounded category-banner-img" alt="{{ category.name }}">
                 {% endif %}
