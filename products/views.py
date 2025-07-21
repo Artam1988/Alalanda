@@ -24,7 +24,7 @@ def products_page(request):
     active_languages = get_active_language_choices()
 
     # Get all categories for the sidebar, with Pickles And Olives and Jam on top
-    top_names = ["Pickles And Olives", "Jam"]
+    top_names = ["Pickles And Olives", "Jam", "POULTRY", "OTHER", "MEAT"]
     top_categories = list(Category.objects.prefetch_related('translations').filter(translations__name__in=top_names).distinct())
     other_categories = Category.objects.prefetch_related('translations').exclude(translations__name__in=top_names)
     all_categories = top_categories + list(other_categories)
