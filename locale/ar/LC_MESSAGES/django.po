@@ -444,7 +444,7 @@ msgstr "التموين"
 
 #: templates/home.html:85
 msgid "Another Customers"
-msgstr "عملاء اخرون"
+msgstr "عميل اخر"
 
 #: templates/home.html:98
 msgid "Featured Products"
