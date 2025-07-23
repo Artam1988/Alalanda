@@ -24,10 +24,23 @@ def products_page(request):
     active_languages = get_active_language_choices()
 
     # Get all categories for the sidebar, with Pickles And Olives and Jam on top
-    top_names = ["Pickles And Olives", "Jam", "POULTRY", "OTHER", "MEAT"]
-    top_categories = list(Category.objects.prefetch_related('translations').filter(translations__name__in=top_names).distinct())
+    top_names = ["Pickles And Olives", "Jam", "OTHER", "POULTRY", "MEAT"]
+    top_categories_qs = Category.objects.prefetch_related('translations').filter(translations__name__in=top_names).distinct()
+
+    # Create a name-to-category mapping for ordering
+    name_to_category = {}
+    for cat in top_categories_qs:
+        # Get the translated name (assuming it's available via .name)
+        translated_name = cat.translations.first().name if cat.translations.exists() else ''
+        name_to_category[translated_name] = cat
+
+    # Order them explicitly
+    top_categories = [name_to_category[name] for name in top_names if name in name_to_category]
+
+    # Get other categories (excluding top ones)
     other_categories = Category.objects.prefetch_related('translations').exclude(translations__name__in=top_names)
     all_categories = top_categories + list(other_categories)
+
 
     if search_query:
         # If searching, show products, not categories
@@ -46,16 +59,28 @@ def products_page(request):
         ).distinct()
 
         # Then prefetch the filtered products for each category
-        filtered_top = list(categories_with_products.filter(translations__name__in=top_names).prefetch_related(
-            'translations',
-            Prefetch(
-                'products',
-                queryset=Product.objects.filter(product_filters)
-                                      .prefetch_related('translations')
-                                      .distinct(),
-                to_attr='filtered_products'
-            )
-        ))
+        filtered_top_qs = categories_with_products.filter(translations__name__in=top_names).prefetch_related(
+    'translations',
+    Prefetch(
+        'products',
+        queryset=Product.objects.filter(product_filters)
+                              .prefetch_related('translations')
+                              .distinct(),
+        to_attr='filtered_products'
+    )
+)
+
+        # Map them to their translated names
+        filtered_name_to_category = {}
+        for cat in filtered_top_qs:
+            translated_name = cat.translations.first().name if cat.translations.exists() else ''
+            filtered_name_to_category[translated_name] = cat
+
+        # Order them as per top_names
+        filtered_top = [filtered_name_to_category[name] for name in top_names if name in filtered_name_to_category]
+
+
+
         filtered_others = list(categories_with_products.exclude(translations__name__in=top_names).prefetch_related(
             'translations',
             Prefetch(
