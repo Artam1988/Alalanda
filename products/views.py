@@ -116,10 +116,32 @@ def product_list(request, category_id):
         id=category_id
     )
 
-    # Filter products by search query if provided
+
+    # Custom ordering for LEGUMES category
+    legumes_priority_names = [
+        "Beans in Tomato Sauce",
+        "Hummus",
+        "Fava beans",
+        "Red Beans"
+    ]
     products_qs = category.products.all()
     if search_query:
         products_qs = products_qs.filter(translations__name__icontains=search_query)
+
+    # If category is LEGUMES, order products as requested
+    category_name = category.translations.first().name if category.translations.exists() else ''
+    if category_name.upper() == "LEGUMES":
+        # Annotate each product with a priority value
+        from django.db.models import Case, When, IntegerField
+        whens = [When(translations__name=name, then=pos) for pos, name in enumerate(legumes_priority_names)]
+        # Get the prioritized products
+        prioritized_qs = products_qs.filter(translations__name__in=legumes_priority_names)
+        prioritized_qs = prioritized_qs.annotate(
+            priority=Case(*whens, default=len(legumes_priority_names), output_field=IntegerField())
+        ).order_by('priority', 'id').distinct()
+        # Get the rest of the products, excluding the prioritized ones
+        rest_qs = products_qs.exclude(translations__name__in=legumes_priority_names)
+        products_qs = list(prioritized_qs) + list(rest_qs)
 
     # Get all categories for the sidebar with counts to optimize sidebar rendering
     all_categories = Category.objects.prefetch_related('translations').annotate(product_count=Count('products'))
