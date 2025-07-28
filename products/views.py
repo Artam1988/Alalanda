@@ -124,6 +124,12 @@ def product_list(request, category_id):
         "Fava beans",
         "Red Beans"
     ]
+    Oils_and_Sauces_priority_names = [
+        "Tomato Paste",
+        "Pure sunflower oil",
+        "Hot Red Pepper Sauce",
+        "Cold Red Pepper Sauce",
+    ]
     products_qs = category.products.all()
     if search_query:
         products_qs = products_qs.filter(translations__name__icontains=search_query)
@@ -142,7 +148,18 @@ def product_list(request, category_id):
         # Get the rest of the products, excluding the prioritized ones
         rest_qs = products_qs.exclude(translations__name__in=legumes_priority_names)
         products_qs = list(prioritized_qs) + list(rest_qs)
-
+    if category_name.upper() == "OILS AND SAUCES":
+        # Annotate each product with a priority value   
+        from django.db.models import Case, When, IntegerField
+        whens = [When(translations__name=name, then=pos) for pos, name in enumerate(Oils_and_Sauces_priority_names)]
+        # Get the prioritized products
+        prioritized_qs = products_qs.filter(translations__name__in=Oils_and_Sauces_priority_names)
+        prioritized_qs = prioritized_qs.annotate(
+            priority=Case(*whens, default=len(Oils_and_Sauces_priority_names), output_field=IntegerField())
+        ).order_by('priority', 'id').distinct()
+        # Get the rest of the products, excluding the prioritized ones
+        rest_qs = products_qs.exclude(translations__name__in=Oils_and_Sauces_priority_names)
+        products_qs = list(prioritized_qs) + list(rest_qs)
     # Get all categories for the sidebar with counts to optimize sidebar rendering
     all_categories = Category.objects.prefetch_related('translations').annotate(product_count=Count('products'))
 
