@@ -128,6 +128,7 @@ def product_list(request, category_id):
         "Tomato Paste",
         "Pure sunflower oil",
         "Hot Red Pepper Sauce",
+        "Natural Olive Oil First Pressing",
         "Cold Red Pepper Sauce",
     ]
     products_qs = category.products.all()
