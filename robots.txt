@@ -1,0 +1,38 @@
+User-agent: *
+
+# Allow access to main pages
+Allow: /
+Allow: /products/
+Allow: /about/
+Allow: /contact/
+Allow: /brands/
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /media/private/
+Disallow: /static/admin/
+
+# Disallow search and filter URLs to prevent duplicate content
+Disallow: /*?*
+Disallow: /products/*?*
+
+# Disallow language switching URLs
+Disallow: /i18n/
+
+# Allow CSS and JS files
+Allow: /static/*.css
+Allow: /static/*.js
+
+# Allow images
+Allow: /media/*.jpg
+Allow: /media/*.jpeg
+Allow: /media/*.png
+Allow: /media/*.gif
+Allow: /media/*.webp
+Allow: /media/*.svg
+
+# Crawl delay (optional - adjust as needed)
+Crawl-delay: 1
+
+# Sitemap location (update with your actual domain)
+Sitemap: https://alalanda.com/sitemap.xml
