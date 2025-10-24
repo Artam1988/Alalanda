@@ -8,16 +8,22 @@ from django.http import HttpResponse
 from core.views import about_page, home_page, contact_page, brands_page
 import os
 
+
 def robots_txt(request):
-    robots_path = os.path.join(settings.STATIC_ROOT or settings.STATICFILES_DIRS[0], 'robots.txt')
-    try:
+    for static_dir in settings.STATICFILES_DIRS:
+        robots_path = os.path.join(static_dir, 'robots.txt')
+        if os.path.exists(robots_path):
+            with open(robots_path, 'r') as f:
+                return HttpResponse(f.read(), content_type='text/plain')
+
+    robots_path = os.path.join(settings.STATIC_ROOT, 'robots.txt')
+    if os.path.exists(robots_path):
         with open(robots_path, 'r') as f:
-            content = f.read()
-        return HttpResponse(content, content_type='text/plain')
-    except FileNotFoundError:
-        # Fallback content if file not found
-        content = "User-agent: *\nDisallow: /admin/\n"
-        return HttpResponse(content, content_type='text/plain')
+            return HttpResponse(f.read(), content_type='text/plain')
+
+    fallback_content = "User-agent: *\nDisallow: /admin/\n"
+    return HttpResponse(fallback_content, content_type='text/plain')
+
 
 urlpatterns = [
     path('', home_page, name='home'),  # Set home page as the default landing page
