@@ -1,7 +1,16 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-{% block title %}{% trans "Home" %} | العلندا{% endblock %}
+{% block title %}العلندا - AL ALANDA{% endblock %}
+
+{% block meta_description %}{% trans "AL ALANDA - شركة العلندا للمواد الغذائية. نوفر أفضل المنتجات الغذائية للفنادق والمطاعم والمؤسسات في جميع أنحاء المملكة العربية السعودية." %}{% endblock %}
+
+{% block og_title %}العلندا - AL ALANDA{% endblock %}
+{% block og_description %}{% trans "شركة العلندا للمواد الغذائية - أفضل المنتجات الغذائية في المملكة العربية السعودية" %}{% endblock %}
+{% block og_url %}/{% endblock %}
+
+{% block twitter_title %}العلندا - AL ALANDA{% endblock %}
+{% block twitter_description %}{% trans "شركة العلندا للمواد الغذائية - أفضل المنتجات الغذائية في المملكة العربية السعودية" %}{% endblock %}
 
 {% block content %}
 <!-- Hero Banner Section: Single Image with Text Overlay -->
