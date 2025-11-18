@@ -37,8 +37,7 @@ def products_page(request):
     top_cats = []
     other_cats = []
     for cat in all_categories:
-        translations = list(cat.translations.all())
-        name = translations[0].name if translations else ''
+        name = cat.safe_translation_getter('name', default='')
         if name in top_names:
             top_cats.append((top_names.index(name), cat))
         else:
@@ -79,52 +78,9 @@ def products_page(request):
             'categories': None,
         })
     else:
-        # Category view mode
-        filtered_categories = list(
-            Category.objects
-            .filter(products__in=Product.objects.filter(product_filters))
-            .prefetch_related(
-                Prefetch(
-                    'translations',
-                    queryset=Category._parler_meta.root_model.objects.filter(
-                        language_code=current_language
-                    )
-                ),
-                Prefetch(
-                    'products',
-                    queryset=Product.objects
-                    .filter(product_filters)
-                    .prefetch_related(
-                        Prefetch(
-                            'translations',
-                            queryset=Product._parler_meta.root_model.objects.filter(
-                                language_code=current_language
-                            )
-                        )
-                    )
-                    .distinct(),
-                    to_attr='filtered_products'
-                )
-            )
-            .distinct()
-        )
-        
-        # Sort filtered categories
-        filt_top = []
-        filt_other = []
-        for cat in filtered_categories:
-            translations = list(cat.translations.all())
-            name = translations[0].name if translations else ''
-            if name in top_names:
-                filt_top.append((top_names.index(name), cat))
-            else:
-                filt_other.append(cat)
-        
-        filt_top.sort(key=lambda x: x[0])
-        filtered_categories_sorted = [c for _, c in filt_top] + filt_other
-
+        # Category view mode - use all_categories_sorted for both sidebar and main content
         return render(request, 'products/products_page.html', {
-            'categories': filtered_categories_sorted,
+            'categories': all_categories_sorted,
             'all_categories': all_categories_sorted,
             'search_query': search_query,
         })
@@ -165,7 +121,7 @@ def product_list(request, category_id):
         products_qs = products_qs.filter(translations__name__icontains=search_query)
 
     # If category is LEGUMES, order products as requested
-    category_name = category.translations.first().name if category.translations.exists() else ''
+    category_name = category.safe_translation_getter('name', default='')
     if category_name.upper() == "LEGUMES":
         # Annotate each product with a priority value
         from django.db.models import Case, When, IntegerField
