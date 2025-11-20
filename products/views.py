@@ -9,6 +9,7 @@ from .models import Category, Product
 from django.core.paginator import Paginator
 from django.utils.translation import get_language
 
+@cache_page(60 * 15)
 def products_page(request):
     search_query = request.GET.get('search', '')
     page_number = request.GET.get('page', 1)
@@ -85,6 +86,7 @@ def products_page(request):
             'search_query': search_query,
         })
 
+@cache_page(60 * 15)
 def product_list(request, category_id):
     # Get search query
     search_query = request.GET.get('search', '')
