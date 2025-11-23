@@ -21,9 +21,6 @@
         <div class="d-grid gap-2">
           {% for cat in all_categories %}
             <a href="{% url 'products:category_products' category_id=cat.id %}" class="btn {% if cat.id == category.id %}btn-primary{% else %}btn-outline-primary{% endif %} py-2">
-              {% if cat.banner_image %}
-                <img src="{{ cat.banner_image.url }}" alt="" class="category-icon me-2" style="width: 20px; height: 20px; object-fit: cover; border-radius: 3px;">
-              {% endif %}
               {{ cat.name }}
             </a>
           {% endfor %}
