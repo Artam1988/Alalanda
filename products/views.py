@@ -28,7 +28,7 @@ def products_page(request):
             Prefetch(
                 'translations',
                 queryset=Category._parler_meta.root_model.objects.filter(
-                    language_code=current_language
+                    language_code__in=[current_language, 'en']
                 )
             )
         )
@@ -38,9 +38,9 @@ def products_page(request):
     top_cats = []
     other_cats = []
     for cat in all_categories:
-        name = cat.safe_translation_getter('name', default='')
-        if name in top_names:
-            top_cats.append((top_names.index(name), cat))
+        name_en = cat.safe_translation_getter('name', language_code='en', default='')
+        if name_en in top_names:
+            top_cats.append((top_names.index(name_en), cat))
         else:
             other_cats.append(cat)
     
@@ -149,7 +149,31 @@ def product_list(request, category_id):
         rest_qs = products_qs.exclude(translations__name__in=Oils_and_Sauces_priority_names)
         products_qs = list(prioritized_qs) + list(rest_qs)
     # Get all categories for the sidebar with counts to optimize sidebar rendering
-    all_categories = Category.objects.prefetch_related('translations').annotate(product_count=Count('products'))
+    top_names = ["Pickles And Olives", "Jam", "OTHER", "POULTRY", "MEAT"]
+    current_language = get_language()
+
+    
+    all_categories_qs = Category.objects.prefetch_related(
+            Prefetch(
+                'translations',
+                queryset=Category._parler_meta.root_model.objects.filter(language_code__in=[current_language, 'en'])
+            )
+        ).annotate(product_count=Count('products'))
+    
+    all_categories = list(all_categories_qs)
+    
+    top_cats = []
+    other_cats = []
+    for cat in all_categories:
+        name_en = cat.safe_translation_getter('name', language_code='en', default='')
+        if name_en in top_names:
+            top_cats.append((top_names.index(name_en), cat))
+        else:
+            other_cats.append(cat)
+    top_cats.sort(key=lambda x: x[0])
+    all_categories = [c for _, c in top_cats] + other_cats
+    
+
 
     # Render the response without pagination
     response = render(request, 'products/category_products.html', {
