@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'Dubai';
+  src: local('Dubai'), local('Dubai-Regular'),
+       url('/static/fonts/DUBAI-REGULAR.TTF') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --primary-color: #263e80;
   --primary-light: #3a5ca8;
@@ -16,12 +25,12 @@
   --gray-medium: #e9ecef;
 }
 html, body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   height: 100%;
   margin: 0;
   color: var(--text-dark);
 }
 body {
+  font-family: 'Dubai', sans-serif;
   display: flex;
   flex-direction: column;
   background-color: var(--primary-bg);
