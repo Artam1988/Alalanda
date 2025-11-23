@@ -1,40 +1,42 @@
 from django.shortcuts import render, get_object_or_404
-from django.utils.translation import gettext_lazy as _
-from django.db.models import Q, Prefetch, Count
+from django.db.models import Q, Prefetch, Count, Case, When, IntegerField
 from django.views.decorators.cache import cache_page
-from django.utils.cache import get_cache_key, learn_cache_key, patch_response_headers
 from django.core.cache import cache
-from parler.utils import get_active_language_choices
-from .models import Category, Product
 from django.core.paginator import Paginator
 from django.utils.translation import get_language
+from .models import Category, Product
+
 
 @cache_page(60 * 15)
 def products_page(request):
     search_query = request.GET.get('search', '')
     page_number = request.GET.get('page', 1)
-    
+
     product_filters = Q()
     if search_query:
         product_filters &= Q(translations__name__icontains=search_query)
 
-    top_names = ["PICKLES & OLIVES", "JAM", "OILS & SAUCES", "CANNED VEGETABLES & FRUITS", "MEAT", "POULTRY", "SEAFOOD", "DAIRY DERIVATIVES & EGGS", "FROZEN FOOD READY TO COOK", "SORTED FRUITS & VEGETABLES", "LEGUMES", "PASTA & RICE", "BAKING & PASTRY SUPPLIES", "SPICES", "NUTS", "DRIED FRUITS", "DRINKS","OTHER PRODUCTS"]
-    
+    top_names = [
+        "PICKLES & OLIVES", "JAM", "OILS & SAUCES", "CANNED VEGETABLES & FRUITS",
+        "MEAT", "POULTRY", "SEAFOOD", "DAIRY DERIVATIVES & EGGS",
+        "FROZEN FOOD READY TO COOK", "SORTED FRUITS & VEGETABLES", "LEGUMES",
+        "PASTA & RICE", "BAKING & PASTRY SUPPLIES", "SPICES", "NUTS",
+        "DRIED FRUITS", "DRINKS", "OTHER PRODUCTS"
+    ]
+
     current_language = get_language()
-    
+
     all_categories = list(
-        Category.objects
-        .prefetch_related(
+        Category.objects.prefetch_related(
             Prefetch(
                 'translations',
                 queryset=Category._parler_meta.root_model.objects.filter(
                     language_code__in=[current_language, 'en']
                 )
             )
-        )
-        .all()
+        ).all()
     )
-    
+
     top_cats = []
     other_cats = []
     for cat in all_categories:
@@ -43,7 +45,7 @@ def products_page(request):
             top_cats.append((top_names.index(name_en), cat))
         else:
             other_cats.append(cat)
-    
+
     top_cats.sort(key=lambda x: x[0])
     all_categories_sorted = [c for _, c in top_cats] + other_cats
 
@@ -68,30 +70,28 @@ def products_page(request):
             )
             .distinct()
         )
-        
+
         paginator = Paginator(products_qs, 24)
-        products_page = paginator.get_page(page_number)
-        
+        products_page_obj = paginator.get_page(page_number)
+
         return render(request, 'products/products_page.html', {
-            'products': products_page,
+            'products': products_page_obj,
             'all_categories': all_categories_sorted,
             'search_query': search_query,
             'categories': None,
         })
-    else:
-        # Category view mode - use all_categories_sorted for both sidebar and main content
-        return render(request, 'products/products_page.html', {
-            'categories': all_categories_sorted,
-            'all_categories': all_categories_sorted,
-            'search_query': search_query,
-        })
+
+    return render(request, 'products/products_page.html', {
+        'categories': all_categories_sorted,
+        'all_categories': all_categories_sorted,
+        'search_query': search_query,
+    })
+
 
 @cache_page(60 * 15)
 def product_list(request, category_id):
-    # Get search query
     search_query = request.GET.get('search', '')
 
-    # Get category with translations and prefetch its products in a single query
     category = get_object_or_404(
         Category.objects.prefetch_related(
             'translations',
@@ -99,70 +99,64 @@ def product_list(request, category_id):
                 'products',
                 queryset=Product.objects.prefetch_related('translations')
             )
-        ), 
+        ),
         id=category_id
     )
 
-
-    # Custom ordering for LEGUMES category
     legumes_priority_names = [
-        "Beans in Tomato Sauce",
-        "Hummus",
-        "Fava beans",
-        "Red Beans"
+        "Beans in Tomato Sauce", "Hummus", "Fava beans", "Red Beans"
     ]
-    Oils_and_Sauces_priority_names = [
-        "Tomato Paste",
-        "Pure sunflower oil",
-        "Hot Red Pepper Sauce",
-        "Natural Olive Oil First Pressing",
-        "Cold Red Pepper Sauce",
+    oils_sauces_priority_names = [
+        "Tomato Paste", "Pure sunflower oil", "Hot Red Pepper Sauce",
+        "Natural Olive Oil First Pressing", "Cold Red Pepper Sauce"
     ]
+
     products_qs = category.products.all()
+
     if search_query:
         products_qs = products_qs.filter(translations__name__icontains=search_query)
 
-    # If category is LEGUMES, order products as requested
     category_name = category.safe_translation_getter('name', default='')
+
     if category_name.upper() == "LEGUMES":
-        # Annotate each product with a priority value
-        from django.db.models import Case, When, IntegerField
         whens = [When(translations__name=name, then=pos) for pos, name in enumerate(legumes_priority_names)]
-        # Get the prioritized products
         prioritized_qs = products_qs.filter(translations__name__in=legumes_priority_names)
         prioritized_qs = prioritized_qs.annotate(
             priority=Case(*whens, default=len(legumes_priority_names), output_field=IntegerField())
         ).order_by('priority', 'id').distinct()
-        # Get the rest of the products, excluding the prioritized ones
         rest_qs = products_qs.exclude(translations__name__in=legumes_priority_names)
         products_qs = list(prioritized_qs) + list(rest_qs)
+
     if category_name.upper() == "OILS AND SAUCES":
-        # Annotate each product with a priority value   
-        from django.db.models import Case, When, IntegerField
-        whens = [When(translations__name=name, then=pos) for pos, name in enumerate(Oils_and_Sauces_priority_names)]
-        # Get the prioritized products
-        prioritized_qs = products_qs.filter(translations__name__in=Oils_and_Sauces_priority_names)
+        whens = [When(translations__name=name, then=pos) for pos, name in enumerate(oils_sauces_priority_names)]
+        prioritized_qs = products_qs.filter(translations__name__in=oils_sauces_priority_names)
         prioritized_qs = prioritized_qs.annotate(
-            priority=Case(*whens, default=len(Oils_and_Sauces_priority_names), output_field=IntegerField())
+            priority=Case(*whens, default=len(oils_sauces_priority_names), output_field=IntegerField())
         ).order_by('priority', 'id').distinct()
-        # Get the rest of the products, excluding the prioritized ones
-        rest_qs = products_qs.exclude(translations__name__in=Oils_and_Sauces_priority_names)
+        rest_qs = products_qs.exclude(translations__name__in=oils_sauces_priority_names)
         products_qs = list(prioritized_qs) + list(rest_qs)
-    # Get all categories for the sidebar with counts to optimize sidebar rendering
-    top_names = ["PICKLES & OLIVES", "JAM", "OILS & SAUCES", "CANNED VEGETABLES & FRUITS", "MEAT", "POULTRY", "SEAFOOD", "DAIRY DERIVATIVES & EGGS", "FROZEN FOOD READY TO COOK", "SORTED FRUITS & VEGETABLES", "LEGUMES", "PASTA & RICE", "BAKING & PASTRY SUPPLIES", "SPICES", "NUTS", "DRIED FRUITS", "DRINKS","OTHER PRODUCTS"]
+
+    top_names = [
+        "PICKLES & OLIVES", "JAM", "OILS & SAUCES", "CANNED VEGETABLES & FRUITS",
+        "MEAT", "POULTRY", "SEAFOOD", "DAIRY DERIVATIVES & EGGS",
+        "FROZEN FOOD READY TO COOK", "SORTED FRUITS & VEGETABLES", "LEGUMES",
+        "PASTA & RICE", "BAKING & PASTRY SUPPLIES", "SPICES", "NUTS",
+        "DRIED FRUITS", "DRINKS", "OTHER PRODUCTS"
+    ]
 
     current_language = get_language()
 
-    
     all_categories_qs = Category.objects.prefetch_related(
-            Prefetch(
-                'translations',
-                queryset=Category._parler_meta.root_model.objects.filter(language_code__in=[current_language, 'en'])
+        Prefetch(
+            'translations',
+            queryset=Category._parler_meta.root_model.objects.filter(
+                language_code__in=[current_language, 'en']
             )
-        ).annotate(product_count=Count('products'))
-    
+        )
+    ).annotate(product_count=Count('products'))
+
     all_categories = list(all_categories_qs)
-    
+
     top_cats = []
     other_cats = []
     for cat in all_categories:
@@ -171,17 +165,13 @@ def product_list(request, category_id):
             top_cats.append((top_names.index(name_en), cat))
         else:
             other_cats.append(cat)
+
     top_cats.sort(key=lambda x: x[0])
     all_categories = [c for _, c in top_cats] + other_cats
-    
 
-
-    # Render the response without pagination
-    response = render(request, 'products/category_products.html', {
+    return render(request, 'products/category_products.html', {
         'category': category,
-        'products': products_qs,  # All products, not paginated
-        'all_categories': all_categories,  # Pass all categories for the sidebar
+        'products': products_qs,
+        'all_categories': all_categories,
         'search_query': search_query,
     })
-    return response
-
