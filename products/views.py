@@ -18,7 +18,7 @@ def products_page(request):
     if search_query:
         product_filters &= Q(translations__name__icontains=search_query)
 
-    top_names = ["Pickles And Olives", "Jam", "OTHER", "POULTRY", "MEAT"]
+    top_names = ["PICKLES & OLIVES", "JAM", "OILS & SAUCES", "CANNED VEGETABLES & FRUITS", "MEAT", "POULTRY", "SEAFOOD", "DAIRY DERIVATIVES & EGGS", "FROZEN FOOD READY TO COOK", "SORTED FRUITS & VEGETABLES", "LEGUMES", "PASTA & RICE", "BAKING & PASTRY SUPPLIES", "SPICES", "NUTS", "DRIED FRUITS", "DRINKS","OTHER PRODUCTS"]
     
     current_language = get_language()
     
@@ -149,7 +149,8 @@ def product_list(request, category_id):
         rest_qs = products_qs.exclude(translations__name__in=Oils_and_Sauces_priority_names)
         products_qs = list(prioritized_qs) + list(rest_qs)
     # Get all categories for the sidebar with counts to optimize sidebar rendering
-    top_names = ["Pickles And Olives", "Jam", "OTHER", "POULTRY", "MEAT"]
+    top_names = ["PICKLES & OLIVES", "JAM", "OILS & SAUCES", "CANNED VEGETABLES & FRUITS", "MEAT", "POULTRY", "SEAFOOD", "DAIRY DERIVATIVES & EGGS", "FROZEN FOOD READY TO COOK", "SORTED FRUITS & VEGETABLES", "LEGUMES", "PASTA & RICE", "BAKING & PASTRY SUPPLIES", "SPICES", "NUTS", "DRIED FRUITS", "DRINKS","OTHER PRODUCTS"]
+
     current_language = get_language()
 
     
