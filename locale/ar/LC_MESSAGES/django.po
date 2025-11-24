@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-23 19:52+0000\n"
+"POT-Creation-Date: 2025-11-24 13:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,42 +19,42 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: core/models.py:8 templates/contact.html:174
+#: core/models.py:8 templates/contact.html:182
 msgid "General Inquiry"
 msgstr "استفسار عام"
 
-#: core/models.py:9 templates/contact.html:175
+#: core/models.py:9 templates/contact.html:183
 msgid "Customer Support"
 msgstr "دعم العملاء"
 
-#: core/models.py:10 templates/contact.html:176
+#: core/models.py:10 templates/contact.html:184
 msgid "Complaint"
 msgstr "شكوى"
 
-#: core/models.py:11 templates/contact.html:177
+#: core/models.py:11 templates/contact.html:185
 msgid "Feedback"
 msgstr "تعليق"
 
-#: core/models.py:14 core/models.py:46 templates/contact.html:159
-#: templates/contact.html:236
+#: core/models.py:14 core/models.py:46 templates/contact.html:167
+#: templates/contact.html:244
 msgid "Full Name"
 msgstr "الاسم الكامل"
 
-#: core/models.py:15 core/models.py:47 templates/contact.html:163
-#: templates/contact.html:240
+#: core/models.py:15 core/models.py:47 templates/contact.html:171
+#: templates/contact.html:248
 msgid "Email Address"
 msgstr "البريد الإلكتروني"
 
-#: core/models.py:16 core/models.py:48 templates/contact.html:167
-#: templates/contact.html:247
+#: core/models.py:16 core/models.py:48 templates/contact.html:175
+#: templates/contact.html:255
 msgid "Phone Number"
 msgstr "رقم الهاتف"
 
-#: core/models.py:17 templates/contact.html:171
+#: core/models.py:17 templates/contact.html:179
 msgid "Subject"
 msgstr "الموضوع"
 
-#: core/models.py:18 templates/contact.html:181
+#: core/models.py:18 templates/contact.html:189
 msgid "Message"
 msgstr "الرسالة"
 
@@ -106,7 +106,7 @@ msgstr "3-5 سنوات"
 msgid "5+ years"
 msgstr "5 سنوات أو أكثر"
 
-#: core/models.py:49 templates/contact.html:251
+#: core/models.py:49 templates/contact.html:259
 msgid "Position of Interest"
 msgstr "الوظيفة المرغوبة"
 
@@ -122,7 +122,7 @@ msgstr "السيرة الذاتية"
 msgid "Cover Letter"
 msgstr "الخطاب التعريفي"
 
-#: core/models.py:56 templates/contact.html:220
+#: core/models.py:56 templates/contact.html:228
 msgid "Employment Application"
 msgstr "طلب توظيف"
 
@@ -259,12 +259,10 @@ msgid "Al Ruwais Prince Sultan St, Jeddah Saudi Arabia"
 msgstr "الرويس شارع الأمير سلطان، جدة، المملكة العربية السعودية"
 
 #: templates/base.html:203
-
 msgid "Quwayza King Fahd St, Jeddah Saudi Arabia"
 msgstr "قويزة شارع الملك فهد، جدة، المملكة العربية السعودية"
 
 #: templates/base.html:207
-
 msgid "Al Rawabi King Abdullah Rd, Riyadh Saudi Arabia "
 msgstr "الروابي طريق الملك عبد الله، الرياض المملكة العربية السعودية"
 
@@ -320,118 +318,126 @@ msgstr "أرقام الاتصال"
 msgid "Soon"
 msgstr "قيد الانشاء"
 
-#: templates/contact.html:102
+#: templates/contact.html:96
+msgid "Complaints and inquiries"
+msgstr "للشكاوى والأستفسارات"
+
+#: templates/contact.html:106
+msgid "Available from 8 am to 4 pm"
+msgstr "متاح من الساعة 8 صباحًا حتى 4 مساءً"
+
+#: templates/contact.html:110
 msgid "Our Branches"
 msgstr "فروعنا"
 
-#: templates/contact.html:109
+#: templates/contact.html:117
 msgid "Jeddah"
 msgstr "جدة"
 
-#: templates/contact.html:114
+#: templates/contact.html:122
 msgid "Al Ruwais"
 msgstr "الرويس"
 
-#: templates/contact.html:115
+#: templates/contact.html:123
 msgid "Prince Sultan St."
 msgstr "شارع الأمير سلطان"
 
-#: templates/contact.html:120
+#: templates/contact.html:128
 msgid "Quwayza"
 msgstr "قويزة"
 
-#: templates/contact.html:121
+#: templates/contact.html:129
 msgid "King Fahd St."
 msgstr "شارع الملك فهد"
 
-#: templates/contact.html:131 templates/contact.html:284
+#: templates/contact.html:139 templates/contact.html:292
 msgid "Riyadh"
 msgstr "الرياض"
 
-#: templates/contact.html:134
+#: templates/contact.html:142
 msgid "Al Rawabi"
 msgstr "الروابي"
 
-#: templates/contact.html:135
+#: templates/contact.html:143
 msgid "King Abdullah Rd."
 msgstr "طريق الملك عبد الله"
 
-#: templates/contact.html:142
+#: templates/contact.html:150
 msgid "View on Map"
 msgstr "عرض على الخريطة"
 
-#: templates/contact.html:154
+#: templates/contact.html:162
 msgid "Send a Message"
 msgstr "إرسال رسالة"
 
-#: templates/contact.html:173
+#: templates/contact.html:181
 msgid "Select a subject"
 msgstr "اختر موضوع"
 
-#: templates/contact.html:185
+#: templates/contact.html:193
 msgid "Send Message"
 msgstr "إرسال الرسالة"
 
-#: templates/contact.html:200
+#: templates/contact.html:208
 msgid "Join Our Team"
 msgstr "انضم لفريقنا"
 
-#: templates/contact.html:201
+#: templates/contact.html:209
 msgid ""
 "Interested in working with us? We're always looking for talented individuals "
 "to join our team."
 msgstr ""
 "هل ترغب في العمل معنا؟ نحن دائمًا نبحث عن أفراد موهوبين للانضمام إلى فريقنا."
 
-#: templates/contact.html:205
+#: templates/contact.html:213
 msgid "Apply Now"
 msgstr "تقدم الآن"
 
-#: templates/contact.html:257
+#: templates/contact.html:265
 msgid "Upload Resume (PDF)"
 msgstr "تحميل السيرة الذاتية (PDF)"
 
-#: templates/contact.html:264 templates/contact.html:324
+#: templates/contact.html:272 templates/contact.html:332
 msgid "Close"
 msgstr "إغلاق"
 
-#: templates/contact.html:266
+#: templates/contact.html:274
 msgid "Submit Application"
 msgstr "تقديم الطلب"
 
-#: templates/contact.html:278
+#: templates/contact.html:286
 msgid "Our Locations"
 msgstr "مواقعنا"
 
-#: templates/contact.html:287
+#: templates/contact.html:295
 msgid "Jeddah - Quwayza"
 msgstr "جدة - قويزة"
 
-#: templates/contact.html:290
+#: templates/contact.html:298
 msgid "Jeddah - Al Ruwais"
 msgstr "جدة - الرويس"
 
-#: templates/contact.html:296
+#: templates/contact.html:304
 msgid "Al Rawabi Branch"
 msgstr "فرع الروابي"
 
-#: templates/contact.html:297
+#: templates/contact.html:305
 msgid "King Abdullah Rd., Al Rawabi District"
 msgstr "طريق الملك عبدالله، حي الروابي"
 
-#: templates/contact.html:305
+#: templates/contact.html:313
 msgid "Quwayza Branch"
 msgstr "فرع قويزة"
 
-#: templates/contact.html:306
+#: templates/contact.html:314
 msgid "King Fahd St., Quwayza District"
 msgstr "شارع الملك فهد، حي قويزة"
 
-#: templates/contact.html:314
+#: templates/contact.html:322
 msgid "Al Ruwais Branch"
 msgstr "فرع الرويس"
 
-#: templates/contact.html:315
+#: templates/contact.html:323
 msgid "Prince Sultan St., Al Ruwais District"
 msgstr "شارع الأمير سلطان، حي الرويس"
 
