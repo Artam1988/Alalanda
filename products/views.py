@@ -107,14 +107,18 @@ def product_list(request, category_id):
         "Beans in Tomato Sauce", "Hummus", "Fava Beans", "Red Beans"
     ]
     oils_sauces_priority_names = [
-        "Tomato Paste", "Pure sunflower oil", "Hot Red Pepper Sauce",
-        "Natural Olive Oil First Pressing", "Cold Red Pepper Sauce", "Butter", "Ghee"
+        "Tomato Paste", "Pure Sunflower Oil 100%", "Spicy Red Pepper Sauce",
+        "Extra Virgin Natural Olive Oil", "Chilled Red Pepper Sauce","Natural Pomegranate Molasses", "Butter", "Ghee"
     ]
 
-    pickles_olives_priority_names = [
-        "Green olive","Tofahy Green Olives","Salkini Green","Stuffed Olives with Thyme","Pickled Cucumbers", "Pickled Capers", "Stuffed Olives", "Mixed Pickles",
-        "","","","",""
-    ]
+    pickles_olives_lesss_priority_names = [
+            "Garlic in Vinegar",
+            "Pickled Cucumbers",
+            "Greek Mixed Pickles",
+            "Pickled Peppers",
+            "Pickled Turnip",
+            "Olives Stuffed with Pepper"
+        ]
 
     products_qs = category.products.all()
 
@@ -142,13 +146,13 @@ def product_list(request, category_id):
         products_qs = list(prioritized_qs) + list(rest_qs)
     
     if category_name.upper() == "PICKLES & OLIVES":
-        whens = [When(translations__name=name, then=pos) for pos, name in enumerate(pickles_olives_priority_names)]
-        prioritized_qs = products_qs.filter(translations__name__in=pickles_olives_priority_names)
-        prioritized_qs = prioritized_qs.annotate(
-            priority=Case(*whens, default=len(pickles_olives_priority_names), output_field=IntegerField())
+        non_less_priority_qs = products_qs.exclude(translations__name__in=pickles_olives_lesss_priority_names)
+        whens = [When(translations__name=name, then=pos) for pos, name in enumerate(pickles_olives_lesss_priority_names)]
+        less_priority_qs = products_qs.filter(translations__name__in=pickles_olives_lesss_priority_names)
+        less_priority_qs = less_priority_qs.annotate(
+            priority=Case(*whens, default=len(pickles_olives_lesss_priority_names), output_field=IntegerField())
         ).order_by('priority', 'id').distinct()
-        rest_qs = products_qs.exclude(translations__name__in=pickles_olives_priority_names)
-        products_qs = list(prioritized_qs) + list(rest_qs)
+        products_qs = list(non_less_priority_qs) + list(less_priority_qs)
 
     top_names = [
         "PICKLES & OLIVES", "JAM", "OILS & SAUCES", "CANNED VEGETABLES & FRUITS",
