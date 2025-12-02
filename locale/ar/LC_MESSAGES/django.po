@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-27 09:41+0000\n"
+"POT-Creation-Date: 2025-12-02 09:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -172,49 +172,53 @@ msgstr "عنا"
 msgid "Our History"
 msgstr "تاريخنا"
 
-#: templates/about.html:95
+#: templates/about.html:82
 msgid "Board of Directors"
 msgstr "مجلس إدارة"
 
-#: templates/about.html:96
+#: templates/about.html:83
 msgid "Meet the leadership team behind Al Alanda's success."
 msgstr "تعرف على فريق القيادة وراء نجاح العلندا."
 
-#: templates/about.html:109
+#: templates/about.html:96
 msgid "Abdulrahman Mohammed Al-Alanda"
 msgstr "عبدالرحمن محمد العلندا"
 
-#: templates/about.html:110
+#: templates/about.html:97
 msgid "Chairman of the Board of Directors"
 msgstr "رئيس مجلس الادارة"
 
-#: templates/about.html:120
+#: templates/about.html:107
 msgid "Muhannad Mohammed Al-Alanda"
 msgstr "مهند محمد العلندا"
 
-#: templates/about.html:121
+#: templates/about.html:108
 msgid "Board Member and Executive Director"
 msgstr "عضو مجلس الإدارة المدير التنفيذي"
 
-#: templates/about.html:131
+#: templates/about.html:118
 msgid "Anwar Mohammed Al-Alanda"
 msgstr "انوار محمد العلندا"
 
-#: templates/about.html:132
+#: templates/about.html:119
 msgid "Board Member and Chief Financial Officer"
 msgstr "عضو مجلس الإدارة المدير المالي"
 
-#: templates/about.html:142
+#: templates/about.html:129
 msgid "Sumaya Mohammed Al-Alanda"
 msgstr "سميه محمد العلندا"
 
-#: templates/about.html:143 templates/about.html:154
-msgid "Board Member"
-msgstr "عضو مجلس الإدارة"
+#: templates/about.html:130
+msgid "Creative Director"
+msgstr "مدير إبداعي"
 
-#: templates/about.html:153
+#: templates/about.html:140
 msgid "Mona Abdullah Al-Suwailem"
 msgstr "منى عبدالله السويلم"
+
+#: templates/about.html:141
+msgid "Board Member"
+msgstr "عضو مجلس الإدارة"
 
 #: templates/base.html:9 templates/base.html:17 templates/base.html:22
 #: templates/base.html:29 templates/contact.html:5
