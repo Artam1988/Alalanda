@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load media_filters %}
 
 {% block title %}العلندا - AL ALANDA{% endblock %}
 
@@ -12,10 +13,15 @@
 {% block twitter_title %}العلندا - AL ALANDA{% endblock %}
 {% block twitter_description %}{% trans "شركة العلندا للمواد الغذائية - أفضل المنتجات الغذائية في المملكة العربية السعودية" %}{% endblock %}
 
+{% block extra_head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<link rel="preload" href="{{ '/media/home/main.webp'|webp_or_original }}" as="image" fetchpriority="high">
+{% endblock %}
+
 {% block content %}
 <!-- Hero Banner Section: Single Image with Text Overlay -->
 <div class="mb-1 position-relative w-100" style="overflow: hidden;">
-    <img src="/media/home/main.jpg" class="d-block w-100 img-fluid" alt="Al Alanda Food" style="height: 45vw; min-height: 400px; max-height: 900px; object-fit: cover;">
+    <img src="{{ '/media/home/main.webp'|webp_or_original }}" class="d-block w-100 img-fluid" alt="Al Alanda Food" fetchpriority="high" decoding="async" style="height: 45vw; min-height: 400px; max-height: 900px; object-fit: cover;">
     <div style="position: absolute; top: .3vw;left: 50%; transform: translateX(-50%); z-index: 2; display: flex; justify-content: center; width: auto; pointer-events: none;">
         <div class="main-hero-text-overlay text-center" style="border-radius: 10px; padding: 2vw 4vw; display: inline-block; pointer-events: auto;">
             <h2 class="about-heading-title text-white mb-1 main-hero-title">الأفضل من كل أرض</h2>
@@ -122,7 +128,7 @@
                 <i class="fas fa-star me-1"></i>{% trans "Featured" %}
               </span>
             </div>
-            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+            <img src="{{ product.image.url|webp_or_original }}" class="card-img-top" alt="{{ product.name }}" loading="lazy" decoding="async">
             <div class="card-body d-flex flex-column">
               <h5 class="card-title text-center">
                 <span class="text-dark">{{ product.name }}</span>
@@ -149,7 +155,7 @@
 
 <!-- Full-width delivery image section -->
 <div class="w-100 position-relative text-center mt-5" style="padding:0;">
-    <img src="/media/home/mirrored.jpg" alt="Delivery Map" class="img-fluid rounded w-100" style="height: 40vw; min-height: 250px; max-height: 600px; width:100vw; max-width:100vw; filter:brightness(0.85); object-fit:cover;">
+    <img src="{{ '/media/home/mirrored.webp'|webp_or_original }}" alt="Delivery Map" class="img-fluid rounded w-100" loading="lazy" decoding="async" style="height: 40vw; min-height: 250px; max-height: 600px; width:100vw; max-width:100vw; filter:brightness(0.85); object-fit:cover;">
     <div style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;background:linear-gradient(to left,#1D458C 0%,rgba(29,69,140,0.7) 20%,transparent 60%,transparent 100%);"></div>
     <div style="position:absolute;top:50%;right:5vw;transform:translateY(-50%);padding:5px;color:white;text-shadow:0 2px 8px rgba(0,0,0,0.25);white-space:nowrap;z-index:3;text-align:right;min-width:220px;">
         <h1 style="font-size:3.5vw; min-font-size:2rem;">نوصل لجميع مناطق المملكة</h1>
@@ -161,6 +167,7 @@
 
 {% block extra_js %}
 {{ block.super }}
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
 $(document).ready(function(){
     var $row = $('#featured-products-row');
