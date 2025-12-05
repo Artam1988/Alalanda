@@ -4,6 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Resource Hints -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://code.jquery.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="//code.jquery.com">
+  <link rel="dns-prefetch" href="//www.googletagmanager.com">
+  {% block extra_head %}{% endblock %}
+  <!-- Preload primary font -->
+  <link rel="preload" href="/static/fonts/DUBAI-REGULAR.TTF" as="font" type="font/ttf" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/media/logo.svg">
 
   <title>{% block title %}{% trans "AL ALANDA" %}{% endblock %}</title>
@@ -94,16 +106,12 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Owl Carousel CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
   <!-- SweetAlert2 CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
   <link rel="stylesheet" href="/static/css/base.css">
   <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
 />
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
   <header>
@@ -111,7 +119,7 @@
       <div class="container">
         <div class="d-flex align-items-center justify-content-between py-3">
           <a class="navbar-brand m-0" href="/">
-            <img src="/media/logo.png" alt="العلندا" class="img-fluid" style="max-height:130px;min-width:150px;">
+            <img src="/media/logo.png" alt="العلندا" class="img-fluid" width="400" height="400" style="max-height:130px;min-width:150px;" decoding="async">
           </a>
           <nav class="navbar navbar-expand-lg navbar-dark py-0 flex-grow-1 justify-content-end">
             <button class="navbar-toggler border-0 mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -193,7 +201,7 @@
       <div class="row">
         <!-- Company Info Column -->
         <div class="col-lg-4 mb-4 mb-lg-0">
-          <img src="/media/logo.png" alt="العلندا" class="img-fluid mb-3" style="max-height: 100px;">
+          <img src="/media/logo.png" alt="العلندا" class="img-fluid mb-3" width="400" height="400" loading="lazy" decoding="async" style="max-height: 100px;">
           <div class="d-flex align-items-center mb-3">
             <i class="fas fa-map-marker-alt mx-2"></i>
             <p class="mb-0">{% trans "Al Ruwais Prince Sultan St, Jeddah Saudi Arabia" %}</p>
@@ -238,13 +246,13 @@
         <div class="col-lg-2">
           <div class="col-md-12 text-center text-md-end social-icons">
           <a href="https://www.facebook.com/share/1Ag4zPXP5R/" target="_blank" class="me-3">
-            <img src="/media/icons/facebook.png" alt="" style="height: 18px;">
+            <img src="/media/icons/facebook.png" alt="Facebook" width="18" height="18" loading="lazy" decoding="async" style="height: 18px; width: 18px;">
           </a>
           <a href="https://www.instagram.com/alalanda.co/" target="_blank" class="me-3">
-            <img src="/media/icons/instagram.png" alt="" style="height: 18px;">
+            <img src="/media/icons/instagram.png" alt="Instagram" width="18" height="18" loading="lazy" decoding="async" style="height: 18px; width: 18px;">
           </a>
           <a href="https://x.com/Alalanda_co" target="_blank" class="me-3">
-            <img src="/media/icons/x.png" alt="" style="height: 18px;">
+            <img src="/media/icons/x.png" alt="X (Twitter)" width="18" height="18" loading="lazy" decoding="async" style="height: 18px; width: 18px;">
           </a>
         </div>
         </div>
@@ -270,7 +278,6 @@
   <!-- Bootstrap JS Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Owl Carousel JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <!-- SweetAlert2 JS -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   
