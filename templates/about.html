@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load static %}
+{% load media_filters %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/about.css' %}">
@@ -8,10 +9,15 @@
 
 {% block title %}{% trans "About Us" %} | العلندا{% endblock %}
 
+{% block extra_head %}
+<link rel="preload" href="{{ '/media/about/heading.png'|webp_or_original }}" as="image" fetchpriority="high">
+<link rel="preload" href="{{ '/media/about/team.webo'|webp_or_original }}" as="image">
+{% endblock %}
+
 {% block content %}
 <!-- Full-width heading image with overlay text -->
 <div class="w-100 position-relative text-center mb-5" style="padding:0;">
-    <img src="/media/about/heading.png" alt="About Al Alanda Heading" class="hero img-fluid w-100" style="max-width:100vw;">
+    <img src="{{ '/media/about/heading.png'|webp_or_original }}" alt="About Al Alanda Heading" class="hero img-fluid w-100" fetchpriority="high" decoding="async" style="max-width:100vw;">
     <div style="position:absolute;top:15%;left:50%;transform:translate(-50%,-30%);color:white;text-shadow:0 2px 8px rgba(0,0,0,0.15);white-space:nowrap;">
         <h2 class="about-heading-title">الأفضل من كل أرض</h2>
         <p class="about-heading-subtitle">The Best of All Lands</p>
@@ -71,9 +77,10 @@ the requirements of various food channels.
 </div>
 <!-- Full-width team image section -->
 <div class="w-100 position-relative text-center mb-5" style="padding:0; overflow:hidden;">
-  <img src="/media/about/team.png" 
+  <img src="{{ '/media/about/team.webp'|webp_or_original }}" 
        alt="{% trans 'Our History' %}" 
        class="img-fluid w-100"
+       loading="lazy" decoding="async"
        style="width:100%; height:auto; object-fit:cover; max-height:600px;">
 </div>
 
