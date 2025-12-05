@@ -1,12 +1,20 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load media_filters %}
+{% block extra_head %}
+{% if not request.GET.page and not request.GET.search and not request.GET.min_price and not request.GET.max_price %}
+<link rel="preload" href="{{ '/media/banners/1.png'|webp_or_original }}" as="image" fetchpriority="high">
+{% endif %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+{% endblock %}
 {% block content %}
 
 {% if not request.GET.page and not request.GET.search and not request.GET.min_price and not request.GET.max_price %}
 <!-- Banner Section with Introduction Overlay - Only shown on main products page -->
 <div class="container-fluid px-0 mb-0">
   <div class="position-relative">
-    <img src="/media/banners/1.png" class="img-fluid w-100" alt="Al Alanda Products" onerror="this.src='/static/img/default-banner.jpg'" style="min-height: 300px; max-height: 650px; object-fit: cover;">
+    <img src="{{ '/media/banners/1.png'|webp_or_original }}" class="img-fluid w-100" alt="Al Alanda Products" fetchpriority="high" decoding="async" onerror="this.src='/static/img/default-banner.jpg'" style="min-height: 300px; max-height: 650px; object-fit: cover;">
     <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(135deg, rgba(38, 62, 128, 0.3), rgba(190, 35, 40, 0.2));"></div>
     <div class="position-absolute top-50 end-0 translate-middle-y text-end p-3 p-sm-4 banner-overlay" style="background: none; border-radius: 0; width: 50%; max-width: 700px; box-shadow: none; right: 0; left: auto;">
       <h1 class="section-title mb-2" style="color: white; font-weight: 700; font-size:4rem ;text-shadow: 0 1px 2px rgba(0,0,0,0.05);">{% trans "All Products" %}</h1>
@@ -35,9 +43,9 @@
           <div class="col-12 col-sm-6 col-md-4 col-lg-3">
             <div class="card h-100 shadow-sm product-card position-relative overflow-hidden">
               {% if product.image %}
-                <img src="{{ product.image.url }}" class="img-fluid w-100 rounded" alt="{{ product.name }}" style="max-height: 300px; object-fit: cover;">
+                <img src="{{ product.image.url|webp_or_original }}" class="img-fluid w-100 rounded" alt="{{ product.name }}" loading="lazy" decoding="async" style="max-height: 300px; object-fit: cover;">
               {% else %}
-                <img src="/media/products/default.jpg" class="img-fluid w-100 rounded" alt="{{ product.name }}" style="max-height: 300px; object-fit: cover;">
+                <img src="{{ '/media/products/default.jpg'|webp_or_original }}" class="img-fluid w-100 rounded" alt="{{ product.name }}" loading="lazy" decoding="async" style="max-height: 300px; object-fit: cover;">
               {% endif %}
               <div class="card-body">
                 <h5 class="card-title" style="font-weight:700; color:var(--primary-dark);">{{ product.name }}</h5>
@@ -112,9 +120,9 @@
             <a href="{% url 'products:category_products' category_id=category.id %}" style="text-decoration:none;">
               <div class="card h-100 shadow-sm category-card position-relative overflow-hidden">
                 {% if category.banner_image %}
-                  <img src="{{ category.banner_image.url }}" style="height:450px" class="img-fluid w-100 rounded category-banner-img" alt="{{ category.name }}">
+                  <img src="{{ category.banner_image.url|webp_or_original }}" style="height:450px" class="img-fluid w-100 rounded category-banner-img" alt="{{ category.name }}" loading="lazy" decoding="async">
                 {% else %}
-                  <img src="/media/categories/default.jpg" class="img-fluid w-100 rounded category-banner-img" alt="{{ category.name }}">
+                  <img src="{{ '/media/categories/default.jpg'|webp_or_original }}" class="img-fluid w-100 rounded category-banner-img" alt="{{ category.name }}" loading="lazy" decoding="async">
                 {% endif %}
                 <div class="card-img-overlay d-flex align-items-start p-3">
                   <h2 class="category-header mb-0" style="color:#be2328; background:rgba(255,255,255,0.85); border-radius:8px; padding:0.5rem 1.2rem; font-size:1.5rem; font-weight:700;">
@@ -140,6 +148,7 @@
 
 
 {% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <link rel="stylesheet" href="/static/css/products.css">
 <style>
   .category-banner-img {
