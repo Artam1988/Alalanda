@@ -1,14 +1,20 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.utils.translation import gettext as _
+from django.views.decorators.cache import cache_page
+from django.views.decorators.vary import vary_on_cookie
 from products.models import Product, Category
 from .models import ContactMessage, EmploymentApplication
 
 # Create your views here.
+@vary_on_cookie
+@cache_page(60 * 15)
 def about_page(request):
     """View for the about page"""
     return render(request, 'about.html')
 
+@vary_on_cookie
+@cache_page(60 * 10)
 def home_page(request):
     """View for the home page"""
     
@@ -80,6 +86,8 @@ def contact_page(request):
     
     return render(request, 'contact.html')
 
+@vary_on_cookie
+@cache_page(60 * 60)
 def brands_page(request):
     """View for the brands page"""
     # Get all categories to potentially link to product pages
