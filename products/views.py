@@ -1,12 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q, Prefetch, Count, Case, When, IntegerField
 from django.views.decorators.cache import cache_page
+from django.views.decorators.vary import vary_on_cookie
 from django.core.cache import cache
 from django.core.paginator import Paginator
 from django.utils.translation import get_language
 from .models import Category, Product
 
-
+@vary_on_cookie
 @cache_page(60 * 15)
 def products_page(request):
     search_query = request.GET.get('search', '')
@@ -88,6 +89,8 @@ def products_page(request):
     })
 
 
+
+@vary_on_cookie
 @cache_page(60 * 15)
 def product_list(request, category_id):
     search_query = request.GET.get('search', '')
