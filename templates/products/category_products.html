@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load static %}
+{% load media_filters %}
+{% block extra_head %}
+{% if category.banner_image %}
+<link rel="preload" href="{{ category.banner_image.url|webp_or_original }}" as="image" fetchpriority="high">
+{% endif %}
+{% endblock %}
 {% block content %}
 <div class="container-fluid px-2 px-md-3 px-lg-4 mb-4">
   <!-- Sidebar Toggle Button (visible on all screens) -->
@@ -41,9 +47,9 @@
   <div class="category-header-section mb-4">
     <div class="category-banner mb-3 position-relative">
       {% if category.banner_image %}
-        <img src="{{ category.banner_image.url }}" class="img-fluid w-100 rounded" alt="{{ category.name }}" style="max-height: 400px; object-fit: cover;">
+        <img src="{{ category.banner_image.url|webp_or_original }}" class="img-fluid w-100 rounded" alt="{{ category.name }}" fetchpriority="high" decoding="async" style="max-height: 400px; object-fit: cover; aspect-ratio: 16 / 9;">
       {% else %}
-        <img src="/media/categories/default.jpg" class="img-fluid w-100 rounded" alt="{{ category.name }}" style="max-height: 400px; object-fit: cover;">
+        <img src="{{ '/media/categories/default.jpg'|webp_or_original }}" class="img-fluid w-100 rounded" alt="{{ category.name }}" decoding="async" style="max-height: 400px; object-fit: cover; aspect-ratio: 16 / 9;">
       {% endif %}
     </div>
     <h2 class="category-header">{{ category.name }}</h2>
@@ -62,9 +68,9 @@
       <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
         <div class="card h-100 product-card">
           {% if product.image %}
-            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+            <img src="{{ product.image.url|webp_or_original }}" class="card-img-top" alt="{{ product.name }}" loading="lazy" decoding="async">
           {% else %}
-            <img src="/media/products/conf-cause.png" class="card-img-top" alt="{{ product.name }}">
+            <img src="{{ '/media/products/conf-cause.png'|webp_or_original }}" class="card-img-top" alt="{{ product.name }}" loading="lazy" decoding="async">
           {% endif %}
           <div class="card-body">
             <h5 class="card-title text-center">{{ product.name }}</h5>
