@@ -64,8 +64,13 @@ CACHES = {
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
     'https://alalanda.onrender.com',
+    'https://alalanda.com',
 ]
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://alalanda.onrender.com',
+    'https://alalanda.com',
+    'https://www.alalanda.com',
+]
 PARLER_LANGUAGES = {
     None: (
         {'code': 'en'},
